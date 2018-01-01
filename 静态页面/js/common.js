@@ -1,5 +1,11 @@
-$("#distpicker1").distpicker({
-  province: '福建省',
-  city: '厦门市',
-  district: '集美区'
+$(".search").click(function(){
+  $(this).hide();
+  $(".qvxiao").show();
+  $(".search-wrap").addClass("active");
+});
+
+$(".qvxiao").on("click",function(){
+  $(".search").fadeIn();
+  $(this).hide();
+  $(".search-wrap").removeClass("active");
 });

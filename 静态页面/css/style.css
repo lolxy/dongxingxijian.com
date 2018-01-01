@@ -1,322 +1,141 @@
 @import "bootstrap.css";
 @import "base.css";
 /*******标题栏************/
-a{
-  color: #787878;
+body{
+  padding-top: 1.1112rem;
 }
+
 img{
-  max-width: 100%;
-}
-label{
-  font-weight: 300;
-}
-.font-sm{
-  font-size: 12px;
-}
-.font-xs{
-  font-size: 10px;
-}
-.row{
-  margin: 0;
-}
-.navbar-default{
-  background-color: #FFFFFF;
-  height:70px;
-  line-height: 70px;
-}
-.navbar{
-  margin-bottom: 0;
-}
-.navbar-nav{
-  padding-top:10px;
-}
-#active{
-  color:#008FF5;
-}
-/********主体内容***********/
-.jy-main{
-  background: #F2F1F6;
-  padding:20px 0;
-}
-/********左侧列表**********/
-.img-box{
-  padding:15px;
-}
-.header-img{
-  max-width:100%;
-  /*height: 160px;*/
-}
-.jy-main>.container>.col-xs-2,.jy-main>.container>.col-xs-9{
-  background-color: #fff;
-  padding: 0;
-  border: 1px solid #DFDFDF;
-  margin-left: 20px;
+  vertical-align: top;
 }
 
-.active-color{
-  background-color: #FAFAFA;
-  border-top: 1px solid #ECECEC;
-  border-bottom: 1px solid #ECECEC;
-  color: #515151;
+header{
+  background-color: #000000;
+  height: 1.1112rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100
 }
 
-/*******编辑个人信息***********/
-.main-header{
-  height: 50px;
-  line-height: 50px;
-  padding-left: 20px;
-}
-.main-box{
-  margin-top: 20px;
-}
-.font-interval{
-  letter-spacing:27px;
-  margin-right:-24px;
-}
-.prompt{
-  font-size: 10px;
-}
-.jy-main>.container>.col-xs-9 .main-box>form .btn{
-  padding: 3px 20px;
-  background: linear-gradient(#00C9FD,#0092F7);
-  color:#fff;
-}
-.checkbox>label:first-child{
-  padding-left: 0;
-}
-/**************我的课程*************/
-.main-box-course{
-  width: 90%;
-  margin: 0 auto;
-
-}
-.main-box-course .live>div{
-  padding: 0;
-}
-.main-box-course .live{
-  margin: 0 auto;
-  padding: 25px 0;
-  border-bottom: 1px solid #E2E2E2;
-}
-.live:last-child{
-  border-bottom:none;
-}
-.title-font{
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-.progress-bar{
-  background-color: #199CF4;
-}
-.playback{
-  background: #fff;
-  color: #74C6FB;
-  border:1px solid #74C6FB;
-  float: right;
-}
-.playback:hover{
-  background: #74C6FB;
-  color: #fff;
-}
-.progress{
-  height: 10px;
-  padding:0;
-  margin: 0 0 5px 0 ;
-}
-.litle-title{
-  margin: 5px 0 17px 0;
-}
-#bg-active{
-  background: #0190F6;
-  color: #fff;
-}
-.pager li > a{
-  padding:3px 10px;
-  margin: 0 5px;
-}
-/************修改地址*************/
-.form-inline{
-  padding: 20px 0 15px 40px;
-}
-#distpicker1 select{
-  height: 32px;
-  border-radius: 5px;
-  margin:0 6px;
-}
-.delete{
-  padding-left: 10px;
-  background: #fff;
-  border: 0;
-}
-.font-address{
-  letter-spacing:0.5px;
+header .logo{
+  width: 2.2224rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/***********个人信息*********/
-.my-message{
-  margin-top: 20px;
-  margin-bottom: 20px;
-  line-height: 35px;
-  height:150px;
-}
-.my-message .font-interval{
-  margin-right: -27px;
-}
-.default-address{
-  background: #0091F4;
-  color: #fff;
-  padding: 2px 4px;
-  margin-left: 20px;
-}
-.my-address{
-  margin:  30px 0;
-  line-height: 30px;
-  height: 100px;
-  border-bottom: 1px solid #EAEAEA;
-}
-.my-invitation{
-  height: 50px;
-  margin:30px 0 50px 0;
-}
-.my-invitation div input{
-  width: 60%;
-  height: 39px;
-  padding-left:10px;
-  background-color: #FCFCFC;
-  border: 1px solid #DFDFDF;
-}
-.my-invitation div button{
-  height: 39px;
-  border: 1px solid #DFDFDF;
-  background-color: #fff;
-  color: #656565;
-  width: 100px;
-}
-.my-invitation div p{
-  margin: 10px 0;
-}
-.my-news{
-  margin: 20px 0;
-  height: 60px;
-  border-bottom: 1px solid #D7D7D7;
-}
-.my-news img{
-  width: 40px;
-  border-radius: 40px;
-}
-.glyphicon-plus-sign{
-  padding-right:10px;
-  color: #008FF5;
-}
-.more{
-  margin-bottom:20px;
+header .title{
+  margin-left: 2.2224rem;
+  margin-right: 2.2224rem;
+  text-align: center;
+  line-height: 1.1112rem;
+  color:#ffffff;
+  font-size: 0.4167rem;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-/*********我的优惠券**********/
-.coupon-list>li{
-  float: left;
-  padding:0 30px 20px 20px;
-}
-.coupon-list>li>img{
-  max-width: 200px;
-  max-height: 125px;
+header .searchbox,header .menubox{
+  width: 1.1112rem;
+  height: 1.1112rem;
+  position: absolute;
+  top: 0;
 }
 
-/**********导师********/
-.tutor-header{
-  height: 60px;
-  line-height: 30px;
-  margin: 40px 0;
-}
-.tutor-header-img{
-  width: 70px;
-  border-radius: 70px;
-}
-.course-box{
- margin-left: 20px;
-}
-.course-list>li{
-  float: left;
-  max-width: 330px;
-  margin: 10px 40px 30px 0;
-}
-.course-list>li>img{
-  max-width: 330px;
-  max-height: 168px;
-}
-.course-list>li>div{
-  height: 50px;
-  background: #F6F6F6;
-  padding-top: 15px;
-  border:1px solid #F0F0F0;
-  border-top: 0;
+header .searchbox{
+  right: 1.1112rem;
 }
 
-/********我的协议************/
-.table-bordered{
-  margin: 20px 0;
-}
-.table-bordered>thead>tr>th{
-  border:0;
-  background: #FAFAFA;
-}
-.my-protocol>thead>tr>th:first-child,.my-protocol>tbody>tr>td:first-child{
-width:25%;
-}
-.table-bordered>tbody>tr>td:first-child{
-  text-align: left;
-}
-/************我的学习卡*************/
-.my-card{
-  padding-top: 20px;
-  min-height: 830px;
-}
-.my-card>div{
-  margin-bottom: 50px;
-}
-.my-card .form-inline .form-control{
-  width:300px;
-}
-.my-card>div>form .btn{
-  background: linear-gradient(#00C9FD,#0092F7);
-  color:#fff;
+header .search-wrap{
+  position: absolute;
+  top: 0.1556rem;
+  left: 100%;
+  transition: all ease-in-out .5s;
+  z-index: 4;
 }
 
-/************我的收藏***************/
-.my-collect{
-  padding: 20px 0 10px 0;
-  line-height: 30px;
-  border-bottom: 1px solid #E6E6E6;
-}
-.my-collect>.col-xs-2{
-  padding-left: 0;
-  line-height: 35px;
-}
-.my-collect>.col-xs-8{
-overflow: hidden;
-text-overflow:ellipsis;
-white-space: nowrap;
-}
-
-/***************我的笔记***********/
-.my-note{
-  padding: 20px 0 10px 0;
-  border-bottom: 1px solid #F4F4F4;
-  line-height: 30px;
-}
-.my-note>.col-xs-10{
-  padding-left: 0;
-
-}
-.my-note>.col-xs-10>p{
+header .search-wrap form{
+  position: relative;
+  margin-right: 1rem;
+  margin-left: 0;
   overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
+  height: 0.8rem;
 }
 
-/**************我的订单*************/
-.table>tbody>tr>td:first-child{
-  width:10%;
-  }
-.table-center{
+header .search-wrap .qvxiao{
+  width: 1rem;
+  line-height: 0.8rem;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color:#ffffff;
+  text-align: center;
+  height: 0.8rem;
+  display: none;
+}
+
+header .search-wrap.active{
+  left: 2.2224rem;
+  right: 1.1112rem;
+}
+
+header .search-wrap .inputcss{
+  height: 0.8rem;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  vertical-align: top;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+}
+
+header .search-wrap .btn-search{
+  background: url(../images/search_black_icon.png) center center no-repeat;
+  background-size:contain;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: none;
+  position: absolute;
+  right: 0;top: 0;
+  display: block;
+  z-index: 3;
+}
+
+header .searchbox .search,header .menubox .menu{
+  width: 1.1112rem;
+  height: 100%;
+  display: block;
+}
+
+header .searchbox .search{
+  background: url(../images/search_icon.png) center center no-repeat;
+  background-size: cover;
+}
+
+header .menubox{
+  right: 0;
+  z-index: 5;
+}
+
+header .menubox .menu{
+  background: url(../images/menu_icon.png) center center no-repeat;
+  background-size: cover;
+}
+
+.banner{
+  position: fixed;
+  top: 1.1112rem;
+  z-index: 0;
+}
+
+.banner-mask{
+  position: relative;
+  z-index:-1;
+}
+
+.workslist{
+  position: relative;
+  z-index: 2;
 }
