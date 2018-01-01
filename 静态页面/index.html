@@ -14,6 +14,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="favicon.png" type="image/png" />
 <title>东形西见室内设计</title>
+<link rel="stylesheet" href="css/swiper.min.css">
 <link rel="stylesheet" href="css/style.css">
 <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -78,8 +79,31 @@
     </li>
   </ul>
 </div>
+
+<!-- 东西资讯 -->
+<div class="home-news">
+  <h2>东西资讯</h2>
+  <div class="swiper-box">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="js/jquery.min.js"></script>
 <script src="js/flexible.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
 <script src="js/common.js"></script>
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    loop: true,
+    slidesPerView: 3.5,
+    paginationClickable: true,
+    spaceBetween: 10
+  })
+  </script>
 </body>
 </html>

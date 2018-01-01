@@ -132,6 +132,7 @@ header .menubox .menu{
 
 .banner-mask{
   position: relative;
+  margin-top: 1.1112rem;
   z-index:-1;
 }
 
