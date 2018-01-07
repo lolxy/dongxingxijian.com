@@ -1,0 +1,175 @@
+[ 2018-01-08T01:07:46+08:00 ] 127.0.0.1 /Admin/setting/site_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001076s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003915s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.000747s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006848s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.003720s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.003817s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0072s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `dx_options` [ RunTime:0.0088s ]
+SQL: SELECT * FROM `dx_options` WHERE ( option_name='site_options' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `dx_options` SET `option_id`='6',`option_name`='site_options',`option_value`='{\"site_name\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"site_host\":\"http:\\/\\/dxzj.com\\/\",\"site_logo\":\"admin\\/20180108\\/5a5253dd4688c.png\",\"site_erweima\":\"admin\\/20180108\\/5a5253d44db99.png\",\"site_admin_url_password\":\"\",\"site_tpl\":\"dongxingxijian\",\"site_adminstyle\":\"flat\",\"site_icp\":\"\",\"site_admin_email\":\"admin@qq.com\",\"site_tongji\":\"\",\"site_copyright\":\"\",\"site_seo_title\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"site_seo_keywords\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"site_seo_description\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"urlmode\":\"2\",\"html_suffix\":\"\",\"comment_time_interval\":\"60\"}' WHERE ( option_name='site_options' ) [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `dx_options` [ RunTime:0.0072s ]
+SQL: SELECT * FROM `dx_options` WHERE ( option_name='cmf_settings' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: UPDATE `dx_options` SET `option_name`='cmf_settings',`option_value`='{\"banned_usernames\":\"\"}' WHERE ( option_name='cmf_settings' ) [ RunTime:0.0003s ]
+SQL: SELECT * FROM `dx_options` WHERE `option_name` = 'cdn_settings' LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `dx_options` SET `option_value`='{\"cdn_static_root\":\"\"}' WHERE `option_name` = 'cdn_settings' [ RunTime:0.0003s ]
+
+[ 2018-01-08T01:08:44+08:00 ] 127.0.0.1 /Admin/backup/del_backup/backup/20180108_1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000664s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001514s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.001336s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004101s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.003626s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.003801s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0065s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] Missing argument 1 for Dir::__construct(), called in E:\dongxizhijian\application\Admin\Controller\BackupController.class.php on line 155 and defined E:\dongxizhijian\simplewind\Lib\Util\Dir.class.php 第 39 行.
+NOTIC: [8] Undefined variable: path E:\dongxizhijian\simplewind\Lib\Util\Dir.class.php 第 40 行.
+NOTIC: [8] Undefined variable: path E:\dongxizhijian\simplewind\Lib\Util\Dir.class.php 第 41 行.
+
+[ 2018-01-08T01:33:43+08:00 ] 127.0.0.1 /Admin/nav/edit/id/2/parentid/0/cid/1
+NOTIC: D方法实例化没找到模型类Common\Model\VariableModel
+
+[ 2018-01-08T01:33:48+08:00 ] 127.0.0.1 /Admin/nav/edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001021s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002575s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.002538s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007133s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.003200s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.003316s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0094s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `dx_nav` [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `dx_nav_cat` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined index: validate E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dx_nav` SET `cid`='1',`parentid`='0',`label`='别墅',`href`='a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"1\";}}',`target`='',`icon`='',`status`='1',`path`='0-2' WHERE `id` = 2 [ RunTime:0.0004s ]
+
+[ 2018-01-08T01:33:53+08:00 ] 127.0.0.1 /Admin/nav/edit/id/3/parentid/0/cid/1
+NOTIC: D方法实例化没找到模型类Common\Model\VariableModel
+
+[ 2018-01-08T01:33:58+08:00 ] 127.0.0.1 /Admin/nav/edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001231s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003224s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.000708s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006112s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.002961s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.003060s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0076s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `dx_nav` [ RunTime:0.0084s ]
+SQL: SHOW COLUMNS FROM `dx_nav_cat` [ RunTime:0.0082s ]
+NOTIC: [8] Undefined index: validate E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dx_nav` SET `cid`='1',`parentid`='0',`label`='平层/公寓',`href`='a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"2\";}}',`target`='',`icon`='',`status`='1',`path`='0-3' WHERE `id` = 3 [ RunTime:0.0007s ]
+
+[ 2018-01-08T01:34:03+08:00 ] 127.0.0.1 /Admin/nav/edit/id/4/parentid/0/cid/1
+NOTIC: D方法实例化没找到模型类Common\Model\VariableModel
+
+[ 2018-01-08T01:34:08+08:00 ] 127.0.0.1 /Admin/nav/edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001144s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001951s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.000501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004468s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.003778s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.003884s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0083s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `dx_nav` [ RunTime:0.0079s ]
+SQL: SHOW COLUMNS FROM `dx_nav_cat` [ RunTime:0.0079s ]
+NOTIC: [8] Undefined index: validate E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dx_nav` SET `cid`='1',`parentid`='0',`label`='公共空间',`href`='a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"3\";}}',`target`='',`icon`='',`status`='1',`path`='0-4' WHERE `id` = 4 [ RunTime:0.0006s ]
+
+[ 2018-01-08T01:34:14+08:00 ] 127.0.0.1 /Admin/nav/edit/id/5/parentid/0/cid/1
+NOTIC: D方法实例化没找到模型类Common\Model\VariableModel
+
+[ 2018-01-08T01:34:19+08:00 ] 127.0.0.1 /Admin/nav/edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001134s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001829s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.000816s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004741s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.002709s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.002822s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0071s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `dx_nav` [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `dx_nav_cat` [ RunTime:0.0082s ]
+NOTIC: [8] Undefined index: validate E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dx_nav` SET `cid`='1',`parentid`='0',`label`='获奖作品',`href`='a:2:{s:6:\"action\";s:17:\"Portal/List/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"2\";}}',`target`='',`icon`='',`status`='1',`path`='0-5' WHERE `id` = 5 [ RunTime:0.0009s ]
+
+[ 2018-01-08T01:34:24+08:00 ] 127.0.0.1 /Admin/nav/edit/id/6/parentid/0/cid/1
+NOTIC: D方法实例化没找到模型类Common\Model\VariableModel
+
+[ 2018-01-08T01:34:29+08:00 ] 127.0.0.1 /Admin/nav/edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001751s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002273s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.000890s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.002416s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.002525s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0107s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `dx_nav` [ RunTime:0.0079s ]
+SQL: SHOW COLUMNS FROM `dx_nav_cat` [ RunTime:0.0086s ]
+NOTIC: [8] Undefined index: validate E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dx_nav` SET `cid`='1',`parentid`='0',`label`='东西资讯',`href`='a:2:{s:6:\"action\";s:17:\"Portal/List/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"1\";}}',`target`='',`icon`='',`status`='1',`path`='0-6' WHERE `id` = 6 [ RunTime:0.0008s ]
+
+[ 2018-01-08T01:34:36+08:00 ] 127.0.0.1 /Admin/nav/edit/id/7/parentid/0/cid/1
+NOTIC: D方法实例化没找到模型类Common\Model\VariableModel
+
+[ 2018-01-08T01:34:42+08:00 ] 127.0.0.1 /Admin/nav/edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000991s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002211s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.000849s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.003788s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.004142s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0104s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `dx_nav` [ RunTime:0.0101s ]
+SQL: SHOW COLUMNS FROM `dx_nav_cat` [ RunTime:0.0086s ]
+NOTIC: [8] Undefined index: validate E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dx_nav` SET `cid`='1',`parentid`='0',`label`='东西服务',`href`='a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"4\";}}',`target`='',`icon`='',`status`='1',`path`='0-7' WHERE `id` = 7 [ RunTime:0.0006s ]
+
+[ 2018-01-08T01:34:47+08:00 ] 127.0.0.1 /Admin/nav/edit/id/8/parentid/0/cid/1
+NOTIC: D方法实例化没找到模型类Common\Model\VariableModel
+
+[ 2018-01-08T01:34:52+08:00 ] 127.0.0.1 /Admin/nav/edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001017s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002527s ]
+INFO: Run Common\Behavior\UrldecodeGetBehavior [ RunTime:0.000690s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005178s ]
+INFO: [ admin_begin ] --START--
+INFO: Run Common\Behavior\AdminDefaultLangBehavior [ RunTime:0.003465s ]
+INFO: [ admin_begin ] --END-- [ RunTime:0.003565s ]
+SQL: SHOW COLUMNS FROM `dx_users` [ RunTime:0.0103s ]
+SQL: SELECT * FROM `dx_users` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `dx_nav` [ RunTime:0.0085s ]
+SQL: SHOW COLUMNS FROM `dx_nav_cat` [ RunTime:0.0088s ]
+NOTIC: [8] Undefined index: validate E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\dongxizhijian\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dx_nav` SET `cid`='1',`parentid`='0',`label`='联系东西',`href`='a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"5\";}}',`target`='',`icon`='',`status`='1',`path`='0-8' WHERE `id` = 8 [ RunTime:0.0006s ]
+
