@@ -14,6 +14,7 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="icon" href="favicon.png" type="image/png" />
 <title>东形西见室内设计--东西服务</title>
+<link rel="stylesheet" href="css/swiper.min.css">
 <link rel="stylesheet" href="css/style.css">
 <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -21,7 +22,109 @@
 <![endif]-->
 </head>
 <body>
+<!-- 头部公共部分 -->
+<header id="header">
+  <div class="logo">
+    <a href="#">
+      <img src="images/logo.png" alt="东形西见" class="img-responsive"/>
+    </a>
+  </div>
+  <div class="title">首页</div>
+  <div class="search-wrap">
+    <form action="">
+      <input type="text" class="inputcss" value="" name="keyword"/>
+      <button type="submit" class="btn-search"></button>
+    </form>
+    <span class="qvxiao">取消</span>
+  </div>
+  <div class="searchbox">
+    <a href="javascript:void(0);" class="search"></a>
+  </div>
+  <div class="menubox">
+    <a href="javascript:void(0);" class="menu"></a>
+  </div>
+</header>
+
+<nav id="slide-menu">
+  <a href="#">别墅</a>
+  <a href="#">平层/公寓</a>
+  <a href="#">公共空间</a>
+  <a href="#">获奖作品</a>
+  <a href="#">东西资讯</a>
+  <a href="#">东西服务</a>
+</nav>
+
+<section class="wrapper">
+  <div class="form-container">
+  <form action="" method="post">
+    <div class="form-group">
+      <div class="w6">
+        <input type="text" placeholder="合作单位（个人）" name="" class="inputcss"/>
+      </div>
+      <div class="w6">
+        <input type="text" placeholder="联系人姓名" name="" class="inputcss"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="w6">
+        <input type="text" placeholder="联系电话" name="" class="inputcss"/>
+      </div>
+      <div class="w6">
+        <input type="text" placeholder="邮箱地址" name="" class="inputcss"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="w12">
+        <input type="text" placeholder="通信地址" name="" class="inputcss"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="w12">
+        <select name="" class="inputcss">
+          <option value="1">合作项目</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="w12">
+        <textarea name="" id="" cols="30" rows="10" class="textareacss"></textarea>
+      </div>
+    </div>
+  </form>
+  </div>
+</section>
+
+<!-- 底部 -->
+<footer id="footer">
+  <div class="f-container">
+    <nav>
+      <ul>
+        <li><a href="#">订阅资讯</a></li>
+        <li><a href="#">联系东西</a></li>
+      </ul>
+    </nav>
+    <div class="contact">
+      <p>关注我们</p>
+      <div class="c-box">
+        <a href="#">
+          <img src="images/qq_icon.png" alt="" class="img-responsive"/>
+        </a>
+        <a href="#">
+          <img src="images/wechat_icon.png" alt="" class="img-responsive"/>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>版权信息</p>
+    <p>版权信息</p>
+  </div>
+</footer>
 <script src="js/jquery.min.js"></script>
+<script src="js/flexible.js"></script>
 <script src="js/common.js"></script>
 </body>
 </html>

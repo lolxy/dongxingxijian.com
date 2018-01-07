@@ -23,7 +23,7 @@
 </head>
 <body>
 <!-- 头部公共部分 -->
-<header>
+<header id="header">
   <div class="logo">
     <a href="#">
       <img src="images/logo.png" alt="东形西见" class="img-responsive"/>
@@ -45,13 +45,21 @@
   </div>
 </header>
 
-<!-- 主图 -->
-<div class="banner">
-  <img src="images/banner.png" alt="" class="img-responsive"/>
-</div>
+<nav id="slide-menu">
+  <a href="#">别墅</a>
+  <a href="#">平层/公寓</a>
+  <a href="#">公共空间</a>
+  <a href="#">获奖作品</a>
+  <a href="#">东西资讯</a>
+  <a href="#">东西服务</a>
+</nav>
 
-<div class="banner-mask">
-  <img src="images/banner.png" alt="" class="img-responsive"/>
+<section class="wrapper">
+<!-- 主图 -->
+<div class="bannerbox">
+  <div class="banner-mask">
+    <img src="images/banner.png" alt=""/>
+  </div>
 </div>
 
 <!-- 其他主图 -->
@@ -86,13 +94,110 @@
   <div class="swiper-box">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- 东西服务 -->
+<div class="home-service">
+  <a href="#">
+    <img src="images/server.png" alt="" class="img-responsive"/>
+  </a>
+</div>
+</section>
+
+<!-- 底部 -->
+<footer id="footer">
+  <div class="f-container">
+    <nav>
+      <ul>
+        <li><a href="#">订阅资讯</a></li>
+        <li><a href="#">联系东西</a></li>
+      </ul>
+    </nav>
+    <div class="contact">
+      <p>关注我们</p>
+      <div class="c-box">
+        <a href="#">
+          <img src="images/qq_icon.png" alt="" class="img-responsive"/>
+        </a>
+        <a href="#">
+          <img src="images/wechat_icon.png" alt="" class="img-responsive"/>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>版权信息</p>
+    <p>版权信息</p>
+  </div>
+</footer>
 <script src="js/jquery.min.js"></script>
 <script src="js/flexible.js"></script>
 <script src="js/swiper.jquery.min.js"></script>
@@ -100,7 +205,7 @@
 <script>
   var mySwiper = new Swiper ('.swiper-container', {
     loop: true,
-    slidesPerView: 3.5,
+    slidesPerView: 3,
     paginationClickable: true,
     spaceBetween: 10
   })
