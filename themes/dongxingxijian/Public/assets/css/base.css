@@ -8,7 +8,7 @@ input,textarea,select{*font-size:100%;}
 .text-ellipsis{white-space: nowrap;overflow: hidden;display: block;word-wrap: break-word;text-overflow: ellipsis;}
 .text-ellipsis2{overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
 .text-ellipsis3{overflow : hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
-a{text-decoration: none;}
+a{text-decoration: none !important;}
 a:hover{opacity: 0.9;}
 html{height: 100%;}
 html > body{min-height: 100%;padding-top: 1.1112rem; background-color: #d4d4dc;padding-bottom: 4.2rem;position:relative;}

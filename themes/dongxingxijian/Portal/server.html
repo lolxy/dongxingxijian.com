@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_seo_title} {$site_name}</title>
+		<meta name="keywords" content="{$site_seo_keywords}" />
+		<meta name="description" content="{$site_seo_description}">
+		<link rel="stylesheet" href="__TMPL__Public/assets/css/swiper.min.css">
+		<tc_include file="Public:head" />
+	</head>
+<body>
+<tc_include file="Public:nav" />
+
+<section class="wrapper">
+  <div class="form-container">
+  <form action="" method="post">
+    <div class="form-group">
+      <div class="w6">
+        <input type="text" placeholder="合作单位（个人）" name="" class="inputcss"/>
+      </div>
+      <div class="w6">
+        <input type="text" placeholder="联系人姓名" name="" class="inputcss"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="w6">
+        <input type="text" placeholder="联系电话" name="" class="inputcss"/>
+      </div>
+      <div class="w6">
+        <input type="text" placeholder="邮箱地址" name="" class="inputcss"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="w12">
+        <input type="text" placeholder="通信地址" name="" class="inputcss"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="w12">
+        <select name="" class="inputcss">
+          <option value="1">合作项目</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="w12">
+        <textarea name="" id="" cols="30" rows="10" class="textareacss"></textarea>
+      </div>
+    </div>
+  </form>
+  </div>
+</section>
+
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+{:hook('footer_end')}
+</body>
+</html>
