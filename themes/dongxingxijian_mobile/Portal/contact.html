@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_seo_title} {$site_name}</title>
+		<meta name="keywords" content="{$site_seo_keywords}" />
+		<meta name="description" content="{$site_seo_description}">
+		<tc_include file="Public:head" />
+	</head>
+<body>
+<tc_include file="Public:nav" />
+
+<section class="wrapper">
+  <div class="contact-container">
+    <dl>
+      <dt>公司地址：</dt>
+      <dd>福建省福州市仓山区建新镇金达路130号3号厂房1020单元</dd>
+    </dl>
+    <dl>
+      <dt>联系电话：</dt>
+      <dd><span>18659390006</span><span>林女士</span></dd>
+    </dl>
+    <dl>
+      <dt>关注我们：</dt>
+      <dd>
+        <div class="ewmbox">
+          <img src="__TMPL__Public/assets/images/erweima.png" alt="" class="img-responsive"/>
+        </div>
+        <p>dongxisheji.com</p>
+      </dd>
+    </dl>
+  </div>
+</section>
+
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+{:hook('footer_end')}
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_seo_title} {$site_name}</title>
+		<meta name="keywords" content="{$site_seo_keywords}" />
+		<meta name="description" content="{$site_seo_description}">
+		<link rel="stylesheet" href="__TMPL__Public/assets/css/swiper.min.css">
+		<tc_include file="Public:head" />
+	</head>
+<body>
+<tc_include file="Public:nav" />
+
+<section class="wrapper">
+<!-- 主图 -->
+<div class="bannerbox">
+  <div class="banner-mask">
+    <img src="__TMPL__Public/assets/images/banner.png" alt=""/>
+  </div>
+</div>
+
+<!-- 其他主图 -->
+<div class="workslist">
+  <ul>
+    <li>
+      <a href="#">
+        <img src="__TMPL__Public/assets/images/main1.png" alt="" class="img-responsive"/>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="__TMPL__Public/assets/images/main2.png" alt="" class="img-responsive"/>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="__TMPL__Public/assets/images/main3.png" alt="" class="img-responsive"/>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="__TMPL__Public/assets/images/main4.png" alt="" class="img-responsive"/>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- 东西资讯 -->
+<div class="home-news">
+  <h2>东西资讯</h2>
+  <div class="swiper-box">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="mainbox">
+              <div class="newsbox">
+                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
+                  <div class="title">
+                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
+                    <span>2017.12.12</span>
+                  </div>
+                </a>
+              </div>
+              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 东西服务 -->
+<div class="home-service">
+  <a href="#">
+    <img src="__TMPL__Public/assets/images/server.png" alt="" class="img-responsive"/>
+  </a>
+</div>
+</section>
+
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+<script src="__TMPL__Public/assets/js/swiper.jquery.min.js"></script>
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    loop: true,
+    slidesPerView: 3,
+    paginationClickable: true,
+    spaceBetween: 10
+  })
+  </script>
+{:hook('footer_end')}
+</body>
+</html>
