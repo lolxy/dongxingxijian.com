@@ -89,6 +89,9 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .detail-container .detail-body p{margin-bottom: 0.5rem;margin-top: 0.3rem;word-wrap: break-word;}
 /* 单页样式 */
 .page-wrapper{padding: 0.267rem;background-color: #fff;margin-bottom: 10px;}
+/* 404错误页 */
+.error-container{padding: 0.267rem;}
+.error-container p{display: block;text-align: center;font-size: 40px;line-height: 50vh;font-weight: bold;color:#1d1e22;}
 /*底部*/
 #footer{height: 4.2rem;background-color: #1d1e22;color:#fefefe;font-size: 0.32rem;overflow: hidden;position: absolute;bottom: 0;width: 100%;}
 #footer .f-container{width: 40%;margin: 0 auto;}

@@ -10,15 +10,15 @@ namespace Portal\Controller;
 
 use Common\Controller\AdminbaseController;
 
-class AdminPostController extends AdminbaseController {
+class AdminWorksController extends AdminbaseController {
 
-	protected $posts_model;
+	protected $works_model;
 	protected $term_relationships_model;
 	protected $terms_model;
 
 	function _initialize() {
 		parent::_initialize();
-		$this->posts_model = D("Portal/Posts");
+		$this->works_model = D("Portal/Posts");
 		$this->terms_model = D("Portal/Terms");
 		$this->term_relationships_model = D("Portal/TermRelationships");
 	}
@@ -32,7 +32,7 @@ class AdminPostController extends AdminbaseController {
 
 	// 文章添加
 	public function add(){
-		$terms = $this->terms_model->where(array("taxonomy"=>"article"))->order(array("listorder"=>"asc"))->select();
+		$terms = $this->terms_model->where(array("taxonomy"=>"works"))->order(array("listorder"=>"asc"))->select();
 		$term_id = I("get.term",0,'intval');
 		$this->_getTermTree();
 		$term=$this->terms_model->where(array('term_id'=>$term_id))->find();
@@ -60,7 +60,7 @@ class AdminPostController extends AdminbaseController {
 			$article=I("post.post");
 			$article['smeta']=json_encode($_POST['smeta']);
 			$article['post_content']=htmlspecialchars_decode($article['post_content']);
-			$result=$this->posts_model->add($article);
+			$result=$this->works_model->add($article);
 			if ($result) {
 				foreach ($_POST['term'] as $mterm_id){
 					$this->term_relationships_model->add(array("term_id"=>intval($mterm_id),"object_id"=>$result));
@@ -80,10 +80,10 @@ class AdminPostController extends AdminbaseController {
 
 		$term_relationship = M('TermRelationships')->where(array("object_id"=>$id,"status"=>1))->getField("term_id",true);
 		$this->_getTermTree($term_relationship);
-		$terms=$this->terms_model->where(array("taxonomy"=>"article"))->select();
-		$post=$this->posts_model->where("id=$id")->find();
-		$this->assign("post",$post);
-		$this->assign("smeta",json_decode($post['smeta'],true));
+		$terms=$this->terms_model->where(array("taxonomy"=>"works"))->select();
+		$works=$this->works_model->where("id=$id")->find();
+		$this->assign("post",$works);
+		$this->assign("smeta",json_decode($works['smeta'],true));
 		$this->assign("terms",$terms);
 		$this->assign("term",$term_relationship);
 		$this->display();
@@ -95,15 +95,15 @@ class AdminPostController extends AdminbaseController {
 			if(empty($_POST['term'])){
 				$this->error("请至少选择一个分类！");
 			}
-			$post_id=intval($_POST['post']['id']);
+			$works_id=intval($_POST['post']['id']);
 
-			$this->term_relationships_model->where(array("object_id"=>$post_id,"term_id"=>array("not in",implode(",", $_POST['term']))))->delete();
+			$this->term_relationships_model->where(array("object_id"=>$works_id,"term_id"=>array("not in",implode(",", $_POST['term']))))->delete();
 			foreach ($_POST['term'] as $mterm_id){
-				$find_term_relationship=$this->term_relationships_model->where(array("object_id"=>$post_id,"term_id"=>$mterm_id))->count();
+				$find_term_relationship=$this->term_relationships_model->where(array("object_id"=>$works_id,"term_id"=>$mterm_id))->count();
 				if(empty($find_term_relationship)){
-					$this->term_relationships_model->add(array("term_id"=>intval($mterm_id),"object_id"=>$post_id));
+					$this->term_relationships_model->add(array("term_id"=>intval($mterm_id),"object_id"=>$works_id));
 				}else{
-					$this->term_relationships_model->where(array("object_id"=>$post_id,"term_id"=>$mterm_id))->save(array("status"=>1));
+					$this->term_relationships_model->where(array("object_id"=>$works_id,"term_id"=>$mterm_id))->save(array("status"=>1));
 				}
 			}
 
@@ -119,7 +119,7 @@ class AdminPostController extends AdminbaseController {
 			$article=I("post.post");
 			$article['smeta']=json_encode($_POST['smeta']);
 			$article['post_content']=htmlspecialchars_decode($article['post_content']);
-			$result=$this->posts_model->save($article);
+			$result=$this->works_model->save($article);
 			if ($result!==false) {
 				$this->success("保存成功！");
 			} else {
@@ -145,11 +145,11 @@ class AdminPostController extends AdminbaseController {
 	private function _lists($where=array()){
 		$term_id=I('request.term',0,'intval');
 
-		$where['post_type']=array(array('eq',1));
+		$where['post_type']=array(array('eq',2));
 
 		if(!empty($term_id)){
 		    $where['b.term_id']=$term_id;
-			$term=$this->terms_model->where(array('term_id'=>$term_id))->find();
+			$term=$this->terms_model->where(array("taxonomy"=>"works"))->where(array('term_id'=>$term_id))->find();
 			$this->assign("term",$term);
 		}
 
@@ -173,41 +173,41 @@ class AdminPostController extends AdminbaseController {
 		    $where['post_title']=array('like',"%$keyword%");
 		}
 
-		$this->posts_model
+		$this->works_model
 		->alias("a")
 		->where($where);
 
 		if(!empty($term_id)){
-		    $this->posts_model->join("__TERM_RELATIONSHIPS__ b ON a.id = b.object_id");
+		    $this->works_model->join("__TERM_RELATIONSHIPS__ b ON a.id = b.object_id");
 		}
 
-		$count=$this->posts_model->count();
+		$count=$this->works_model->count();
 
 		$page = $this->page($count, 20);
 
-		$this->posts_model
+		$this->works_model
 		->alias("a")
 		->join("__USERS__ c ON a.post_author = c.id")
 		->where($where)
 		->limit($page->firstRow , $page->listRows)
 		->order("a.post_date DESC");
 		if(empty($term_id)){
-		    $this->posts_model->field('a.*,c.user_login,c.user_nicename');
+		    $this->works_model->field('a.*,c.user_login,c.user_nicename');
 		}else{
-		    $this->posts_model->field('a.*,c.user_login,c.user_nicename,b.listorder,b.tid');
-		    $this->posts_model->join("__TERM_RELATIONSHIPS__ b ON a.id = b.object_id");
+		    $this->works_model->field('a.*,c.user_login,c.user_nicename,b.listorder,b.tid');
+		    $this->works_model->join("__TERM_RELATIONSHIPS__ b ON a.id = b.object_id");
 		}
-		$posts=$this->posts_model->where(array('post_type'=>1))->select();
+		$works=$this->works_model->where(array('post_type'=>2))->select();
 
 		$this->assign("page", $page->show('Admin'));
 		$this->assign("formget",array_merge($_GET,$_POST));
-		$this->assign("posts",$posts);
+		$this->assign("posts",$works);
 	}
 
 	// 获取文章分类树结构 select 形式
 	private function _getTree(){
 		$term_id=empty($_REQUEST['term'])?0:intval($_REQUEST['term']);
-		$result = $this->terms_model->where(array("taxonomy"=>"article"))->order(array("listorder"=>"asc"))->select();
+		$result = $this->terms_model->where(array("taxonomy"=>"works"))->order(array("listorder"=>"asc"))->select();
 
 		$tree = new \Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
@@ -230,7 +230,7 @@ class AdminPostController extends AdminbaseController {
 
 	// 获取文章分类树结构
 	private function _getTermTree($term=array()){
-		$result = $this->terms_model->where(array("taxonomy"=>"article"))->order(array("listorder"=>"asc"))->select();
+		$result = $this->terms_model->where(array("taxonomy"=>"works"))->order(array("listorder"=>"asc"))->select();
 
 		$tree = new \Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
@@ -256,7 +256,7 @@ class AdminPostController extends AdminbaseController {
 	public function delete(){
 		if(isset($_GET['id'])){
 			$id = I("get.id",0,'intval');
-			if ($this->posts_model->where(array('id'=>$id))->save(array('post_status'=>3)) !==false) {
+			if ($this->works_model->where(array('id'=>$id))->save(array('post_status'=>3)) !==false) {
 				$this->success("删除成功！");
 			} else {
 				$this->error("删除失败！");
@@ -266,7 +266,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids'])){
 			$ids = I('post.ids/a');
 
-			if ($this->posts_model->where(array('id'=>array('in',$ids)))->save(array('post_status'=>3))!==false) {
+			if ($this->works_model->where(array('id'=>array('in',$ids)))->save(array('post_status'=>3))!==false) {
 				$this->success("删除成功！");
 			} else {
 				$this->error("删除失败！");
@@ -279,7 +279,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids']) && $_GET["check"]){
 		    $ids = I('post.ids/a');
 
-			if ( $this->posts_model->where(array('id'=>array('in',$ids)))->save(array('post_status'=>1)) !== false ) {
+			if ( $this->works_model->where(array('id'=>array('in',$ids)))->save(array('post_status'=>1)) !== false ) {
 				$this->success("审核成功！");
 			} else {
 				$this->error("审核失败！");
@@ -288,7 +288,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids']) && $_GET["uncheck"]){
 		    $ids = I('post.ids/a');
 
-			if ( $this->posts_model->where(array('id'=>array('in',$ids)))->save(array('post_status'=>0)) !== false) {
+			if ( $this->works_model->where(array('id'=>array('in',$ids)))->save(array('post_status'=>0)) !== false) {
 				$this->success("取消审核成功！");
 			} else {
 				$this->error("取消审核失败！");
@@ -301,7 +301,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids']) && $_GET["top"]){
 			$ids = I('post.ids/a');
 
-			if ( $this->posts_model->where(array('id'=>array('in',$ids)))->save(array('istop'=>1))!==false) {
+			if ( $this->works_model->where(array('id'=>array('in',$ids)))->save(array('istop'=>1))!==false) {
 				$this->success("置顶成功！");
 			} else {
 				$this->error("置顶失败！");
@@ -310,7 +310,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids']) && $_GET["untop"]){
 		    $ids = I('post.ids/a');
 
-			if ( $this->posts_model->where(array('id'=>array('in',$ids)))->save(array('istop'=>0))!==false) {
+			if ( $this->works_model->where(array('id'=>array('in',$ids)))->save(array('istop'=>0))!==false) {
 				$this->success("取消置顶成功！");
 			} else {
 				$this->error("取消置顶失败！");
@@ -323,7 +323,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids']) && $_GET["recommend"]){
 			$ids = I('post.ids/a');
 
-			if ( $this->posts_model->where(array('id'=>array('in',$ids)))->save(array('recommended'=>1))!==false) {
+			if ( $this->works_model->where(array('id'=>array('in',$ids)))->save(array('recommended'=>1))!==false) {
 				$this->success("推荐成功！");
 			} else {
 				$this->error("推荐失败！");
@@ -332,7 +332,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids']) && $_GET["unrecommend"]){
 		    $ids = I('post.ids/a');
 
-			if ( $this->posts_model->where(array('id'=>array('in',$ids)))->save(array('recommended'=>0))!==false) {
+			if ( $this->works_model->where(array('id'=>array('in',$ids)))->save(array('recommended'=>0))!==false) {
 				$this->success("取消推荐成功！");
 			} else {
 				$this->error("取消推荐失败！");
@@ -355,7 +355,7 @@ class AdminPostController extends AdminbaseController {
 			            $find_relation_count=$this->term_relationships_model->where(array('object_id'=>$id,'term_id'=>$term_id))->count();
 			            if($find_relation_count==0){
 			                $this->term_relationships_model->add(array('object_id'=>$id,'term_id'=>$term_id));
-                			$this->posts_model->save(array('id'=>$id,'post_type'=>2));
+                      $this->works_model->save(array('id'=>$id,'post_type'=>1));
 			            }
 			        }
 
@@ -367,7 +367,7 @@ class AdminPostController extends AdminbaseController {
 			$tree = new \Tree();
 			$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 			$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
-			$terms = $this->terms_model->where(array("taxonomy"=>"works"))->order(array("path"=>"ASC"))->select();
+			$terms = $this->terms_model->where(array("taxonomy"=>"article"))->order(array("path"=>"ASC"))->select();
 			$new_terms=array();
 			foreach ($terms as $r) {
 				$r['id']=$r['term_id'];
@@ -391,7 +391,7 @@ class AdminPostController extends AdminbaseController {
 	            $ids=array_map('intval', $ids);
 	            $uid=sp_get_current_admin_id();
 	            $term_id=I('post.term_id',0,'intval');
-	            $term_count=$terms_model=M('Terms')->where(array("taxonomy"=>"article"))->where(array('term_id'=>$term_id))->count();
+	            $term_count=$terms_model=M('Terms')->where(array("taxonomy"=>"works"))->where(array('term_id'=>$term_id))->count();
 	            if($term_count==0){
 	                $this->error('分类不存在！');
 	            }
@@ -399,15 +399,15 @@ class AdminPostController extends AdminbaseController {
 	            $data=array();
 
 	            foreach ($ids as $id){
-	                $find_post=$this->posts_model->field('post_keywords,post_source,post_content,post_title,post_excerpt,smeta')->where(array('id'=>$id))->find();
-	                if($find_post){
-	                    $find_post['post_author']=$uid;
-                      $find_post['post_type']=1;
-	                    $find_post['post_date']=date('Y-m-d H:i:s');
-	                    $find_post['post_modified']=date('Y-m-d H:i:s');
-	                    $post_id=$this->posts_model->add($find_post);
-	                    if($post_id>0){
-	                        array_push($data, array('object_id'=>$post_id,'term_id'=>$term_id));
+	                $find_works=$this->works_model->field('post_keywords,post_source,post_content,post_title,post_excerpt,smeta')->where(array('id'=>$id))->find();
+	                if($find_works){
+	                    $find_works['post_author']=$uid;
+                      $find_works['post_type']=2;
+	                    $find_works['post_date']=date('Y-m-d H:i:s');
+	                    $find_works['post_modified']=date('Y-m-d H:i:s');
+	                    $works_id=$this->works_model->add($find_works);
+	                    if($works_id>0){
+	                        array_push($data, array('object_id'=>$works_id,'term_id'=>$term_id));
 	                    }
 	                }
 	            }
@@ -422,7 +422,7 @@ class AdminPostController extends AdminbaseController {
 	        $tree = new \Tree();
 	        $tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 	        $tree->nbsp = '&nbsp;&nbsp;&nbsp;';
-	        $terms = $this->terms_model->where(array("taxonomy"=>"article"))->order(array("path"=>"ASC"))->select();
+	        $terms = $this->terms_model->where(array("taxonomy"=>"works"))->order(array("path"=>"ASC"))->select();
 	        $new_terms=array();
 	        foreach ($terms as $r) {
 	            $r['id']=$r['term_id'];
@@ -450,7 +450,7 @@ class AdminPostController extends AdminbaseController {
 		if(isset($_POST['ids'])){
 			$ids = I('post.ids/a');
 			$ids = array_map('intval', $ids);
-			$status=$this->posts_model->where(array("id"=>array('in',$ids),'post_status'=>3))->delete();
+			$status=$this->works_model->where(array("id"=>array('in',$ids),'post_status'=>3))->delete();
 			$this->term_relationships_model->where(array('object_id'=>array('in',$ids)))->delete();
 
 			if ($status!==false) {
@@ -461,7 +461,7 @@ class AdminPostController extends AdminbaseController {
 		}else{
 			if(isset($_GET['id'])){
 				$id = I("get.id",0,'intval');
-				$status=$this->posts_model->where(array("id"=>$id,'post_status'=>3))->delete();
+				$status=$this->works_model->where(array("id"=>$id,'post_status'=>3))->delete();
 				$this->term_relationships_model->where(array('object_id'=>$id))->delete();
 
 				if ($status!==false) {
@@ -477,7 +477,7 @@ class AdminPostController extends AdminbaseController {
 	public function restore(){
 		if(isset($_GET['id'])){
 			$id = I("get.id",0,'intval');
-			if ($this->posts_model->where(array("id"=>$id,'post_status'=>3))->save(array("post_status"=>"1"))) {
+			if ($this->works_model->where(array("id"=>$id,'post_status'=>3))->save(array("post_status"=>"1"))) {
 				$this->success("还原成功！");
 			} else {
 				$this->error("还原失败！");
