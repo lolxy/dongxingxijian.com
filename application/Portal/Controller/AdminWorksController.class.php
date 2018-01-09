@@ -145,7 +145,7 @@ class AdminWorksController extends AdminbaseController {
 	private function _lists($where=array()){
 		$term_id=I('request.term',0,'intval');
 
-		$where['post_type']=array(array('eq',3));
+		$where['post_type']=array('eq',3);
 
 		if(!empty($term_id)){
 		    $where['b.term_id']=$term_id;

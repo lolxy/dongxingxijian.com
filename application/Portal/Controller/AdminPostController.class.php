@@ -145,10 +145,10 @@ class AdminPostController extends AdminbaseController {
 	private function _lists($where=array()){
 		$term_id=I('request.term',0,'intval');
 
-		$where['post_type']=array(array('eq',1));
+		$where['post_type']=array('eq',1);
 
 		if(!empty($term_id)){
-		    $where['b.term_id']=$term_id;
+		  $where['b.term_id']=$term_id;
 			$term=$this->terms_model->where(array('term_id'=>$term_id))->find();
 			$this->assign("term",$term);
 		}
