@@ -355,7 +355,7 @@ class AdminPostController extends AdminbaseController {
 			            $find_relation_count=$this->term_relationships_model->where(array('object_id'=>$id,'term_id'=>$term_id))->count();
 			            if($find_relation_count==0){
 			                $this->term_relationships_model->add(array('object_id'=>$id,'term_id'=>$term_id));
-                			$this->posts_model->save(array('id'=>$id,'post_type'=>2));
+                			$this->posts_model->save(array('id'=>$id,'post_type'=>3));
 			            }
 			        }
 

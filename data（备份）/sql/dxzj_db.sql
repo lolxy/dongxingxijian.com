@@ -1,47 +1,42 @@
--- phpMyAdmin SQL Dump
--- version phpStudy 2014
--- http://www.phpmyadmin.net
---
--- 主机: localhost
--- 生成日期: 2018 年 01 月 08 日 15:55
--- 服务器版本: 5.5.53
--- PHP 版本: 5.4.45
+/*
+Navicat MySQL Data Transfer
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+Source Server         : dongxizhijian
+Source Server Version : 50711
+Source Host           : 120.79.9.162:3306
+Source Database       : dxzj_db
 
+Target Server Type    : MYSQL
+Target Server Version : 50711
+File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+Date: 2018-01-09 14:25:38
+*/
 
---
--- 数据库: `dxzj_db`
---
+SET FOREIGN_KEY_CHECKS=0;
 
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_ad`
---
-
-CREATE TABLE IF NOT EXISTS `dx_ad` (
+-- ----------------------------
+-- Table structure for `dx_ad`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_ad`;
+CREATE TABLE `dx_ad` (
   `ad_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '广告id',
   `ad_name` varchar(255) NOT NULL COMMENT '广告名称',
   `ad_content` text COMMENT '广告内容',
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1显示，0不显示',
   PRIMARY KEY (`ad_id`),
   KEY `ad_name` (`ad_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_ad
+-- ----------------------------
 
---
--- 表的结构 `dx_asset`
---
-
-CREATE TABLE IF NOT EXISTS `dx_asset` (
+-- ----------------------------
+-- Table structure for `dx_asset`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_asset`;
+CREATE TABLE `dx_asset` (
   `aid` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户 id',
   `key` varchar(50) NOT NULL COMMENT '资源 key',
@@ -54,15 +49,17 @@ CREATE TABLE IF NOT EXISTS `dx_asset` (
   `suffix` varchar(50) DEFAULT NULL COMMENT '文件后缀名，不包括点',
   `download_times` int(11) NOT NULL DEFAULT '0' COMMENT '下载次数',
   PRIMARY KEY (`aid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='资源表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='资源表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_asset
+-- ----------------------------
 
---
--- 表的结构 `dx_auth_access`
---
-
-CREATE TABLE IF NOT EXISTS `dx_auth_access` (
+-- ----------------------------
+-- Table structure for `dx_auth_access`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_auth_access`;
+CREATE TABLE `dx_auth_access` (
   `role_id` mediumint(8) unsigned NOT NULL COMMENT '角色',
   `rule_name` varchar(255) NOT NULL COMMENT '规则唯一英文标识,全小写',
   `type` varchar(30) DEFAULT NULL COMMENT '权限规则分类，请加应用前缀,如admin_',
@@ -70,13 +67,15 @@ CREATE TABLE IF NOT EXISTS `dx_auth_access` (
   KEY `rule_name` (`rule_name`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='权限授权表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_auth_access
+-- ----------------------------
 
---
--- 表的结构 `dx_auth_rule`
---
-
-CREATE TABLE IF NOT EXISTS `dx_auth_rule` (
+-- ----------------------------
+-- Table structure for `dx_auth_rule`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_auth_rule`;
+CREATE TABLE `dx_auth_rule` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '规则id,自增主键',
   `module` varchar(20) NOT NULL COMMENT '规则所属module',
   `type` varchar(30) NOT NULL DEFAULT '1' COMMENT '权限规则分类，请加应用前缀,如admin_',
@@ -87,194 +86,190 @@ CREATE TABLE IF NOT EXISTS `dx_auth_rule` (
   `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
   PRIMARY KEY (`id`),
   KEY `module` (`module`,`status`,`type`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='权限规则表' AUTO_INCREMENT=176 ;
+) ENGINE=MyISAM AUTO_INCREMENT=176 DEFAULT CHARSET=utf8 COMMENT='权限规则表';
 
---
--- 转存表中的数据 `dx_auth_rule`
---
+-- ----------------------------
+-- Records of dx_auth_rule
+-- ----------------------------
+INSERT INTO `dx_auth_rule` VALUES ('1', 'Admin', 'admin_url', 'admin/content/default', null, '内容管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('2', 'Api', 'admin_url', 'api/guestbookadmin/index', null, '所有留言', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('3', 'Api', 'admin_url', 'api/guestbookadmin/delete', null, '删除网站留言', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('4', 'Comment', 'admin_url', 'comment/commentadmin/index', null, '评论管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('5', 'Comment', 'admin_url', 'comment/commentadmin/delete', null, '删除评论', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('6', 'Comment', 'admin_url', 'comment/commentadmin/check', null, '评论审核', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('7', 'Portal', 'admin_url', 'portal/adminpost/index', null, '资讯管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('8', 'Portal', 'admin_url', 'portal/adminpost/listorders', null, '资讯排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('9', 'Portal', 'admin_url', 'portal/adminpost/top', null, '资讯置顶', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('10', 'Portal', 'admin_url', 'portal/adminpost/recommend', null, '资讯推荐', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('11', 'Portal', 'admin_url', 'portal/adminpost/move', null, '批量移动', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('12', 'Portal', 'admin_url', 'portal/adminpost/check', null, '资讯审核', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('13', 'Portal', 'admin_url', 'portal/adminpost/delete', null, '删除资讯', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('14', 'Portal', 'admin_url', 'portal/adminpost/edit', null, '编辑资讯', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('15', 'Portal', 'admin_url', 'portal/adminpost/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('16', 'Portal', 'admin_url', 'portal/adminpost/add', null, '添加资讯', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('17', 'Portal', 'admin_url', 'portal/adminpost/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('18', 'Portal', 'admin_url', 'portal/adminterm/index', null, '分类管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('19', 'Portal', 'admin_url', 'portal/adminterm/listorders', null, '文章分类排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('20', 'Portal', 'admin_url', 'portal/adminterm/delete', null, '删除分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('21', 'Portal', 'admin_url', 'portal/adminterm/edit', null, '编辑分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('22', 'Portal', 'admin_url', 'portal/adminterm/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('23', 'Portal', 'admin_url', 'portal/adminterm/add', null, '添加分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('24', 'Portal', 'admin_url', 'portal/adminterm/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('25', 'Portal', 'admin_url', 'portal/adminpage/index', null, '页面管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('26', 'Portal', 'admin_url', 'portal/adminpage/listorders', null, '页面排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('27', 'Portal', 'admin_url', 'portal/adminpage/delete', null, '删除页面', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('28', 'Portal', 'admin_url', 'portal/adminpage/edit', null, '编辑页面', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('29', 'Portal', 'admin_url', 'portal/adminpage/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('30', 'Portal', 'admin_url', 'portal/adminpage/add', null, '添加页面', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('31', 'Portal', 'admin_url', 'portal/adminpage/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('32', 'Admin', 'admin_url', 'admin/recycle/default', null, '回收站', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('33', 'Portal', 'admin_url', 'portal/adminpost/recyclebin', null, '文章回收', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('34', 'Portal', 'admin_url', 'portal/adminpost/restore', null, '文章还原', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('35', 'Portal', 'admin_url', 'portal/adminpost/clean', null, '彻底删除', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('36', 'Portal', 'admin_url', 'portal/adminpage/recyclebin', null, '页面回收', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('37', 'Portal', 'admin_url', 'portal/adminpage/clean', null, '彻底删除', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('38', 'Portal', 'admin_url', 'portal/adminpage/restore', null, '页面还原', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('39', 'Admin', 'admin_url', 'admin/extension/default', null, '扩展工具', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('40', 'Admin', 'admin_url', 'admin/backup/default', null, '备份管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('41', 'Admin', 'admin_url', 'admin/backup/restore', null, '数据还原', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('42', 'Admin', 'admin_url', 'admin/backup/index', null, '数据备份', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('43', 'Admin', 'admin_url', 'admin/backup/index_post', null, '提交数据备份', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('44', 'Admin', 'admin_url', 'admin/backup/download', null, '下载备份', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('45', 'Admin', 'admin_url', 'admin/backup/del_backup', null, '删除备份', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('46', 'Admin', 'admin_url', 'admin/backup/import', null, '数据备份导入', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('47', 'Admin', 'admin_url', 'admin/plugin/index', null, '插件管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('48', 'Admin', 'admin_url', 'admin/plugin/toggle', null, '插件启用切换', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('49', 'Admin', 'admin_url', 'admin/plugin/setting', null, '插件设置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('50', 'Admin', 'admin_url', 'admin/plugin/setting_post', null, '插件设置提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('51', 'Admin', 'admin_url', 'admin/plugin/install', null, '插件安装', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('52', 'Admin', 'admin_url', 'admin/plugin/uninstall', null, '插件卸载', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('53', 'Admin', 'admin_url', 'admin/slide/default', null, '幻灯片管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('54', 'Admin', 'admin_url', 'admin/slide/index', null, '幻灯片管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('55', 'Admin', 'admin_url', 'admin/slide/listorders', null, '幻灯片排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('56', 'Admin', 'admin_url', 'admin/slide/toggle', null, '幻灯片显示切换', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('57', 'Admin', 'admin_url', 'admin/slide/delete', null, '删除幻灯片', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('58', 'Admin', 'admin_url', 'admin/slide/edit', null, '编辑幻灯片', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('59', 'Admin', 'admin_url', 'admin/slide/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('60', 'Admin', 'admin_url', 'admin/slide/add', null, '添加幻灯片', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('61', 'Admin', 'admin_url', 'admin/slide/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('62', 'Admin', 'admin_url', 'admin/slidecat/index', null, '幻灯片分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('63', 'Admin', 'admin_url', 'admin/slidecat/delete', null, '删除分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('64', 'Admin', 'admin_url', 'admin/slidecat/edit', null, '编辑分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('65', 'Admin', 'admin_url', 'admin/slidecat/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('66', 'Admin', 'admin_url', 'admin/slidecat/add', null, '添加分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('67', 'Admin', 'admin_url', 'admin/slidecat/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('68', 'Admin', 'admin_url', 'admin/ad/index', null, '网站广告', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('69', 'Admin', 'admin_url', 'admin/ad/toggle', null, '广告显示切换', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('70', 'Admin', 'admin_url', 'admin/ad/delete', null, '删除广告', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('71', 'Admin', 'admin_url', 'admin/ad/edit', null, '编辑广告', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('72', 'Admin', 'admin_url', 'admin/ad/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('73', 'Admin', 'admin_url', 'admin/ad/add', null, '添加广告', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('74', 'Admin', 'admin_url', 'admin/ad/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('75', 'Admin', 'admin_url', 'admin/link/index', null, '友情链接', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('76', 'Admin', 'admin_url', 'admin/link/listorders', null, '友情链接排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('77', 'Admin', 'admin_url', 'admin/link/toggle', null, '友链显示切换', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('78', 'Admin', 'admin_url', 'admin/link/delete', null, '删除友情链接', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('79', 'Admin', 'admin_url', 'admin/link/edit', null, '编辑友情链接', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('80', 'Admin', 'admin_url', 'admin/link/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('81', 'Admin', 'admin_url', 'admin/link/add', null, '添加友情链接', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('82', 'Admin', 'admin_url', 'admin/link/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('83', 'Api', 'admin_url', 'api/oauthadmin/setting', null, '第三方登陆', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('84', 'Api', 'admin_url', 'api/oauthadmin/setting_post', null, '提交设置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('85', 'Admin', 'admin_url', 'admin/menu/default', null, '菜单管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('86', 'Admin', 'admin_url', 'admin/navcat/default1', null, '前台菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('87', 'Admin', 'admin_url', 'admin/nav/index', null, '菜单管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('88', 'Admin', 'admin_url', 'admin/nav/listorders', null, '前台导航排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('89', 'Admin', 'admin_url', 'admin/nav/delete', null, '删除菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('90', 'Admin', 'admin_url', 'admin/nav/edit', null, '编辑菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('91', 'Admin', 'admin_url', 'admin/nav/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('92', 'Admin', 'admin_url', 'admin/nav/add', null, '添加菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('93', 'Admin', 'admin_url', 'admin/nav/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('94', 'Admin', 'admin_url', 'admin/navcat/index', null, '菜单分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('95', 'Admin', 'admin_url', 'admin/navcat/delete', null, '删除分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('96', 'Admin', 'admin_url', 'admin/navcat/edit', null, '编辑分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('97', 'Admin', 'admin_url', 'admin/navcat/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('98', 'Admin', 'admin_url', 'admin/navcat/add', null, '添加分类', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('99', 'Admin', 'admin_url', 'admin/navcat/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('100', 'Admin', 'admin_url', 'admin/menu/index', null, '后台菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('101', 'Admin', 'admin_url', 'admin/menu/add', null, '添加菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('102', 'Admin', 'admin_url', 'admin/menu/add_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('103', 'Admin', 'admin_url', 'admin/menu/listorders', null, '后台菜单排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('104', 'Admin', 'admin_url', 'admin/menu/export_menu', null, '菜单备份', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('105', 'Admin', 'admin_url', 'admin/menu/edit', null, '编辑菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('106', 'Admin', 'admin_url', 'admin/menu/edit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('107', 'Admin', 'admin_url', 'admin/menu/delete', null, '删除菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('108', 'Admin', 'admin_url', 'admin/menu/lists', null, '所有菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('109', 'Admin', 'admin_url', 'admin/setting/default', null, '网站设置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('110', 'Admin', 'admin_url', 'admin/setting/userdefault', null, '个人信息', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('111', 'Admin', 'admin_url', 'admin/user/userinfo', null, '修改信息', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('112', 'Admin', 'admin_url', 'admin/user/userinfo_post', null, '修改信息提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('113', 'Admin', 'admin_url', 'admin/setting/password', null, '修改密码', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('114', 'Admin', 'admin_url', 'admin/setting/password_post', null, '提交修改', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('115', 'Admin', 'admin_url', 'admin/setting/site', null, '网站信息', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('116', 'Admin', 'admin_url', 'admin/setting/site_post', null, '提交修改', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('117', 'Admin', 'admin_url', 'admin/route/index', null, '路由列表', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('118', 'Admin', 'admin_url', 'admin/route/add', null, '路由添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('119', 'Admin', 'admin_url', 'admin/route/add_post', null, '路由添加提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('120', 'Admin', 'admin_url', 'admin/route/edit', null, '路由编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('121', 'Admin', 'admin_url', 'admin/route/edit_post', null, '路由编辑提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('122', 'Admin', 'admin_url', 'admin/route/delete', null, '路由删除', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('123', 'Admin', 'admin_url', 'admin/route/ban', null, '路由禁止', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('124', 'Admin', 'admin_url', 'admin/route/open', null, '路由启用', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('125', 'Admin', 'admin_url', 'admin/route/listorders', null, '路由排序', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('126', 'Admin', 'admin_url', 'admin/mailer/default', null, '邮箱配置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('127', 'Admin', 'admin_url', 'admin/mailer/index', null, 'SMTP配置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('128', 'Admin', 'admin_url', 'admin/mailer/index_post', null, '提交配置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('129', 'Admin', 'admin_url', 'admin/mailer/active', null, '注册邮件模板', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('130', 'Admin', 'admin_url', 'admin/mailer/active_post', null, '提交模板', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('131', 'Admin', 'admin_url', 'admin/setting/clearcache', null, '清除缓存', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('132', 'User', 'admin_url', 'user/indexadmin/default', null, '用户管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('133', 'User', 'admin_url', 'user/indexadmin/default1', null, '用户组', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('134', 'User', 'admin_url', 'user/indexadmin/index', null, '本站用户', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('135', 'User', 'admin_url', 'user/indexadmin/ban', null, '拉黑会员', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('136', 'User', 'admin_url', 'user/indexadmin/cancelban', null, '启用会员', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('137', 'User', 'admin_url', 'user/oauthadmin/index', null, '第三方用户', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('138', 'User', 'admin_url', 'user/oauthadmin/delete', null, '第三方用户解绑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('139', 'User', 'admin_url', 'user/indexadmin/default3', null, '管理组', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('140', 'Admin', 'admin_url', 'admin/rbac/index', null, '角色管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('141', 'Admin', 'admin_url', 'admin/rbac/member', null, '成员管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('142', 'Admin', 'admin_url', 'admin/rbac/authorize', null, '权限设置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('143', 'Admin', 'admin_url', 'admin/rbac/authorize_post', null, '提交设置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('144', 'Admin', 'admin_url', 'admin/rbac/roleedit', null, '编辑角色', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('145', 'Admin', 'admin_url', 'admin/rbac/roleedit_post', null, '提交编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('146', 'Admin', 'admin_url', 'admin/rbac/roledelete', null, '删除角色', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('147', 'Admin', 'admin_url', 'admin/rbac/roleadd', null, '添加角色', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('148', 'Admin', 'admin_url', 'admin/rbac/roleadd_post', null, '提交添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('149', 'Admin', 'admin_url', 'admin/user/index', null, '管理员', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('150', 'Admin', 'admin_url', 'admin/user/delete', null, '删除管理员', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('151', 'Admin', 'admin_url', 'admin/user/edit', null, '管理员编辑', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('152', 'Admin', 'admin_url', 'admin/user/edit_post', null, '编辑提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('153', 'Admin', 'admin_url', 'admin/user/add', null, '管理员添加', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('154', 'Admin', 'admin_url', 'admin/user/add_post', null, '添加提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('155', 'Admin', 'admin_url', 'admin/plugin/update', null, '插件更新', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('156', 'Admin', 'admin_url', 'admin/storage/index', null, '文件存储', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('157', 'Admin', 'admin_url', 'admin/storage/setting_post', null, '文件存储设置提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('158', 'Admin', 'admin_url', 'admin/slide/ban', null, '禁用幻灯片', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('159', 'Admin', 'admin_url', 'admin/slide/cancelban', null, '启用幻灯片', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('160', 'Admin', 'admin_url', 'admin/user/ban', null, '禁用管理员', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('161', 'Admin', 'admin_url', 'admin/user/cancelban', null, '启用管理员', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('162', 'Demo', 'admin_url', 'demo/adminindex/index', null, '', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('163', 'Demo', 'admin_url', 'demo/adminindex/last', null, '', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('166', 'Admin', 'admin_url', 'admin/mailer/test', null, '测试邮件', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('167', 'Admin', 'admin_url', 'admin/setting/upload', null, '上传设置', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('168', 'Admin', 'admin_url', 'admin/setting/upload_post', null, '上传设置提交', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('169', 'Portal', 'admin_url', 'portal/adminpost/copy', null, '资讯批量复制', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('170', 'Admin', 'admin_url', 'admin/menu/backup_menu', null, '备份菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('171', 'Admin', 'admin_url', 'admin/menu/export_menu_lang', null, '导出后台菜单多语言包', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('172', 'Admin', 'admin_url', 'admin/menu/restore_menu', null, '还原菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('173', 'Admin', 'admin_url', 'admin/menu/getactions', null, '导入新菜单', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('174', 'Admin', 'admin_url', 'admin/variable/index', null, '变量管理', '1', '');
+INSERT INTO `dx_auth_rule` VALUES ('175', 'Portal', 'admin_url', 'portal/adminworks/index', null, '作品管理', '1', '');
 
-INSERT INTO `dx_auth_rule` (`id`, `module`, `type`, `name`, `param`, `title`, `status`, `condition`) VALUES
-(1, 'Admin', 'admin_url', 'admin/content/default', NULL, '内容管理', 1, ''),
-(2, 'Api', 'admin_url', 'api/guestbookadmin/index', NULL, '所有留言', 1, ''),
-(3, 'Api', 'admin_url', 'api/guestbookadmin/delete', NULL, '删除网站留言', 1, ''),
-(4, 'Comment', 'admin_url', 'comment/commentadmin/index', NULL, '评论管理', 1, ''),
-(5, 'Comment', 'admin_url', 'comment/commentadmin/delete', NULL, '删除评论', 1, ''),
-(6, 'Comment', 'admin_url', 'comment/commentadmin/check', NULL, '评论审核', 1, ''),
-(7, 'Portal', 'admin_url', 'portal/adminpost/index', NULL, '资讯管理', 1, ''),
-(8, 'Portal', 'admin_url', 'portal/adminpost/listorders', NULL, '资讯排序', 1, ''),
-(9, 'Portal', 'admin_url', 'portal/adminpost/top', NULL, '资讯置顶', 1, ''),
-(10, 'Portal', 'admin_url', 'portal/adminpost/recommend', NULL, '资讯推荐', 1, ''),
-(11, 'Portal', 'admin_url', 'portal/adminpost/move', NULL, '批量移动', 1, ''),
-(12, 'Portal', 'admin_url', 'portal/adminpost/check', NULL, '资讯审核', 1, ''),
-(13, 'Portal', 'admin_url', 'portal/adminpost/delete', NULL, '删除资讯', 1, ''),
-(14, 'Portal', 'admin_url', 'portal/adminpost/edit', NULL, '编辑资讯', 1, ''),
-(15, 'Portal', 'admin_url', 'portal/adminpost/edit_post', NULL, '提交编辑', 1, ''),
-(16, 'Portal', 'admin_url', 'portal/adminpost/add', NULL, '添加资讯', 1, ''),
-(17, 'Portal', 'admin_url', 'portal/adminpost/add_post', NULL, '提交添加', 1, ''),
-(18, 'Portal', 'admin_url', 'portal/adminterm/index', NULL, '分类管理', 1, ''),
-(19, 'Portal', 'admin_url', 'portal/adminterm/listorders', NULL, '文章分类排序', 1, ''),
-(20, 'Portal', 'admin_url', 'portal/adminterm/delete', NULL, '删除分类', 1, ''),
-(21, 'Portal', 'admin_url', 'portal/adminterm/edit', NULL, '编辑分类', 1, ''),
-(22, 'Portal', 'admin_url', 'portal/adminterm/edit_post', NULL, '提交编辑', 1, ''),
-(23, 'Portal', 'admin_url', 'portal/adminterm/add', NULL, '添加分类', 1, ''),
-(24, 'Portal', 'admin_url', 'portal/adminterm/add_post', NULL, '提交添加', 1, ''),
-(25, 'Portal', 'admin_url', 'portal/adminpage/index', NULL, '页面管理', 1, ''),
-(26, 'Portal', 'admin_url', 'portal/adminpage/listorders', NULL, '页面排序', 1, ''),
-(27, 'Portal', 'admin_url', 'portal/adminpage/delete', NULL, '删除页面', 1, ''),
-(28, 'Portal', 'admin_url', 'portal/adminpage/edit', NULL, '编辑页面', 1, ''),
-(29, 'Portal', 'admin_url', 'portal/adminpage/edit_post', NULL, '提交编辑', 1, ''),
-(30, 'Portal', 'admin_url', 'portal/adminpage/add', NULL, '添加页面', 1, ''),
-(31, 'Portal', 'admin_url', 'portal/adminpage/add_post', NULL, '提交添加', 1, ''),
-(32, 'Admin', 'admin_url', 'admin/recycle/default', NULL, '回收站', 1, ''),
-(33, 'Portal', 'admin_url', 'portal/adminpost/recyclebin', NULL, '文章回收', 1, ''),
-(34, 'Portal', 'admin_url', 'portal/adminpost/restore', NULL, '文章还原', 1, ''),
-(35, 'Portal', 'admin_url', 'portal/adminpost/clean', NULL, '彻底删除', 1, ''),
-(36, 'Portal', 'admin_url', 'portal/adminpage/recyclebin', NULL, '页面回收', 1, ''),
-(37, 'Portal', 'admin_url', 'portal/adminpage/clean', NULL, '彻底删除', 1, ''),
-(38, 'Portal', 'admin_url', 'portal/adminpage/restore', NULL, '页面还原', 1, ''),
-(39, 'Admin', 'admin_url', 'admin/extension/default', NULL, '扩展工具', 1, ''),
-(40, 'Admin', 'admin_url', 'admin/backup/default', NULL, '备份管理', 1, ''),
-(41, 'Admin', 'admin_url', 'admin/backup/restore', NULL, '数据还原', 1, ''),
-(42, 'Admin', 'admin_url', 'admin/backup/index', NULL, '数据备份', 1, ''),
-(43, 'Admin', 'admin_url', 'admin/backup/index_post', NULL, '提交数据备份', 1, ''),
-(44, 'Admin', 'admin_url', 'admin/backup/download', NULL, '下载备份', 1, ''),
-(45, 'Admin', 'admin_url', 'admin/backup/del_backup', NULL, '删除备份', 1, ''),
-(46, 'Admin', 'admin_url', 'admin/backup/import', NULL, '数据备份导入', 1, ''),
-(47, 'Admin', 'admin_url', 'admin/plugin/index', NULL, '插件管理', 1, ''),
-(48, 'Admin', 'admin_url', 'admin/plugin/toggle', NULL, '插件启用切换', 1, ''),
-(49, 'Admin', 'admin_url', 'admin/plugin/setting', NULL, '插件设置', 1, ''),
-(50, 'Admin', 'admin_url', 'admin/plugin/setting_post', NULL, '插件设置提交', 1, ''),
-(51, 'Admin', 'admin_url', 'admin/plugin/install', NULL, '插件安装', 1, ''),
-(52, 'Admin', 'admin_url', 'admin/plugin/uninstall', NULL, '插件卸载', 1, ''),
-(53, 'Admin', 'admin_url', 'admin/slide/default', NULL, '幻灯片管理', 1, ''),
-(54, 'Admin', 'admin_url', 'admin/slide/index', NULL, '幻灯片管理', 1, ''),
-(55, 'Admin', 'admin_url', 'admin/slide/listorders', NULL, '幻灯片排序', 1, ''),
-(56, 'Admin', 'admin_url', 'admin/slide/toggle', NULL, '幻灯片显示切换', 1, ''),
-(57, 'Admin', 'admin_url', 'admin/slide/delete', NULL, '删除幻灯片', 1, ''),
-(58, 'Admin', 'admin_url', 'admin/slide/edit', NULL, '编辑幻灯片', 1, ''),
-(59, 'Admin', 'admin_url', 'admin/slide/edit_post', NULL, '提交编辑', 1, ''),
-(60, 'Admin', 'admin_url', 'admin/slide/add', NULL, '添加幻灯片', 1, ''),
-(61, 'Admin', 'admin_url', 'admin/slide/add_post', NULL, '提交添加', 1, ''),
-(62, 'Admin', 'admin_url', 'admin/slidecat/index', NULL, '幻灯片分类', 1, ''),
-(63, 'Admin', 'admin_url', 'admin/slidecat/delete', NULL, '删除分类', 1, ''),
-(64, 'Admin', 'admin_url', 'admin/slidecat/edit', NULL, '编辑分类', 1, ''),
-(65, 'Admin', 'admin_url', 'admin/slidecat/edit_post', NULL, '提交编辑', 1, ''),
-(66, 'Admin', 'admin_url', 'admin/slidecat/add', NULL, '添加分类', 1, ''),
-(67, 'Admin', 'admin_url', 'admin/slidecat/add_post', NULL, '提交添加', 1, ''),
-(68, 'Admin', 'admin_url', 'admin/ad/index', NULL, '网站广告', 1, ''),
-(69, 'Admin', 'admin_url', 'admin/ad/toggle', NULL, '广告显示切换', 1, ''),
-(70, 'Admin', 'admin_url', 'admin/ad/delete', NULL, '删除广告', 1, ''),
-(71, 'Admin', 'admin_url', 'admin/ad/edit', NULL, '编辑广告', 1, ''),
-(72, 'Admin', 'admin_url', 'admin/ad/edit_post', NULL, '提交编辑', 1, ''),
-(73, 'Admin', 'admin_url', 'admin/ad/add', NULL, '添加广告', 1, ''),
-(74, 'Admin', 'admin_url', 'admin/ad/add_post', NULL, '提交添加', 1, ''),
-(75, 'Admin', 'admin_url', 'admin/link/index', NULL, '友情链接', 1, ''),
-(76, 'Admin', 'admin_url', 'admin/link/listorders', NULL, '友情链接排序', 1, ''),
-(77, 'Admin', 'admin_url', 'admin/link/toggle', NULL, '友链显示切换', 1, ''),
-(78, 'Admin', 'admin_url', 'admin/link/delete', NULL, '删除友情链接', 1, ''),
-(79, 'Admin', 'admin_url', 'admin/link/edit', NULL, '编辑友情链接', 1, ''),
-(80, 'Admin', 'admin_url', 'admin/link/edit_post', NULL, '提交编辑', 1, ''),
-(81, 'Admin', 'admin_url', 'admin/link/add', NULL, '添加友情链接', 1, ''),
-(82, 'Admin', 'admin_url', 'admin/link/add_post', NULL, '提交添加', 1, ''),
-(83, 'Api', 'admin_url', 'api/oauthadmin/setting', NULL, '第三方登陆', 1, ''),
-(84, 'Api', 'admin_url', 'api/oauthadmin/setting_post', NULL, '提交设置', 1, ''),
-(85, 'Admin', 'admin_url', 'admin/menu/default', NULL, '菜单管理', 1, ''),
-(86, 'Admin', 'admin_url', 'admin/navcat/default1', NULL, '前台菜单', 1, ''),
-(87, 'Admin', 'admin_url', 'admin/nav/index', NULL, '菜单管理', 1, ''),
-(88, 'Admin', 'admin_url', 'admin/nav/listorders', NULL, '前台导航排序', 1, ''),
-(89, 'Admin', 'admin_url', 'admin/nav/delete', NULL, '删除菜单', 1, ''),
-(90, 'Admin', 'admin_url', 'admin/nav/edit', NULL, '编辑菜单', 1, ''),
-(91, 'Admin', 'admin_url', 'admin/nav/edit_post', NULL, '提交编辑', 1, ''),
-(92, 'Admin', 'admin_url', 'admin/nav/add', NULL, '添加菜单', 1, ''),
-(93, 'Admin', 'admin_url', 'admin/nav/add_post', NULL, '提交添加', 1, ''),
-(94, 'Admin', 'admin_url', 'admin/navcat/index', NULL, '菜单分类', 1, ''),
-(95, 'Admin', 'admin_url', 'admin/navcat/delete', NULL, '删除分类', 1, ''),
-(96, 'Admin', 'admin_url', 'admin/navcat/edit', NULL, '编辑分类', 1, ''),
-(97, 'Admin', 'admin_url', 'admin/navcat/edit_post', NULL, '提交编辑', 1, ''),
-(98, 'Admin', 'admin_url', 'admin/navcat/add', NULL, '添加分类', 1, ''),
-(99, 'Admin', 'admin_url', 'admin/navcat/add_post', NULL, '提交添加', 1, ''),
-(100, 'Admin', 'admin_url', 'admin/menu/index', NULL, '后台菜单', 1, ''),
-(101, 'Admin', 'admin_url', 'admin/menu/add', NULL, '添加菜单', 1, ''),
-(102, 'Admin', 'admin_url', 'admin/menu/add_post', NULL, '提交添加', 1, ''),
-(103, 'Admin', 'admin_url', 'admin/menu/listorders', NULL, '后台菜单排序', 1, ''),
-(104, 'Admin', 'admin_url', 'admin/menu/export_menu', NULL, '菜单备份', 1, ''),
-(105, 'Admin', 'admin_url', 'admin/menu/edit', NULL, '编辑菜单', 1, ''),
-(106, 'Admin', 'admin_url', 'admin/menu/edit_post', NULL, '提交编辑', 1, ''),
-(107, 'Admin', 'admin_url', 'admin/menu/delete', NULL, '删除菜单', 1, ''),
-(108, 'Admin', 'admin_url', 'admin/menu/lists', NULL, '所有菜单', 1, ''),
-(109, 'Admin', 'admin_url', 'admin/setting/default', NULL, '网站设置', 1, ''),
-(110, 'Admin', 'admin_url', 'admin/setting/userdefault', NULL, '个人信息', 1, ''),
-(111, 'Admin', 'admin_url', 'admin/user/userinfo', NULL, '修改信息', 1, ''),
-(112, 'Admin', 'admin_url', 'admin/user/userinfo_post', NULL, '修改信息提交', 1, ''),
-(113, 'Admin', 'admin_url', 'admin/setting/password', NULL, '修改密码', 1, ''),
-(114, 'Admin', 'admin_url', 'admin/setting/password_post', NULL, '提交修改', 1, ''),
-(115, 'Admin', 'admin_url', 'admin/setting/site', NULL, '网站信息', 1, ''),
-(116, 'Admin', 'admin_url', 'admin/setting/site_post', NULL, '提交修改', 1, ''),
-(117, 'Admin', 'admin_url', 'admin/route/index', NULL, '路由列表', 1, ''),
-(118, 'Admin', 'admin_url', 'admin/route/add', NULL, '路由添加', 1, ''),
-(119, 'Admin', 'admin_url', 'admin/route/add_post', NULL, '路由添加提交', 1, ''),
-(120, 'Admin', 'admin_url', 'admin/route/edit', NULL, '路由编辑', 1, ''),
-(121, 'Admin', 'admin_url', 'admin/route/edit_post', NULL, '路由编辑提交', 1, ''),
-(122, 'Admin', 'admin_url', 'admin/route/delete', NULL, '路由删除', 1, ''),
-(123, 'Admin', 'admin_url', 'admin/route/ban', NULL, '路由禁止', 1, ''),
-(124, 'Admin', 'admin_url', 'admin/route/open', NULL, '路由启用', 1, ''),
-(125, 'Admin', 'admin_url', 'admin/route/listorders', NULL, '路由排序', 1, ''),
-(126, 'Admin', 'admin_url', 'admin/mailer/default', NULL, '邮箱配置', 1, ''),
-(127, 'Admin', 'admin_url', 'admin/mailer/index', NULL, 'SMTP配置', 1, ''),
-(128, 'Admin', 'admin_url', 'admin/mailer/index_post', NULL, '提交配置', 1, ''),
-(129, 'Admin', 'admin_url', 'admin/mailer/active', NULL, '注册邮件模板', 1, ''),
-(130, 'Admin', 'admin_url', 'admin/mailer/active_post', NULL, '提交模板', 1, ''),
-(131, 'Admin', 'admin_url', 'admin/setting/clearcache', NULL, '清除缓存', 1, ''),
-(132, 'User', 'admin_url', 'user/indexadmin/default', NULL, '用户管理', 1, ''),
-(133, 'User', 'admin_url', 'user/indexadmin/default1', NULL, '用户组', 1, ''),
-(134, 'User', 'admin_url', 'user/indexadmin/index', NULL, '本站用户', 1, ''),
-(135, 'User', 'admin_url', 'user/indexadmin/ban', NULL, '拉黑会员', 1, ''),
-(136, 'User', 'admin_url', 'user/indexadmin/cancelban', NULL, '启用会员', 1, ''),
-(137, 'User', 'admin_url', 'user/oauthadmin/index', NULL, '第三方用户', 1, ''),
-(138, 'User', 'admin_url', 'user/oauthadmin/delete', NULL, '第三方用户解绑', 1, ''),
-(139, 'User', 'admin_url', 'user/indexadmin/default3', NULL, '管理组', 1, ''),
-(140, 'Admin', 'admin_url', 'admin/rbac/index', NULL, '角色管理', 1, ''),
-(141, 'Admin', 'admin_url', 'admin/rbac/member', NULL, '成员管理', 1, ''),
-(142, 'Admin', 'admin_url', 'admin/rbac/authorize', NULL, '权限设置', 1, ''),
-(143, 'Admin', 'admin_url', 'admin/rbac/authorize_post', NULL, '提交设置', 1, ''),
-(144, 'Admin', 'admin_url', 'admin/rbac/roleedit', NULL, '编辑角色', 1, ''),
-(145, 'Admin', 'admin_url', 'admin/rbac/roleedit_post', NULL, '提交编辑', 1, ''),
-(146, 'Admin', 'admin_url', 'admin/rbac/roledelete', NULL, '删除角色', 1, ''),
-(147, 'Admin', 'admin_url', 'admin/rbac/roleadd', NULL, '添加角色', 1, ''),
-(148, 'Admin', 'admin_url', 'admin/rbac/roleadd_post', NULL, '提交添加', 1, ''),
-(149, 'Admin', 'admin_url', 'admin/user/index', NULL, '管理员', 1, ''),
-(150, 'Admin', 'admin_url', 'admin/user/delete', NULL, '删除管理员', 1, ''),
-(151, 'Admin', 'admin_url', 'admin/user/edit', NULL, '管理员编辑', 1, ''),
-(152, 'Admin', 'admin_url', 'admin/user/edit_post', NULL, '编辑提交', 1, ''),
-(153, 'Admin', 'admin_url', 'admin/user/add', NULL, '管理员添加', 1, ''),
-(154, 'Admin', 'admin_url', 'admin/user/add_post', NULL, '添加提交', 1, ''),
-(155, 'Admin', 'admin_url', 'admin/plugin/update', NULL, '插件更新', 1, ''),
-(156, 'Admin', 'admin_url', 'admin/storage/index', NULL, '文件存储', 1, ''),
-(157, 'Admin', 'admin_url', 'admin/storage/setting_post', NULL, '文件存储设置提交', 1, ''),
-(158, 'Admin', 'admin_url', 'admin/slide/ban', NULL, '禁用幻灯片', 1, ''),
-(159, 'Admin', 'admin_url', 'admin/slide/cancelban', NULL, '启用幻灯片', 1, ''),
-(160, 'Admin', 'admin_url', 'admin/user/ban', NULL, '禁用管理员', 1, ''),
-(161, 'Admin', 'admin_url', 'admin/user/cancelban', NULL, '启用管理员', 1, ''),
-(162, 'Demo', 'admin_url', 'demo/adminindex/index', NULL, '', 1, ''),
-(163, 'Demo', 'admin_url', 'demo/adminindex/last', NULL, '', 1, ''),
-(166, 'Admin', 'admin_url', 'admin/mailer/test', NULL, '测试邮件', 1, ''),
-(167, 'Admin', 'admin_url', 'admin/setting/upload', NULL, '上传设置', 1, ''),
-(168, 'Admin', 'admin_url', 'admin/setting/upload_post', NULL, '上传设置提交', 1, ''),
-(169, 'Portal', 'admin_url', 'portal/adminpost/copy', NULL, '资讯批量复制', 1, ''),
-(170, 'Admin', 'admin_url', 'admin/menu/backup_menu', NULL, '备份菜单', 1, ''),
-(171, 'Admin', 'admin_url', 'admin/menu/export_menu_lang', NULL, '导出后台菜单多语言包', 1, ''),
-(172, 'Admin', 'admin_url', 'admin/menu/restore_menu', NULL, '还原菜单', 1, ''),
-(173, 'Admin', 'admin_url', 'admin/menu/getactions', NULL, '导入新菜单', 1, ''),
-(174, 'Admin', 'admin_url', 'admin/variable/index', NULL, '变量管理', 1, ''),
-(175, 'Portal', 'admin_url', 'portal/adminworks/index', NULL, '作品管理', 1, '');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_comments`
---
-
-CREATE TABLE IF NOT EXISTS `dx_comments` (
+-- ----------------------------
+-- Table structure for `dx_comments`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_comments`;
+CREATE TABLE `dx_comments` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_table` varchar(100) NOT NULL COMMENT '评论内容所在表，不带表前缀',
   `post_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '评论内容 id',
@@ -295,15 +290,17 @@ CREATE TABLE IF NOT EXISTS `dx_comments` (
   KEY `comment_parent` (`parentid`),
   KEY `table_id_status` (`post_table`,`post_id`,`status`),
   KEY `createtime` (`createtime`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='评论表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='评论表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_comments
+-- ----------------------------
 
---
--- 表的结构 `dx_common_action_log`
---
-
-CREATE TABLE IF NOT EXISTS `dx_common_action_log` (
+-- ----------------------------
+-- Table structure for `dx_common_action_log`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_common_action_log`;
+CREATE TABLE `dx_common_action_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` bigint(20) DEFAULT '0' COMMENT '用户id',
   `object` varchar(100) DEFAULT NULL COMMENT '访问对象的id,格式：不带前缀的表名+id;如posts1表示xx_posts表里id为1的记录',
@@ -314,15 +311,17 @@ CREATE TABLE IF NOT EXISTS `dx_common_action_log` (
   PRIMARY KEY (`id`),
   KEY `user_object_action` (`user`,`object`,`action`),
   KEY `user_object_action_ip` (`user`,`object`,`action`,`ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='访问记录表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='访问记录表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_common_action_log
+-- ----------------------------
 
---
--- 表的结构 `dx_guestbook`
---
-
-CREATE TABLE IF NOT EXISTS `dx_guestbook` (
+-- ----------------------------
+-- Table structure for `dx_guestbook`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_guestbook`;
+CREATE TABLE `dx_guestbook` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(50) NOT NULL COMMENT '留言者姓名',
   `email` varchar(100) NOT NULL COMMENT '留言者邮箱',
@@ -331,15 +330,17 @@ CREATE TABLE IF NOT EXISTS `dx_guestbook` (
   `createtime` datetime NOT NULL COMMENT '留言时间',
   `status` smallint(2) NOT NULL DEFAULT '1' COMMENT '留言状态，1：正常，0：删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='留言表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='留言表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_guestbook
+-- ----------------------------
 
---
--- 表的结构 `dx_links`
---
-
-CREATE TABLE IF NOT EXISTS `dx_links` (
+-- ----------------------------
+-- Table structure for `dx_links`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_links`;
+CREATE TABLE `dx_links` (
   `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `link_url` varchar(255) NOT NULL COMMENT '友情链接地址',
   `link_name` varchar(255) NOT NULL COMMENT '友情链接名称',
@@ -352,15 +353,17 @@ CREATE TABLE IF NOT EXISTS `dx_links` (
   `listorder` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`link_id`),
   KEY `link_visible` (`link_status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接表' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='友情链接表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_links
+-- ----------------------------
 
---
--- 表的结构 `dx_menu`
---
-
-CREATE TABLE IF NOT EXISTS `dx_menu` (
+-- ----------------------------
+-- Table structure for `dx_menu`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_menu`;
+CREATE TABLE `dx_menu` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `parentid` smallint(6) unsigned NOT NULL DEFAULT '0',
   `app` varchar(30) NOT NULL DEFAULT '' COMMENT '应用名称app',
@@ -377,177 +380,173 @@ CREATE TABLE IF NOT EXISTS `dx_menu` (
   KEY `status` (`status`),
   KEY `parentid` (`parentid`),
   KEY `model` (`model`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='后台菜单表' AUTO_INCREMENT=189 ;
+) ENGINE=MyISAM AUTO_INCREMENT=189 DEFAULT CHARSET=utf8 COMMENT='后台菜单表';
 
---
--- 转存表中的数据 `dx_menu`
---
+-- ----------------------------
+-- Records of dx_menu
+-- ----------------------------
+INSERT INTO `dx_menu` VALUES ('1', '0', 'Admin', 'Content', 'default', '', '0', '1', '内容管理', 'th', '', '2');
+INSERT INTO `dx_menu` VALUES ('2', '1', 'Api', 'Guestbookadmin', 'index', '', '1', '1', '所有留言', '', '', '5');
+INSERT INTO `dx_menu` VALUES ('3', '2', 'Api', 'Guestbookadmin', 'delete', '', '1', '0', '删除网站留言', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('4', '1', 'Comment', 'Commentadmin', 'index', '', '1', '0', '评论管理', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('5', '4', 'Comment', 'Commentadmin', 'delete', '', '1', '0', '删除评论', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('6', '4', 'Comment', 'Commentadmin', 'check', '', '1', '0', '评论审核', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('7', '1', 'Portal', 'AdminPost', 'index', '', '1', '1', '资讯管理', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('8', '7', 'Portal', 'AdminPost', 'listorders', '', '1', '0', '资讯排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('9', '7', 'Portal', 'AdminPost', 'top', '', '1', '0', '资讯置顶', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('10', '7', 'Portal', 'AdminPost', 'recommend', '', '1', '0', '资讯推荐', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('11', '7', 'Portal', 'AdminPost', 'move', '', '1', '0', '批量移动', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('12', '7', 'Portal', 'AdminPost', 'check', '', '1', '0', '资讯审核', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('13', '7', 'Portal', 'AdminPost', 'delete', '', '1', '0', '删除资讯', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('14', '7', 'Portal', 'AdminPost', 'edit', '', '1', '0', '编辑资讯', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('15', '14', 'Portal', 'AdminPost', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('16', '7', 'Portal', 'AdminPost', 'add', '', '1', '0', '添加资讯', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('17', '16', 'Portal', 'AdminPost', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('18', '1', 'Portal', 'AdminTerm', 'index', '', '0', '1', '分类管理', '', '', '3');
+INSERT INTO `dx_menu` VALUES ('19', '18', 'Portal', 'AdminTerm', 'listorders', '', '1', '0', '文章分类排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('20', '18', 'Portal', 'AdminTerm', 'delete', '', '1', '0', '删除分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('21', '18', 'Portal', 'AdminTerm', 'edit', '', '1', '0', '编辑分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('22', '21', 'Portal', 'AdminTerm', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('23', '18', 'Portal', 'AdminTerm', 'add', '', '1', '0', '添加分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('24', '23', 'Portal', 'AdminTerm', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('25', '1', 'Portal', 'AdminPage', 'index', '', '1', '1', '页面管理', '', '', '2');
+INSERT INTO `dx_menu` VALUES ('26', '25', 'Portal', 'AdminPage', 'listorders', '', '1', '0', '页面排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('27', '25', 'Portal', 'AdminPage', 'delete', '', '1', '0', '删除页面', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('28', '25', 'Portal', 'AdminPage', 'edit', '', '1', '0', '编辑页面', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('29', '28', 'Portal', 'AdminPage', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('30', '25', 'Portal', 'AdminPage', 'add', '', '1', '0', '添加页面', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('31', '30', 'Portal', 'AdminPage', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('32', '1', 'Admin', 'Recycle', 'default', '', '1', '1', '回收站', '', '', '6');
+INSERT INTO `dx_menu` VALUES ('33', '32', 'Portal', 'AdminPost', 'recyclebin', '', '1', '1', '文章回收', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('34', '33', 'Portal', 'AdminPost', 'restore', '', '1', '0', '文章还原', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('35', '33', 'Portal', 'AdminPost', 'clean', '', '1', '0', '彻底删除', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('36', '32', 'Portal', 'AdminPage', 'recyclebin', '', '1', '1', '页面回收', '', '', '1');
+INSERT INTO `dx_menu` VALUES ('37', '36', 'Portal', 'AdminPage', 'clean', '', '1', '0', '彻底删除', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('38', '36', 'Portal', 'AdminPage', 'restore', '', '1', '0', '页面还原', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('39', '0', 'Admin', 'Extension', 'default', '', '0', '1', '扩展工具', 'cloud', '', '6');
+INSERT INTO `dx_menu` VALUES ('40', '0', 'Admin', 'Backup', 'default', '', '1', '1', '备份管理', 'database', '', '5');
+INSERT INTO `dx_menu` VALUES ('41', '40', 'Admin', 'Backup', 'restore', '', '1', '1', '数据还原', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('42', '40', 'Admin', 'Backup', 'index', '', '1', '1', '数据备份', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('43', '42', 'Admin', 'Backup', 'index_post', '', '1', '0', '提交数据备份', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('44', '40', 'Admin', 'Backup', 'download', '', '1', '0', '下载备份', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('45', '40', 'Admin', 'Backup', 'del_backup', '', '1', '0', '删除备份', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('46', '40', 'Admin', 'Backup', 'import', '', '1', '0', '数据备份导入', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('188', '1', 'Portal', 'AdminWorks', 'index', '', '1', '1', '作品管理', '', '', '1');
+INSERT INTO `dx_menu` VALUES ('53', '0', 'Admin', 'Slide', 'default', '', '1', '1', '幻灯片管理', '', '', '3');
+INSERT INTO `dx_menu` VALUES ('54', '53', 'Admin', 'Slide', 'index', '', '1', '1', '幻灯片管理', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('55', '54', 'Admin', 'Slide', 'listorders', '', '1', '0', '幻灯片排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('56', '54', 'Admin', 'Slide', 'toggle', '', '1', '0', '幻灯片显示切换', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('57', '54', 'Admin', 'Slide', 'delete', '', '1', '0', '删除幻灯片', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('58', '54', 'Admin', 'Slide', 'edit', '', '1', '0', '编辑幻灯片', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('59', '58', 'Admin', 'Slide', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('60', '54', 'Admin', 'Slide', 'add', '', '1', '0', '添加幻灯片', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('61', '60', 'Admin', 'Slide', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('62', '53', 'Admin', 'Slidecat', 'index', '', '1', '1', '幻灯片分类', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('63', '62', 'Admin', 'Slidecat', 'delete', '', '1', '0', '删除分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('64', '62', 'Admin', 'Slidecat', 'edit', '', '1', '0', '编辑分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('65', '64', 'Admin', 'Slidecat', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('66', '62', 'Admin', 'Slidecat', 'add', '', '1', '0', '添加分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('67', '66', 'Admin', 'Slidecat', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('68', '39', 'Admin', 'Ad', 'index', '', '1', '1', '网站广告', '', '', '2');
+INSERT INTO `dx_menu` VALUES ('69', '68', 'Admin', 'Ad', 'toggle', '', '1', '0', '广告显示切换', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('70', '68', 'Admin', 'Ad', 'delete', '', '1', '0', '删除广告', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('71', '68', 'Admin', 'Ad', 'edit', '', '1', '0', '编辑广告', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('72', '71', 'Admin', 'Ad', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('73', '68', 'Admin', 'Ad', 'add', '', '1', '0', '添加广告', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('74', '73', 'Admin', 'Ad', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('75', '39', 'Admin', 'Link', 'index', '', '0', '1', '友情链接', '', '', '3');
+INSERT INTO `dx_menu` VALUES ('76', '75', 'Admin', 'Link', 'listorders', '', '1', '0', '友情链接排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('77', '75', 'Admin', 'Link', 'toggle', '', '1', '0', '友链显示切换', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('78', '75', 'Admin', 'Link', 'delete', '', '1', '0', '删除友情链接', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('79', '75', 'Admin', 'Link', 'edit', '', '1', '0', '编辑友情链接', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('80', '79', 'Admin', 'Link', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('81', '75', 'Admin', 'Link', 'add', '', '1', '0', '添加友情链接', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('82', '81', 'Admin', 'Link', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('85', '0', 'Admin', 'Menu', 'default', '', '1', '1', '菜单管理', 'list', '', '1');
+INSERT INTO `dx_menu` VALUES ('86', '85', 'Admin', 'Navcat', 'default1', '', '1', '1', '前台菜单', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('87', '86', 'Admin', 'Nav', 'index', '', '1', '1', '菜单管理', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('88', '87', 'Admin', 'Nav', 'listorders', '', '1', '0', '前台导航排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('89', '87', 'Admin', 'Nav', 'delete', '', '1', '0', '删除菜单', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('90', '87', 'Admin', 'Nav', 'edit', '', '1', '0', '编辑菜单', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('91', '90', 'Admin', 'Nav', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('92', '87', 'Admin', 'Nav', 'add', '', '1', '0', '添加菜单', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('93', '92', 'Admin', 'Nav', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('94', '86', 'Admin', 'Navcat', 'index', '', '1', '1', '菜单分类', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('95', '94', 'Admin', 'Navcat', 'delete', '', '1', '0', '删除分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('96', '94', 'Admin', 'Navcat', 'edit', '', '1', '0', '编辑分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('97', '96', 'Admin', 'Navcat', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('98', '94', 'Admin', 'Navcat', 'add', '', '1', '0', '添加分类', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('99', '98', 'Admin', 'Navcat', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('100', '85', 'Admin', 'Menu', 'index', '', '1', '1', '后台菜单', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('101', '100', 'Admin', 'Menu', 'add', '', '1', '0', '添加菜单', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('102', '101', 'Admin', 'Menu', 'add_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('103', '100', 'Admin', 'Menu', 'listorders', '', '1', '0', '后台菜单排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('104', '100', 'Admin', 'Menu', 'export_menu', '', '1', '0', '菜单备份', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('105', '100', 'Admin', 'Menu', 'edit', '', '1', '0', '编辑菜单', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('106', '105', 'Admin', 'Menu', 'edit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('107', '100', 'Admin', 'Menu', 'delete', '', '1', '0', '删除菜单', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('108', '100', 'Admin', 'Menu', 'lists', '', '1', '0', '所有菜单', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('109', '0', 'Admin', 'Setting', 'default', '', '0', '1', '网站设置', 'cogs', '', '0');
+INSERT INTO `dx_menu` VALUES ('110', '109', 'Admin', 'Setting', 'userdefault', '', '0', '1', '个人信息', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('111', '110', 'Admin', 'User', 'userinfo', '', '1', '1', '修改信息', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('112', '111', 'Admin', 'User', 'userinfo_post', '', '1', '0', '修改信息提交', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('113', '110', 'Admin', 'Setting', 'password', '', '1', '1', '修改密码', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('114', '113', 'Admin', 'Setting', 'password_post', '', '1', '0', '提交修改', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('115', '109', 'Admin', 'Setting', 'site', '', '1', '1', '网站信息', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('116', '115', 'Admin', 'Setting', 'site_post', '', '1', '0', '提交修改', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('117', '115', 'Admin', 'Route', 'index', '', '1', '0', '路由列表', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('118', '115', 'Admin', 'Route', 'add', '', '1', '0', '路由添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('119', '118', 'Admin', 'Route', 'add_post', '', '1', '0', '路由添加提交', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('120', '115', 'Admin', 'Route', 'edit', '', '1', '0', '路由编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('121', '120', 'Admin', 'Route', 'edit_post', '', '1', '0', '路由编辑提交', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('122', '115', 'Admin', 'Route', 'delete', '', '1', '0', '路由删除', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('123', '115', 'Admin', 'Route', 'ban', '', '1', '0', '路由禁止', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('124', '115', 'Admin', 'Route', 'open', '', '1', '0', '路由启用', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('125', '115', 'Admin', 'Route', 'listorders', '', '1', '0', '路由排序', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('126', '109', 'Admin', 'Mailer', 'default', '', '1', '0', '邮箱配置', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('127', '126', 'Admin', 'Mailer', 'index', '', '1', '1', 'SMTP配置', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('128', '127', 'Admin', 'Mailer', 'index_post', '', '1', '0', '提交配置', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('129', '126', 'Admin', 'Mailer', 'active', '', '1', '1', '注册邮件模板', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('130', '129', 'Admin', 'Mailer', 'active_post', '', '1', '0', '提交模板', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('131', '109', 'Admin', 'Setting', 'clearcache', '', '1', '1', '清除缓存', '', '', '1');
+INSERT INTO `dx_menu` VALUES ('132', '0', 'User', 'Indexadmin', 'default', '', '1', '1', '用户管理', 'group', '', '4');
+INSERT INTO `dx_menu` VALUES ('139', '132', 'User', 'Indexadmin', 'default3', '', '1', '1', '管理组', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('140', '139', 'Admin', 'Rbac', 'index', '', '1', '1', '角色管理', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('141', '140', 'Admin', 'Rbac', 'member', '', '1', '0', '成员管理', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('142', '140', 'Admin', 'Rbac', 'authorize', '', '1', '0', '权限设置', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('143', '142', 'Admin', 'Rbac', 'authorize_post', '', '1', '0', '提交设置', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('144', '140', 'Admin', 'Rbac', 'roleedit', '', '1', '0', '编辑角色', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('145', '144', 'Admin', 'Rbac', 'roleedit_post', '', '1', '0', '提交编辑', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('146', '140', 'Admin', 'Rbac', 'roledelete', '', '1', '1', '删除角色', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('147', '140', 'Admin', 'Rbac', 'roleadd', '', '1', '1', '添加角色', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('148', '147', 'Admin', 'Rbac', 'roleadd_post', '', '1', '0', '提交添加', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('149', '139', 'Admin', 'User', 'index', '', '1', '1', '管理员', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('150', '149', 'Admin', 'User', 'delete', '', '1', '0', '删除管理员', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('151', '149', 'Admin', 'User', 'edit', '', '1', '0', '管理员编辑', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('152', '151', 'Admin', 'User', 'edit_post', '', '1', '0', '编辑提交', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('153', '149', 'Admin', 'User', 'add', '', '1', '0', '管理员添加', '', '', '1000');
+INSERT INTO `dx_menu` VALUES ('154', '153', 'Admin', 'User', 'add_post', '', '1', '0', '添加提交', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('156', '109', 'Admin', 'Storage', 'index', '', '1', '0', '文件存储', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('157', '156', 'Admin', 'Storage', 'setting_post', '', '1', '0', '文件存储设置提交', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('158', '54', 'Admin', 'Slide', 'ban', '', '1', '0', '禁用幻灯片', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('159', '54', 'Admin', 'Slide', 'cancelban', '', '1', '0', '启用幻灯片', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('160', '149', 'Admin', 'User', 'ban', '', '1', '0', '禁用管理员', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('161', '149', 'Admin', 'User', 'cancelban', '', '1', '0', '启用管理员', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('166', '127', 'Admin', 'Mailer', 'test', '', '1', '0', '测试邮件', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('167', '109', 'Admin', 'Setting', 'upload', '', '1', '1', '上传设置', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('168', '167', 'Admin', 'Setting', 'upload_post', '', '1', '0', '上传设置提交', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('169', '7', 'Portal', 'AdminPost', 'copy', '', '1', '0', '资讯批量复制', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('174', '100', 'Admin', 'Menu', 'backup_menu', '', '1', '0', '备份菜单', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('175', '100', 'Admin', 'Menu', 'export_menu_lang', '', '1', '0', '导出后台菜单多语言包', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('176', '100', 'Admin', 'Menu', 'restore_menu', '', '1', '0', '还原菜单', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('177', '100', 'Admin', 'Menu', 'getactions', '', '1', '0', '导入新菜单', '', '', '0');
+INSERT INTO `dx_menu` VALUES ('187', '1', 'Admin', 'Variable', 'index', '', '1', '1', '变量管理', '', '', '4');
 
-INSERT INTO `dx_menu` (`id`, `parentid`, `app`, `model`, `action`, `data`, `type`, `status`, `name`, `icon`, `remark`, `listorder`) VALUES
-(1, 0, 'Admin', 'Content', 'default', '', 0, 1, '内容管理', 'th', '', 2),
-(2, 1, 'Api', 'Guestbookadmin', 'index', '', 1, 1, '所有留言', '', '', 5),
-(3, 2, 'Api', 'Guestbookadmin', 'delete', '', 1, 0, '删除网站留言', '', '', 0),
-(4, 1, 'Comment', 'Commentadmin', 'index', '', 1, 0, '评论管理', '', '', 0),
-(5, 4, 'Comment', 'Commentadmin', 'delete', '', 1, 0, '删除评论', '', '', 0),
-(6, 4, 'Comment', 'Commentadmin', 'check', '', 1, 0, '评论审核', '', '', 0),
-(7, 1, 'Portal', 'AdminPost', 'index', '', 1, 1, '资讯管理', '', '', 0),
-(8, 7, 'Portal', 'AdminPost', 'listorders', '', 1, 0, '资讯排序', '', '', 0),
-(9, 7, 'Portal', 'AdminPost', 'top', '', 1, 0, '资讯置顶', '', '', 0),
-(10, 7, 'Portal', 'AdminPost', 'recommend', '', 1, 0, '资讯推荐', '', '', 0),
-(11, 7, 'Portal', 'AdminPost', 'move', '', 1, 0, '批量移动', '', '', 1000),
-(12, 7, 'Portal', 'AdminPost', 'check', '', 1, 0, '资讯审核', '', '', 1000),
-(13, 7, 'Portal', 'AdminPost', 'delete', '', 1, 0, '删除资讯', '', '', 1000),
-(14, 7, 'Portal', 'AdminPost', 'edit', '', 1, 0, '编辑资讯', '', '', 1000),
-(15, 14, 'Portal', 'AdminPost', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(16, 7, 'Portal', 'AdminPost', 'add', '', 1, 0, '添加资讯', '', '', 1000),
-(17, 16, 'Portal', 'AdminPost', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(18, 1, 'Portal', 'AdminTerm', 'index', '', 0, 1, '分类管理', '', '', 3),
-(19, 18, 'Portal', 'AdminTerm', 'listorders', '', 1, 0, '文章分类排序', '', '', 0),
-(20, 18, 'Portal', 'AdminTerm', 'delete', '', 1, 0, '删除分类', '', '', 1000),
-(21, 18, 'Portal', 'AdminTerm', 'edit', '', 1, 0, '编辑分类', '', '', 1000),
-(22, 21, 'Portal', 'AdminTerm', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(23, 18, 'Portal', 'AdminTerm', 'add', '', 1, 0, '添加分类', '', '', 1000),
-(24, 23, 'Portal', 'AdminTerm', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(25, 1, 'Portal', 'AdminPage', 'index', '', 1, 1, '页面管理', '', '', 2),
-(26, 25, 'Portal', 'AdminPage', 'listorders', '', 1, 0, '页面排序', '', '', 0),
-(27, 25, 'Portal', 'AdminPage', 'delete', '', 1, 0, '删除页面', '', '', 1000),
-(28, 25, 'Portal', 'AdminPage', 'edit', '', 1, 0, '编辑页面', '', '', 1000),
-(29, 28, 'Portal', 'AdminPage', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(30, 25, 'Portal', 'AdminPage', 'add', '', 1, 0, '添加页面', '', '', 1000),
-(31, 30, 'Portal', 'AdminPage', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(32, 1, 'Admin', 'Recycle', 'default', '', 1, 1, '回收站', '', '', 6),
-(33, 32, 'Portal', 'AdminPost', 'recyclebin', '', 1, 1, '文章回收', '', '', 0),
-(34, 33, 'Portal', 'AdminPost', 'restore', '', 1, 0, '文章还原', '', '', 1000),
-(35, 33, 'Portal', 'AdminPost', 'clean', '', 1, 0, '彻底删除', '', '', 1000),
-(36, 32, 'Portal', 'AdminPage', 'recyclebin', '', 1, 1, '页面回收', '', '', 1),
-(37, 36, 'Portal', 'AdminPage', 'clean', '', 1, 0, '彻底删除', '', '', 1000),
-(38, 36, 'Portal', 'AdminPage', 'restore', '', 1, 0, '页面还原', '', '', 1000),
-(39, 0, 'Admin', 'Extension', 'default', '', 0, 1, '扩展工具', 'cloud', '', 6),
-(40, 0, 'Admin', 'Backup', 'default', '', 1, 1, '备份管理', 'database', '', 5),
-(41, 40, 'Admin', 'Backup', 'restore', '', 1, 1, '数据还原', '', '', 0),
-(42, 40, 'Admin', 'Backup', 'index', '', 1, 1, '数据备份', '', '', 0),
-(43, 42, 'Admin', 'Backup', 'index_post', '', 1, 0, '提交数据备份', '', '', 0),
-(44, 40, 'Admin', 'Backup', 'download', '', 1, 0, '下载备份', '', '', 1000),
-(45, 40, 'Admin', 'Backup', 'del_backup', '', 1, 0, '删除备份', '', '', 1000),
-(46, 40, 'Admin', 'Backup', 'import', '', 1, 0, '数据备份导入', '', '', 1000),
-(188, 1, 'Portal', 'AdminWorks', 'index', '', 1, 1, '作品管理', '', '', 1),
-(53, 0, 'Admin', 'Slide', 'default', '', 1, 1, '幻灯片管理', '', '', 3),
-(54, 53, 'Admin', 'Slide', 'index', '', 1, 1, '幻灯片管理', '', '', 0),
-(55, 54, 'Admin', 'Slide', 'listorders', '', 1, 0, '幻灯片排序', '', '', 0),
-(56, 54, 'Admin', 'Slide', 'toggle', '', 1, 0, '幻灯片显示切换', '', '', 0),
-(57, 54, 'Admin', 'Slide', 'delete', '', 1, 0, '删除幻灯片', '', '', 1000),
-(58, 54, 'Admin', 'Slide', 'edit', '', 1, 0, '编辑幻灯片', '', '', 1000),
-(59, 58, 'Admin', 'Slide', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(60, 54, 'Admin', 'Slide', 'add', '', 1, 0, '添加幻灯片', '', '', 1000),
-(61, 60, 'Admin', 'Slide', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(62, 53, 'Admin', 'Slidecat', 'index', '', 1, 1, '幻灯片分类', '', '', 0),
-(63, 62, 'Admin', 'Slidecat', 'delete', '', 1, 0, '删除分类', '', '', 1000),
-(64, 62, 'Admin', 'Slidecat', 'edit', '', 1, 0, '编辑分类', '', '', 1000),
-(65, 64, 'Admin', 'Slidecat', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(66, 62, 'Admin', 'Slidecat', 'add', '', 1, 0, '添加分类', '', '', 1000),
-(67, 66, 'Admin', 'Slidecat', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(68, 39, 'Admin', 'Ad', 'index', '', 1, 1, '网站广告', '', '', 2),
-(69, 68, 'Admin', 'Ad', 'toggle', '', 1, 0, '广告显示切换', '', '', 0),
-(70, 68, 'Admin', 'Ad', 'delete', '', 1, 0, '删除广告', '', '', 1000),
-(71, 68, 'Admin', 'Ad', 'edit', '', 1, 0, '编辑广告', '', '', 1000),
-(72, 71, 'Admin', 'Ad', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(73, 68, 'Admin', 'Ad', 'add', '', 1, 0, '添加广告', '', '', 1000),
-(74, 73, 'Admin', 'Ad', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(75, 39, 'Admin', 'Link', 'index', '', 0, 1, '友情链接', '', '', 3),
-(76, 75, 'Admin', 'Link', 'listorders', '', 1, 0, '友情链接排序', '', '', 0),
-(77, 75, 'Admin', 'Link', 'toggle', '', 1, 0, '友链显示切换', '', '', 0),
-(78, 75, 'Admin', 'Link', 'delete', '', 1, 0, '删除友情链接', '', '', 1000),
-(79, 75, 'Admin', 'Link', 'edit', '', 1, 0, '编辑友情链接', '', '', 1000),
-(80, 79, 'Admin', 'Link', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(81, 75, 'Admin', 'Link', 'add', '', 1, 0, '添加友情链接', '', '', 1000),
-(82, 81, 'Admin', 'Link', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(85, 0, 'Admin', 'Menu', 'default', '', 1, 1, '菜单管理', 'list', '', 1),
-(86, 85, 'Admin', 'Navcat', 'default1', '', 1, 1, '前台菜单', '', '', 0),
-(87, 86, 'Admin', 'Nav', 'index', '', 1, 1, '菜单管理', '', '', 0),
-(88, 87, 'Admin', 'Nav', 'listorders', '', 1, 0, '前台导航排序', '', '', 0),
-(89, 87, 'Admin', 'Nav', 'delete', '', 1, 0, '删除菜单', '', '', 1000),
-(90, 87, 'Admin', 'Nav', 'edit', '', 1, 0, '编辑菜单', '', '', 1000),
-(91, 90, 'Admin', 'Nav', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(92, 87, 'Admin', 'Nav', 'add', '', 1, 0, '添加菜单', '', '', 1000),
-(93, 92, 'Admin', 'Nav', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(94, 86, 'Admin', 'Navcat', 'index', '', 1, 1, '菜单分类', '', '', 0),
-(95, 94, 'Admin', 'Navcat', 'delete', '', 1, 0, '删除分类', '', '', 1000),
-(96, 94, 'Admin', 'Navcat', 'edit', '', 1, 0, '编辑分类', '', '', 1000),
-(97, 96, 'Admin', 'Navcat', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(98, 94, 'Admin', 'Navcat', 'add', '', 1, 0, '添加分类', '', '', 1000),
-(99, 98, 'Admin', 'Navcat', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(100, 85, 'Admin', 'Menu', 'index', '', 1, 1, '后台菜单', '', '', 0),
-(101, 100, 'Admin', 'Menu', 'add', '', 1, 0, '添加菜单', '', '', 0),
-(102, 101, 'Admin', 'Menu', 'add_post', '', 1, 0, '提交添加', '', '', 0),
-(103, 100, 'Admin', 'Menu', 'listorders', '', 1, 0, '后台菜单排序', '', '', 0),
-(104, 100, 'Admin', 'Menu', 'export_menu', '', 1, 0, '菜单备份', '', '', 1000),
-(105, 100, 'Admin', 'Menu', 'edit', '', 1, 0, '编辑菜单', '', '', 1000),
-(106, 105, 'Admin', 'Menu', 'edit_post', '', 1, 0, '提交编辑', '', '', 0),
-(107, 100, 'Admin', 'Menu', 'delete', '', 1, 0, '删除菜单', '', '', 1000),
-(108, 100, 'Admin', 'Menu', 'lists', '', 1, 0, '所有菜单', '', '', 1000),
-(109, 0, 'Admin', 'Setting', 'default', '', 0, 1, '网站设置', 'cogs', '', 0),
-(110, 109, 'Admin', 'Setting', 'userdefault', '', 0, 1, '个人信息', '', '', 0),
-(111, 110, 'Admin', 'User', 'userinfo', '', 1, 1, '修改信息', '', '', 0),
-(112, 111, 'Admin', 'User', 'userinfo_post', '', 1, 0, '修改信息提交', '', '', 0),
-(113, 110, 'Admin', 'Setting', 'password', '', 1, 1, '修改密码', '', '', 0),
-(114, 113, 'Admin', 'Setting', 'password_post', '', 1, 0, '提交修改', '', '', 0),
-(115, 109, 'Admin', 'Setting', 'site', '', 1, 1, '网站信息', '', '', 0),
-(116, 115, 'Admin', 'Setting', 'site_post', '', 1, 0, '提交修改', '', '', 0),
-(117, 115, 'Admin', 'Route', 'index', '', 1, 0, '路由列表', '', '', 0),
-(118, 115, 'Admin', 'Route', 'add', '', 1, 0, '路由添加', '', '', 0),
-(119, 118, 'Admin', 'Route', 'add_post', '', 1, 0, '路由添加提交', '', '', 0),
-(120, 115, 'Admin', 'Route', 'edit', '', 1, 0, '路由编辑', '', '', 0),
-(121, 120, 'Admin', 'Route', 'edit_post', '', 1, 0, '路由编辑提交', '', '', 0),
-(122, 115, 'Admin', 'Route', 'delete', '', 1, 0, '路由删除', '', '', 0),
-(123, 115, 'Admin', 'Route', 'ban', '', 1, 0, '路由禁止', '', '', 0),
-(124, 115, 'Admin', 'Route', 'open', '', 1, 0, '路由启用', '', '', 0),
-(125, 115, 'Admin', 'Route', 'listorders', '', 1, 0, '路由排序', '', '', 0),
-(126, 109, 'Admin', 'Mailer', 'default', '', 1, 0, '邮箱配置', '', '', 0),
-(127, 126, 'Admin', 'Mailer', 'index', '', 1, 1, 'SMTP配置', '', '', 0),
-(128, 127, 'Admin', 'Mailer', 'index_post', '', 1, 0, '提交配置', '', '', 0),
-(129, 126, 'Admin', 'Mailer', 'active', '', 1, 1, '注册邮件模板', '', '', 0),
-(130, 129, 'Admin', 'Mailer', 'active_post', '', 1, 0, '提交模板', '', '', 0),
-(131, 109, 'Admin', 'Setting', 'clearcache', '', 1, 1, '清除缓存', '', '', 1),
-(132, 0, 'User', 'Indexadmin', 'default', '', 1, 1, '用户管理', 'group', '', 4),
-(139, 132, 'User', 'Indexadmin', 'default3', '', 1, 1, '管理组', '', '', 0),
-(140, 139, 'Admin', 'Rbac', 'index', '', 1, 1, '角色管理', '', '', 0),
-(141, 140, 'Admin', 'Rbac', 'member', '', 1, 0, '成员管理', '', '', 1000),
-(142, 140, 'Admin', 'Rbac', 'authorize', '', 1, 0, '权限设置', '', '', 1000),
-(143, 142, 'Admin', 'Rbac', 'authorize_post', '', 1, 0, '提交设置', '', '', 0),
-(144, 140, 'Admin', 'Rbac', 'roleedit', '', 1, 0, '编辑角色', '', '', 1000),
-(145, 144, 'Admin', 'Rbac', 'roleedit_post', '', 1, 0, '提交编辑', '', '', 0),
-(146, 140, 'Admin', 'Rbac', 'roledelete', '', 1, 1, '删除角色', '', '', 1000),
-(147, 140, 'Admin', 'Rbac', 'roleadd', '', 1, 1, '添加角色', '', '', 1000),
-(148, 147, 'Admin', 'Rbac', 'roleadd_post', '', 1, 0, '提交添加', '', '', 0),
-(149, 139, 'Admin', 'User', 'index', '', 1, 1, '管理员', '', '', 0),
-(150, 149, 'Admin', 'User', 'delete', '', 1, 0, '删除管理员', '', '', 1000),
-(151, 149, 'Admin', 'User', 'edit', '', 1, 0, '管理员编辑', '', '', 1000),
-(152, 151, 'Admin', 'User', 'edit_post', '', 1, 0, '编辑提交', '', '', 0),
-(153, 149, 'Admin', 'User', 'add', '', 1, 0, '管理员添加', '', '', 1000),
-(154, 153, 'Admin', 'User', 'add_post', '', 1, 0, '添加提交', '', '', 0),
-(156, 109, 'Admin', 'Storage', 'index', '', 1, 0, '文件存储', '', '', 0),
-(157, 156, 'Admin', 'Storage', 'setting_post', '', 1, 0, '文件存储设置提交', '', '', 0),
-(158, 54, 'Admin', 'Slide', 'ban', '', 1, 0, '禁用幻灯片', '', '', 0),
-(159, 54, 'Admin', 'Slide', 'cancelban', '', 1, 0, '启用幻灯片', '', '', 0),
-(160, 149, 'Admin', 'User', 'ban', '', 1, 0, '禁用管理员', '', '', 0),
-(161, 149, 'Admin', 'User', 'cancelban', '', 1, 0, '启用管理员', '', '', 0),
-(166, 127, 'Admin', 'Mailer', 'test', '', 1, 0, '测试邮件', '', '', 0),
-(167, 109, 'Admin', 'Setting', 'upload', '', 1, 1, '上传设置', '', '', 0),
-(168, 167, 'Admin', 'Setting', 'upload_post', '', 1, 0, '上传设置提交', '', '', 0),
-(169, 7, 'Portal', 'AdminPost', 'copy', '', 1, 0, '资讯批量复制', '', '', 0),
-(174, 100, 'Admin', 'Menu', 'backup_menu', '', 1, 0, '备份菜单', '', '', 0),
-(175, 100, 'Admin', 'Menu', 'export_menu_lang', '', 1, 0, '导出后台菜单多语言包', '', '', 0),
-(176, 100, 'Admin', 'Menu', 'restore_menu', '', 1, 0, '还原菜单', '', '', 0),
-(177, 100, 'Admin', 'Menu', 'getactions', '', 1, 0, '导入新菜单', '', '', 0),
-(187, 1, 'Admin', 'Variable', 'index', '', 1, 1, '变量管理', '', '', 4);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_nav`
---
-
-CREATE TABLE IF NOT EXISTS `dx_nav` (
+-- ----------------------------
+-- Table structure for `dx_nav`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_nav`;
+CREATE TABLE `dx_nav` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL COMMENT '导航分类 id',
   `parentid` int(11) NOT NULL COMMENT '导航父 id',
@@ -559,50 +558,42 @@ CREATE TABLE IF NOT EXISTS `dx_nav` (
   `listorder` int(6) DEFAULT '0' COMMENT '排序',
   `path` varchar(255) NOT NULL DEFAULT '0' COMMENT '层级关系',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='前台导航表' AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='前台导航表';
 
---
--- 转存表中的数据 `dx_nav`
---
+-- ----------------------------
+-- Records of dx_nav
+-- ----------------------------
+INSERT INTO `dx_nav` VALUES ('1', '1', '0', '网站首页', '', 'home', '', '1', '0', '0-1');
+INSERT INTO `dx_nav` VALUES ('2', '1', '0', '别墅', '', 'a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"1\";}}', '', '1', '0', '0-2');
+INSERT INTO `dx_nav` VALUES ('3', '1', '0', '平层/公寓', '', 'a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"2\";}}', '', '1', '0', '0-3');
+INSERT INTO `dx_nav` VALUES ('4', '1', '0', '公共空间', '', 'a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"3\";}}', '', '1', '0', '0-4');
+INSERT INTO `dx_nav` VALUES ('5', '1', '0', '获奖作品', '', 'a:2:{s:6:\"action\";s:17:\"Portal/List/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"2\";}}', '', '1', '0', '0-5');
+INSERT INTO `dx_nav` VALUES ('6', '1', '0', '东西资讯', '', 'a:2:{s:6:\"action\";s:17:\"Portal/List/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"1\";}}', '', '1', '0', '0-6');
+INSERT INTO `dx_nav` VALUES ('7', '1', '0', '东西服务', '', 'a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"4\";}}', '', '1', '0', '0-7');
+INSERT INTO `dx_nav` VALUES ('8', '1', '0', '联系东西', '', 'a:2:{s:6:\"action\";s:17:\"Portal/Page/index\";s:5:\"param\";a:1:{s:2:\"id\";s:1:\"5\";}}', '', '1', '0', '0-8');
 
-INSERT INTO `dx_nav` (`id`, `cid`, `parentid`, `label`, `target`, `href`, `icon`, `status`, `listorder`, `path`) VALUES
-(1, 1, 0, '网站首页', '', 'home', '', 1, 0, '0-1'),
-(2, 1, 0, '别墅', '', 'a:2:{s:6:"action";s:17:"Portal/Page/index";s:5:"param";a:1:{s:2:"id";s:1:"1";}}', '', 1, 0, '0-2'),
-(3, 1, 0, '平层/公寓', '', 'a:2:{s:6:"action";s:17:"Portal/Page/index";s:5:"param";a:1:{s:2:"id";s:1:"2";}}', '', 1, 0, '0-3'),
-(4, 1, 0, '公共空间', '', 'a:2:{s:6:"action";s:17:"Portal/Page/index";s:5:"param";a:1:{s:2:"id";s:1:"3";}}', '', 1, 0, '0-4'),
-(5, 1, 0, '获奖作品', '', 'a:2:{s:6:"action";s:17:"Portal/List/index";s:5:"param";a:1:{s:2:"id";s:1:"2";}}', '', 1, 0, '0-5'),
-(6, 1, 0, '东西资讯', '', 'a:2:{s:6:"action";s:17:"Portal/List/index";s:5:"param";a:1:{s:2:"id";s:1:"1";}}', '', 1, 0, '0-6'),
-(7, 1, 0, '东西服务', '', 'a:2:{s:6:"action";s:17:"Portal/Page/index";s:5:"param";a:1:{s:2:"id";s:1:"4";}}', '', 1, 0, '0-7'),
-(8, 1, 0, '联系东西', '', 'a:2:{s:6:"action";s:17:"Portal/Page/index";s:5:"param";a:1:{s:2:"id";s:1:"5";}}', '', 1, 0, '0-8');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_nav_cat`
---
-
-CREATE TABLE IF NOT EXISTS `dx_nav_cat` (
+-- ----------------------------
+-- Table structure for `dx_nav_cat`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_nav_cat`;
+CREATE TABLE `dx_nav_cat` (
   `navcid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL COMMENT '导航分类名',
   `active` int(1) NOT NULL DEFAULT '1' COMMENT '是否为主菜单，1是，0不是',
   `remark` text COMMENT '备注',
   PRIMARY KEY (`navcid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='前台导航分类表' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='前台导航分类表';
 
---
--- 转存表中的数据 `dx_nav_cat`
---
+-- ----------------------------
+-- Records of dx_nav_cat
+-- ----------------------------
+INSERT INTO `dx_nav_cat` VALUES ('1', '主导航', '1', '主导航');
 
-INSERT INTO `dx_nav_cat` (`navcid`, `name`, `active`, `remark`) VALUES
-(1, '主导航', 1, '主导航');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_oauth_user`
---
-
-CREATE TABLE IF NOT EXISTS `dx_oauth_user` (
+-- ----------------------------
+-- Table structure for `dx_oauth_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_oauth_user`;
+CREATE TABLE `dx_oauth_user` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `from` varchar(20) NOT NULL COMMENT '用户来源key',
   `name` varchar(30) NOT NULL COMMENT '第三方昵称',
@@ -617,40 +608,38 @@ CREATE TABLE IF NOT EXISTS `dx_oauth_user` (
   `expires_date` int(11) NOT NULL COMMENT 'access_token过期时间',
   `openid` varchar(40) NOT NULL COMMENT '第三方用户id',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='第三方用户表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='第三方用户表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_oauth_user
+-- ----------------------------
 
---
--- 表的结构 `dx_options`
---
-
-CREATE TABLE IF NOT EXISTS `dx_options` (
+-- ----------------------------
+-- Table structure for `dx_options`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_options`;
+CREATE TABLE `dx_options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `option_name` varchar(64) NOT NULL COMMENT '配置名',
   `option_value` longtext NOT NULL COMMENT '配置值',
   `autoload` int(2) NOT NULL DEFAULT '1' COMMENT '是否自动加载',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='全站配置表' AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='全站配置表';
 
---
--- 转存表中的数据 `dx_options`
---
+-- ----------------------------
+-- Records of dx_options
+-- ----------------------------
+INSERT INTO `dx_options` VALUES ('1', 'member_email_active', '{\"title\":\"ThinkCMF\\u90ae\\u4ef6\\u6fc0\\u6d3b\\u901a\\u77e5.\",\"template\":\"<p>\\u672c\\u90ae\\u4ef6\\u6765\\u81ea<a href=\\\"http:\\/\\/www.thinkcmf.com\\\">ThinkCMF<\\/a><br\\/><br\\/>&nbsp; &nbsp;<strong>---------------<strong style=\\\"white-space: normal;\\\">---<\\/strong><\\/strong><br\\/>&nbsp; &nbsp;<strong>\\u5e10\\u53f7\\u6fc0\\u6d3b\\u8bf4\\u660e<\\/strong><br\\/>&nbsp; &nbsp;<strong>---------------<strong style=\\\"white-space: normal;\\\">---<\\/strong><\\/strong><br\\/><br\\/>&nbsp; &nbsp; \\u5c0a\\u656c\\u7684<span style=\\\"FONT-SIZE: 16px; FONT-FAMILY: Arial; COLOR: rgb(51,51,51); LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255)\\\">#username#\\uff0c\\u60a8\\u597d\\u3002<\\/span>\\u5982\\u679c\\u60a8\\u662fThinkCMF\\u7684\\u65b0\\u7528\\u6237\\uff0c\\u6216\\u5728\\u4fee\\u6539\\u60a8\\u7684\\u6ce8\\u518cEmail\\u65f6\\u4f7f\\u7528\\u4e86\\u672c\\u5730\\u5740\\uff0c\\u6211\\u4eec\\u9700\\u8981\\u5bf9\\u60a8\\u7684\\u5730\\u5740\\u6709\\u6548\\u6027\\u8fdb\\u884c\\u9a8c\\u8bc1\\u4ee5\\u907f\\u514d\\u5783\\u573e\\u90ae\\u4ef6\\u6216\\u5730\\u5740\\u88ab\\u6ee5\\u7528\\u3002<br\\/>&nbsp; &nbsp; \\u60a8\\u53ea\\u9700\\u70b9\\u51fb\\u4e0b\\u9762\\u7684\\u94fe\\u63a5\\u5373\\u53ef\\u6fc0\\u6d3b\\u60a8\\u7684\\u5e10\\u53f7\\uff1a<br\\/>&nbsp; &nbsp; <a title=\\\"\\\" href=\\\"http:\\/\\/#link#\\\" target=\\\"_self\\\">http:\\/\\/#link#<\\/a><br\\/>&nbsp; &nbsp; (\\u5982\\u679c\\u4e0a\\u9762\\u4e0d\\u662f\\u94fe\\u63a5\\u5f62\\u5f0f\\uff0c\\u8bf7\\u5c06\\u8be5\\u5730\\u5740\\u624b\\u5de5\\u7c98\\u8d34\\u5230\\u6d4f\\u89c8\\u5668\\u5730\\u5740\\u680f\\u518d\\u8bbf\\u95ee)<br\\/>&nbsp; &nbsp; \\u611f\\u8c22\\u60a8\\u7684\\u8bbf\\u95ee\\uff0c\\u795d\\u60a8\\u4f7f\\u7528\\u6109\\u5feb\\uff01<br\\/><br\\/>&nbsp; &nbsp; \\u6b64\\u81f4<br\\/>&nbsp; &nbsp; ThinkCMF \\u7ba1\\u7406\\u56e2\\u961f.<\\/p>\"}', '1');
+INSERT INTO `dx_options` VALUES ('6', 'site_options', '{\"site_name\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"site_host\":\"http:\\/\\/dxzj.com\\/\",\"site_logo\":\"admin\\/20180108\\/5a5253dd4688c.png\",\"site_erweima\":\"admin\\/20180108\\/5a5253d44db99.png\",\"site_admin_url_password\":\"\",\"site_tpl\":\"dongxingxijian\",\"mobile_tpl_enabled\":\"1\",\"site_adminstyle\":\"flat\",\"site_icp\":\"\",\"site_admin_email\":\"admin@qq.com\",\"site_tongji\":\"\",\"site_copyright\":\"\",\"site_seo_title\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"site_seo_keywords\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"site_seo_description\":\"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1\",\"urlmode\":\"0\",\"html_suffix\":\"html\",\"comment_time_interval\":\"60\"}', '1');
+INSERT INTO `dx_options` VALUES ('7', 'cmf_settings', '{\"banned_usernames\":\"\"}', '1');
+INSERT INTO `dx_options` VALUES ('8', 'cdn_settings', '{\"cdn_static_root\":\"\"}', '1');
 
-INSERT INTO `dx_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'member_email_active', '{"title":"ThinkCMF\\u90ae\\u4ef6\\u6fc0\\u6d3b\\u901a\\u77e5.","template":"<p>\\u672c\\u90ae\\u4ef6\\u6765\\u81ea<a href=\\"http:\\/\\/www.thinkcmf.com\\">ThinkCMF<\\/a><br\\/><br\\/>&nbsp; &nbsp;<strong>---------------<strong style=\\"white-space: normal;\\">---<\\/strong><\\/strong><br\\/>&nbsp; &nbsp;<strong>\\u5e10\\u53f7\\u6fc0\\u6d3b\\u8bf4\\u660e<\\/strong><br\\/>&nbsp; &nbsp;<strong>---------------<strong style=\\"white-space: normal;\\">---<\\/strong><\\/strong><br\\/><br\\/>&nbsp; &nbsp; \\u5c0a\\u656c\\u7684<span style=\\"FONT-SIZE: 16px; FONT-FAMILY: Arial; COLOR: rgb(51,51,51); LINE-HEIGHT: 18px; BACKGROUND-COLOR: rgb(255,255,255)\\">#username#\\uff0c\\u60a8\\u597d\\u3002<\\/span>\\u5982\\u679c\\u60a8\\u662fThinkCMF\\u7684\\u65b0\\u7528\\u6237\\uff0c\\u6216\\u5728\\u4fee\\u6539\\u60a8\\u7684\\u6ce8\\u518cEmail\\u65f6\\u4f7f\\u7528\\u4e86\\u672c\\u5730\\u5740\\uff0c\\u6211\\u4eec\\u9700\\u8981\\u5bf9\\u60a8\\u7684\\u5730\\u5740\\u6709\\u6548\\u6027\\u8fdb\\u884c\\u9a8c\\u8bc1\\u4ee5\\u907f\\u514d\\u5783\\u573e\\u90ae\\u4ef6\\u6216\\u5730\\u5740\\u88ab\\u6ee5\\u7528\\u3002<br\\/>&nbsp; &nbsp; \\u60a8\\u53ea\\u9700\\u70b9\\u51fb\\u4e0b\\u9762\\u7684\\u94fe\\u63a5\\u5373\\u53ef\\u6fc0\\u6d3b\\u60a8\\u7684\\u5e10\\u53f7\\uff1a<br\\/>&nbsp; &nbsp; <a title=\\"\\" href=\\"http:\\/\\/#link#\\" target=\\"_self\\">http:\\/\\/#link#<\\/a><br\\/>&nbsp; &nbsp; (\\u5982\\u679c\\u4e0a\\u9762\\u4e0d\\u662f\\u94fe\\u63a5\\u5f62\\u5f0f\\uff0c\\u8bf7\\u5c06\\u8be5\\u5730\\u5740\\u624b\\u5de5\\u7c98\\u8d34\\u5230\\u6d4f\\u89c8\\u5668\\u5730\\u5740\\u680f\\u518d\\u8bbf\\u95ee)<br\\/>&nbsp; &nbsp; \\u611f\\u8c22\\u60a8\\u7684\\u8bbf\\u95ee\\uff0c\\u795d\\u60a8\\u4f7f\\u7528\\u6109\\u5feb\\uff01<br\\/><br\\/>&nbsp; &nbsp; \\u6b64\\u81f4<br\\/>&nbsp; &nbsp; ThinkCMF \\u7ba1\\u7406\\u56e2\\u961f.<\\/p>"}', 1),
-(6, 'site_options', '{"site_name":"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1","site_host":"http:\\/\\/dxzj.com\\/","site_logo":"admin\\/20180108\\/5a5253dd4688c.png","site_erweima":"admin\\/20180108\\/5a5253d44db99.png","site_admin_url_password":"","site_tpl":"dongxingxijian","mobile_tpl_enabled":"1","site_adminstyle":"flat","site_icp":"","site_admin_email":"admin@qq.com","site_tongji":"","site_copyright":"","site_seo_title":"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1","site_seo_keywords":"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1","site_seo_description":"\\u4e1c\\u5f62\\u897f\\u89c1\\u5ba4\\u5185\\u8bbe\\u8ba1","urlmode":"2","html_suffix":"","comment_time_interval":"60"}', 1),
-(7, 'cmf_settings', '{"banned_usernames":""}', 1),
-(8, 'cdn_settings', '{"cdn_static_root":""}', 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_plugins`
---
-
-CREATE TABLE IF NOT EXISTS `dx_plugins` (
+-- ----------------------------
+-- Table structure for `dx_plugins`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_plugins`;
+CREATE TABLE `dx_plugins` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `name` varchar(50) NOT NULL COMMENT '插件名，英文',
   `title` varchar(50) NOT NULL DEFAULT '' COMMENT '插件名称',
@@ -665,15 +654,17 @@ CREATE TABLE IF NOT EXISTS `dx_plugins` (
   `createtime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '插件安装时间',
   `listorder` smallint(6) NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='插件表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='插件表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_plugins
+-- ----------------------------
 
---
--- 表的结构 `dx_posts`
---
-
-CREATE TABLE IF NOT EXISTS `dx_posts` (
+-- ----------------------------
+-- Table structure for `dx_posts`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_posts`;
+CREATE TABLE `dx_posts` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_author` bigint(20) unsigned DEFAULT '0' COMMENT '发表者id',
   `post_keywords` varchar(150) NOT NULL COMMENT 'seo keywords',
@@ -700,15 +691,17 @@ CREATE TABLE IF NOT EXISTS `dx_posts` (
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`),
   KEY `post_date` (`post_date`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Portal文章表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='Portal文章表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_posts
+-- ----------------------------
 
---
--- 表的结构 `dx_role`
---
-
-CREATE TABLE IF NOT EXISTS `dx_role` (
+-- ----------------------------
+-- Table structure for `dx_role`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_role`;
+CREATE TABLE `dx_role` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL COMMENT '角色名称',
   `pid` smallint(6) DEFAULT NULL COMMENT '父角色ID',
@@ -720,50 +713,50 @@ CREATE TABLE IF NOT EXISTS `dx_role` (
   PRIMARY KEY (`id`),
   KEY `parentId` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='角色表' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
---
--- 转存表中的数据 `dx_role`
---
+-- ----------------------------
+-- Records of dx_role
+-- ----------------------------
+INSERT INTO `dx_role` VALUES ('1', '超级管理员', '0', '1', '拥有网站最高管理员权限！', '1329633709', '1329633709', '0');
 
-INSERT INTO `dx_role` (`id`, `name`, `pid`, `status`, `remark`, `create_time`, `update_time`, `listorder`) VALUES
-(1, '超级管理员', 0, 1, '拥有网站最高管理员权限！', 1329633709, 1329633709, 0);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_role_user`
---
-
-CREATE TABLE IF NOT EXISTS `dx_role_user` (
+-- ----------------------------
+-- Table structure for `dx_role_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_role_user`;
+CREATE TABLE `dx_role_user` (
   `role_id` int(11) unsigned DEFAULT '0' COMMENT '角色 id',
   `user_id` int(11) DEFAULT '0' COMMENT '用户id',
   KEY `group_id` (`role_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户角色对应表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_role_user
+-- ----------------------------
 
---
--- 表的结构 `dx_route`
---
-
-CREATE TABLE IF NOT EXISTS `dx_route` (
+-- ----------------------------
+-- Table structure for `dx_route`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_route`;
+CREATE TABLE `dx_route` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '路由id',
   `full_url` varchar(255) DEFAULT NULL COMMENT '完整url， 如：portal/list/index?id=1',
   `url` varchar(255) DEFAULT NULL COMMENT '实际显示的url',
   `listorder` int(5) DEFAULT '0' COMMENT '排序，优先级，越小优先级越高',
   `status` tinyint(1) DEFAULT '1' COMMENT '状态，1：启用 ;0：不启用',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='url路由表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='url路由表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_route
+-- ----------------------------
 
---
--- 表的结构 `dx_slide`
---
-
-CREATE TABLE IF NOT EXISTS `dx_slide` (
+-- ----------------------------
+-- Table structure for `dx_slide`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_slide`;
+CREATE TABLE `dx_slide` (
   `slide_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `slide_cid` int(11) NOT NULL COMMENT '幻灯片分类 id',
   `slide_name` varchar(255) NOT NULL COMMENT '幻灯片名称',
@@ -775,15 +768,17 @@ CREATE TABLE IF NOT EXISTS `dx_slide` (
   `listorder` int(10) DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`slide_id`),
   KEY `slide_cid` (`slide_cid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_slide
+-- ----------------------------
 
---
--- 表的结构 `dx_slide_cat`
---
-
-CREATE TABLE IF NOT EXISTS `dx_slide_cat` (
+-- ----------------------------
+-- Table structure for `dx_slide_cat`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_slide_cat`;
+CREATE TABLE `dx_slide_cat` (
   `cid` int(11) NOT NULL AUTO_INCREMENT,
   `cat_name` varchar(255) NOT NULL COMMENT '幻灯片分类',
   `cat_idname` varchar(255) NOT NULL COMMENT '幻灯片分类标识',
@@ -791,15 +786,17 @@ CREATE TABLE IF NOT EXISTS `dx_slide_cat` (
   `cat_status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1显示，0不显示',
   PRIMARY KEY (`cid`),
   KEY `cat_idname` (`cat_idname`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片分类表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片分类表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_slide_cat
+-- ----------------------------
 
---
--- 表的结构 `dx_terms`
---
-
-CREATE TABLE IF NOT EXISTS `dx_terms` (
+-- ----------------------------
+-- Table structure for `dx_terms`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_terms`;
+CREATE TABLE `dx_terms` (
   `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类id',
   `name` varchar(200) DEFAULT NULL COMMENT '分类名称',
   `slug` varchar(200) DEFAULT '',
@@ -816,23 +813,19 @@ CREATE TABLE IF NOT EXISTS `dx_terms` (
   `listorder` int(5) NOT NULL DEFAULT '0' COMMENT '排序',
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1发布，0不发布',
   PRIMARY KEY (`term_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类表' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类表';
 
---
--- 转存表中的数据 `dx_terms`
---
+-- ----------------------------
+-- Records of dx_terms
+-- ----------------------------
+INSERT INTO `dx_terms` VALUES ('1', '东西资讯', '', 'article', '', '0', '0', '0-1', '', '', '', 'newslist', 'detail', '0', '1');
+INSERT INTO `dx_terms` VALUES ('2', '获奖作品', '', 'works', '', '0', '0', '0-2', '', '', '', 'workslist', 'detail', '0', '1');
 
-INSERT INTO `dx_terms` (`term_id`, `name`, `slug`, `taxonomy`, `description`, `parent`, `count`, `path`, `seo_title`, `seo_keywords`, `seo_description`, `list_tpl`, `one_tpl`, `listorder`, `status`) VALUES
-(1, '东西资讯', '', 'article', '', 0, 0, '0-1', '', '', '', 'newslist', 'detail', 0, 1),
-(2, '获奖作品', '', 'works', '', 0, 0, '0-2', '', '', '', 'workslist', 'detail', 0, 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_term_relationships`
---
-
-CREATE TABLE IF NOT EXISTS `dx_term_relationships` (
+-- ----------------------------
+-- Table structure for `dx_term_relationships`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_term_relationships`;
+CREATE TABLE `dx_term_relationships` (
   `tid` bigint(20) NOT NULL AUTO_INCREMENT,
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'posts表里文章id',
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '分类id',
@@ -840,15 +833,17 @@ CREATE TABLE IF NOT EXISTS `dx_term_relationships` (
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1发布，0不发布',
   PRIMARY KEY (`tid`),
   KEY `term_taxonomy_id` (`term_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类对应表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类对应表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_term_relationships
+-- ----------------------------
 
---
--- 表的结构 `dx_users`
---
-
-CREATE TABLE IF NOT EXISTS `dx_users` (
+-- ----------------------------
+-- Table structure for `dx_users`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_users`;
+CREATE TABLE `dx_users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_login` varchar(60) NOT NULL DEFAULT '' COMMENT '用户名',
   `user_pass` varchar(64) NOT NULL DEFAULT '' COMMENT '登录密码；sp_password加密',
@@ -871,22 +866,18 @@ CREATE TABLE IF NOT EXISTS `dx_users` (
   PRIMARY KEY (`id`),
   KEY `user_login_key` (`user_login`),
   KEY `user_nicename` (`user_nicename`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
---
--- 转存表中的数据 `dx_users`
---
+-- ----------------------------
+-- Records of dx_users
+-- ----------------------------
+INSERT INTO `dx_users` VALUES ('1', 'admin', '###e5830b5cf8a5cd379ae42f87faa6b2f4', 'admin', 'admin@qq.com', '', null, '0', '2000-01-01', null, '120.37.134.136', '2018-01-09 14:13:00', '2018-01-07 09:42:27', '', '1', '0', '1', '0', '');
 
-INSERT INTO `dx_users` (`id`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `avatar`, `sex`, `birthday`, `signature`, `last_login_ip`, `last_login_time`, `create_time`, `user_activation_key`, `user_status`, `score`, `user_type`, `coin`, `mobile`) VALUES
-(1, 'admin', '###e5830b5cf8a5cd379ae42f87faa6b2f4', 'admin', 'admin@qq.com', '', NULL, 0, '2000-01-01', NULL, '127.0.0.1', '2018-01-08 23:41:25', '2018-01-07 09:42:27', '', 1, 0, 1, 0, '');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `dx_user_favorites`
---
-
-CREATE TABLE IF NOT EXISTS `dx_user_favorites` (
+-- ----------------------------
+-- Table structure for `dx_user_favorites`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_user_favorites`;
+CREATE TABLE `dx_user_favorites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` bigint(20) DEFAULT NULL COMMENT '用户 id',
   `title` varchar(255) DEFAULT NULL COMMENT '收藏内容的标题',
@@ -897,15 +888,17 @@ CREATE TABLE IF NOT EXISTS `dx_user_favorites` (
   `createtime` int(11) DEFAULT NULL COMMENT '收藏时间',
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户收藏表' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户收藏表';
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of dx_user_favorites
+-- ----------------------------
 
---
--- 表的结构 `dx_variable`
---
-
-CREATE TABLE IF NOT EXISTS `dx_variable` (
+-- ----------------------------
+-- Table structure for `dx_variable`
+-- ----------------------------
+DROP TABLE IF EXISTS `dx_variable`;
+CREATE TABLE `dx_variable` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '变量ID',
   `variableName` varchar(255) NOT NULL COMMENT '变量名',
   `variableValue` varchar(255) DEFAULT NULL COMMENT '变量值',
@@ -913,8 +906,8 @@ CREATE TABLE IF NOT EXISTS `dx_variable` (
   `listorder` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`),
   UNIQUE KEY `variableName` (`variableName`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- ----------------------------
+-- Records of dx_variable
+-- ----------------------------

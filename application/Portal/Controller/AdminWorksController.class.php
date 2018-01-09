@@ -145,7 +145,7 @@ class AdminWorksController extends AdminbaseController {
 	private function _lists($where=array()){
 		$term_id=I('request.term',0,'intval');
 
-		$where['post_type']=array(array('eq',2));
+		$where['post_type']=array(array('eq',3));
 
 		if(!empty($term_id)){
 		    $where['b.term_id']=$term_id;
@@ -197,7 +197,7 @@ class AdminWorksController extends AdminbaseController {
 		    $this->works_model->field('a.*,c.user_login,c.user_nicename,b.listorder,b.tid');
 		    $this->works_model->join("__TERM_RELATIONSHIPS__ b ON a.id = b.object_id");
 		}
-		$works=$this->works_model->where(array('post_type'=>2))->select();
+		$works=$this->works_model->where(array('post_type'=>3))->select();
 
 		$this->assign("page", $page->show('Admin'));
 		$this->assign("formget",array_merge($_GET,$_POST));
@@ -402,7 +402,7 @@ class AdminWorksController extends AdminbaseController {
 	                $find_works=$this->works_model->field('post_keywords,post_source,post_content,post_title,post_excerpt,smeta')->where(array('id'=>$id))->find();
 	                if($find_works){
 	                    $find_works['post_author']=$uid;
-                      $find_works['post_type']=2;
+                      $find_works['post_type']=3;
 	                    $find_works['post_date']=date('Y-m-d H:i:s');
 	                    $find_works['post_modified']=date('Y-m-d H:i:s');
 	                    $works_id=$this->works_model->add($find_works);

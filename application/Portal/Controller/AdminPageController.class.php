@@ -37,7 +37,7 @@ class AdminPageController extends AdminbaseController {
 	 */
 	private function _lists($where=array()){
 
-	    $where['post_type']=array('eq',3);
+	    $where['post_type']=array('eq',2);
 
 	    $start_time=I('request.start_time');
 	    if(!empty($start_time)){

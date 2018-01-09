@@ -3,7 +3,7 @@
   'SP_DEFAULT_THEME' => 'dongxingxijian',
   'DEFAULT_THEME' => 'dongxingxijian',
   'SP_ADMIN_STYLE' => 'flat',
-  'URL_MODEL' => '2',
+  'URL_MODEL' => '0',
   'URL_HTML_SUFFIX' => '',
   'COMMENT_NEED_CHECK' => 0,
   'COMMENT_TIME_INTERVAL' => 60,
