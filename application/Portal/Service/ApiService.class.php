@@ -310,7 +310,7 @@ class ApiService {
         
         //根据参数生成查询条件
         $where['post_status'] = array('eq',1);
-        $where['post_type'] = array('eq',2);
+        $where['post_type'] = array('eq',3);
         
         if (isset($tag['ids'])) {
             $tag['ids']=explode(',', $tag['ids']);
@@ -337,7 +337,7 @@ class ApiService {
     public static function page($id){
         $where=array();
         $where['id'] = array('eq',$id);
-        $where['post_type'] = array('eq',2);
+        $where['post_type'] = array('eq',3);
         $where['post_status'] = array('eq',1);
         
         $posts_model = M("Posts");

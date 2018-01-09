@@ -41,7 +41,7 @@ class PageController extends HomebaseController{
 		
 		$where=array();
 		$where['post_status'] = array('eq',1);
-		$where['post_type'] = array('eq',2);
+		$where['post_type'] = array('eq',3);
 		
 		$posts_model= M("Posts");
 		
