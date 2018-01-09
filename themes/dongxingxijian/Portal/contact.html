@@ -13,19 +13,19 @@
   <div class="contact-container">
     <dl>
       <dt>公司地址：</dt>
-      <dd>福建省福州市仓山区建新镇金达路130号3号厂房1020单元</dd>
+      <dd>{$address}</dd>
     </dl>
     <dl>
       <dt>联系电话：</dt>
-      <dd><span>18659390006</span><span>林女士</span></dd>
+      <dd><span>{$tell}</span><span>{$contactName}</span></dd>
     </dl>
     <dl>
       <dt>关注我们：</dt>
       <dd>
         <div class="ewmbox">
-          <img src="__TMPL__Public/assets/images/erweima.png" alt="" class="img-responsive"/>
+          <img src="{:sp_get_image_url($site_erweima)}" alt="" class="img-responsive"/>
         </div>
-        <p>dongxisheji.com</p>
+        <p>{$site_host}</p>
       </dd>
     </dl>
   </div>

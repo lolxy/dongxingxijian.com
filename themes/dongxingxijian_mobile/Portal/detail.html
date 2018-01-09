@@ -12,13 +12,17 @@
 <section class="wrapper">
   <div class="detail-container">
     <div class="detail-heading">
-      <h2>新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</h2>
-      <span>2017年12月12日</span>
+      <h2>{$post_title}</h2>
+      <span>{$post_modified}</span>
+      <if condition="$post_type eq 3">
+      <div class="zanbox">
+      <a href="javascript:;"><span class="view">{$post_hits}</span></a>
+	  <a href="{:U('article/do_like',array('id'=>$article_id))}" class="js-count-btn"><span class="count zan">{$post_like}</span></a>
+      </div>
+      </if>
     </div>
     <div class="detail-body">
-      <img src="__TMPL__Public/assets/images/news_datail.png" alt="" class="img-responsive"/>
-      <p>正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内</p>
-      <p>正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内</p>
+      {:htmlspecialchars_decode($post_content)}
     </div>
   </div>
 </section>

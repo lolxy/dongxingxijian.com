@@ -11,157 +11,98 @@
 
 <section class="wrapper">
   <div class="newslist-container">
+  <php>
+$topPosts=sp_sql_posts('cid:1;field:object_id,term_id,post_title,post_excerpt,post_content,post_modified,smeta;order:listorder asc,post_modified desc;limit:1',array('istop'=>'1'));
+</php>
+
+    <volist name="topPosts" id="vo">
+    <php>
+        $smeta=json_decode($vo['smeta'], true);
+    </php>
     <div class="recommend">
       <div class="left-photo">
-        <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_datail.png)"></a>
+      <if condition="empty($smeta['thumb'])"> 
+           <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url(__TMPL__Public/assets/images/default_tupian1.png)"></a>
+        <else /> 
+            <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url({:sp_get_asset_upload_path($smeta['thumb'])})"></a>
+        </if>
       </div>
       <div class="right-content">
-        <h2 class="text-ellipsis2"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-        <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
+        <h2 class="text-ellipsis2"><a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a></h2>
+        <p class="text-ellipsis3">{$vo.post_excerpt}</p>
         <div class="pfoot">
-          <span>2017.12.12</span>
+          <span>{$vo.post_modified}</span>
           <a href="#">详细 ></a>
         </div>
       </div>
     </div>
+    </volist>
+
+<?php
+    $cid = $cat_id;
+    $tag = "cid:$cid;order:listorder asc,post_modified desc;";
+    $pagesize = '5';
+    $content=sp_sql_posts_paged($tag,$pagesize);
+    $lists = $content['posts'];
+    $pager=$content['page'];
+?>
 
     <div class="news-list">
-      <ul>
+      <ul id="newsullist">
+      <volist name="lists" id="vos">
+			<php>
+				$smeta=json_decode($vos['smeta'], true);
+			</php>
         <li>
           <div class="newbox">
             <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
+              <if condition="empty($smeta['thumb'])"> 
+                   <a href="{:leuu('Portal/article/index',array('id'=>$vos['object_id'],'cid'=>$vos['term_id']))}" style="background-image:url(__TMPL__Public/assets/images/default_tupian1.png)"></a>
+                <else /> 
+                    <a href="{:leuu('Portal/article/index',array('id'=>$vos['object_id'],'cid'=>$vos['term_id']))}" style="background-image:url({:sp_get_asset_upload_path($smeta['thumb'])})"></a>
+                </if>
             </div>
             <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
+              <h2 class="text-ellipsis"><a href="{:leuu('article/index',array('id'=>$vos['object_id'],'cid'=>$vos['term_id']))}">{$vos.post_title}</a></h2>
+              <p class="text-ellipsis3">{$vos.post_excerpt}</p>
               <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
+                <span>{$vos.post_modified}</span>
+                <a href="{:leuu('article/index',array('id'=>$vos['object_id'],'cid'=>$vos['term_id']))}">详细 ></a>
               </div>
             </div>
           </div>
         </li>
-
-        <li>
-          <div class="newbox">
-            <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
-            </div>
-            <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
-              <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <div class="newbox">
-            <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
-            </div>
-            <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
-              <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <div class="newbox">
-            <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
-            </div>
-            <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
-              <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <div class="newbox">
-            <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
-            </div>
-            <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
-              <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <div class="newbox">
-            <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
-            </div>
-            <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
-              <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <div class="newbox">
-            <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
-            </div>
-            <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
-              <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <div class="newbox">
-            <div class="left-photo">
-              <a href="#" style="background-image:url(__TMPL__Public/assets/images/news_img.png)"></a>
-            </div>
-            <div class="right-content">
-              <h2 class="text-ellipsis"><a href="#">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</a></h2>
-              <p class="text-ellipsis3">新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要新闻摘要...</p>
-              <div class="pfoot">
-                <span>2017.12.12</span>
-                <a href="#">详细 ></a>
-              </div>
-            </div>
-          </div>
-        </li>
+        </volist>
       </ul>
       <div class="more">更多资讯</div>
     </div>
   </div>
+  <div class="nomore" style="display:none;">-- 我也是有底线的 --</div>
 </section>
 
 <tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>
+<script>
+$(function () {
+	page = '1';
+$(".more").click(function(){
+	page++;
+			var id = "{$cat_id}";
+			var pages = "{$content.total_pages}";//获取页面总页数
+			if ( page <= pages){
+				var url ='index.php?m=list&a=index&id='+id+'&p='+page;
+				$.get(url,function (msg) {
+					$("#newsullist").append(
+						$(msg).find("#newsullist")
+				);
+			})//get结束
+		}else{
+			$(".nomore").show();
+			$(".more").hide();	
+		}
+	});
+})
+</script>
 {:hook('footer_end')}
 </body>
 </html>

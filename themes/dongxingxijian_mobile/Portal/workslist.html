@@ -9,84 +9,38 @@
 <body>
 <tc_include file="Public:nav" />
 
+<?php
+$tag='cid:2;order:listorder asc,post_modified desc;';
+$posts=sp_sql_posts($tag); 
+?>
+
 <section class="wrapper">
   <div class="workslist-container">
     <ul>
+    <foreach name="posts" item="vo">
+    <php>
+    $smeta=json_decode($vo['smeta'],true);
+    </php>
       <li>
-        <a href="#">
-          <img src="__TMPL__Public/assets/images/works_img.png" alt="" class="img-responsive"/>
+        <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
+        <if condition="empty($smeta['thumb'])"> 
+            <img src="__TMPL__Public/assets/images/default_tupian1.png" alt="" class="img-responsive"/>
+        <else /> 
+            <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="" class="img-responsive"/>
+        </if>
         </a>
         <div class="content">
           <a href="#" class="text-ellipsis">
-            作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称
+            {$vo.post_title}
           </a>
-          <p>获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项  </p>
+          <p>{$vo.post_excerpt}</p>
           <div class="op-box">
-            <span class="view">136</span>
-            <span class="zan">136</span>
+            <span class="view">{$vo.post_hits}</span>
+            <span class="zan">{$vo.post_like}</span>
           </div>
         </div>
       </li>
-      <li>
-        <a href="#">
-          <img src="__TMPL__Public/assets/images/works_img.png" alt="" class="img-responsive"/>
-        </a>
-        <div class="content">
-          <a href="#" class="text-ellipsis">
-            作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称
-          </a>
-          <p>获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项  </p>
-          <div class="op-box">
-            <span class="view">136</span>
-            <span class="zan">136</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#">
-          <img src="__TMPL__Public/assets/images/works_img.png" alt="" class="img-responsive"/>
-        </a>
-        <div class="content">
-          <a href="#" class="text-ellipsis">
-            作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称
-          </a>
-          <p>获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项  </p>
-          <div class="op-box">
-            <span class="view">136</span>
-            <span class="zan">136</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#">
-          <img src="__TMPL__Public/assets/images/works_img.png" alt="" class="img-responsive"/>
-        </a>
-        <div class="content">
-          <a href="#" class="text-ellipsis">
-            作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称
-          </a>
-          <p>获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项  </p>
-          <div class="op-box">
-            <span class="view">136</span>
-            <span class="zan">136</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#">
-          <img src="__TMPL__Public/assets/images/works_img.png" alt="" class="img-responsive"/>
-        </a>
-        <div class="content">
-          <a href="#" class="text-ellipsis">
-            作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称作品名称
-          </a>
-          <p>获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项获得奖项  </p>
-          <div class="op-box">
-            <span class="view">136</span>
-            <span class="zan">136</span>
-          </div>
-        </div>
-      </li>
+   </foreach>
     </ul>
   </div>
 </section>

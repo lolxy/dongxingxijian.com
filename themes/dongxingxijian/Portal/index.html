@@ -6,38 +6,47 @@
 		<meta name="description" content="{$site_seo_description}">
 		<link rel="stylesheet" href="__TMPL__Public/assets/css/swiper.min.css">
 		<tc_include file="Public:head" />
+		<style>
+			.wrapper{position: relative;z-index: 2;background-color:#d4d4dc;}
+		</style>
 	</head>
 <body>
 <tc_include file="Public:nav" />
 
-<section class="wrapper">
-<!-- 主图 -->
-<div class="bannerbox">
-  <div class="banner-mask">
-    <img src="__TMPL__Public/assets/images/banner.png" alt=""/>
-  </div>
-</div>
+<php>
+$home_slides=sp_getslide("index_ads");
+</php>
 
+<foreach name="home_slides" item="vo" key="k">
+	<if condition="$k==0">
+		<div class="index-welcome-container" style="background-image:url({:sp_get_asset_upload_path($vo['slide_pic'])})">
+		    <div class="black-mask"></div>
+		</div>
+		<div class="scroll-mask-index"></div>
+	</if>
+</foreach>
+
+<section class="wrapper">
 <!-- 其他主图 -->
 <div class="workslist">
   <ul>
     <li>
-      <a href="#">
+      <a href="{:leuu('portal/page/index',array('id'=>1))}">
         <img src="__TMPL__Public/assets/images/main1.png" alt="" class="img-responsive"/>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="{:leuu('portal/page/index',array('id'=>2))}">
         <img src="__TMPL__Public/assets/images/main2.png" alt="" class="img-responsive"/>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="{:leuu('portal/page/index',array('id'=>3))}">
         <img src="__TMPL__Public/assets/images/main3.png" alt="" class="img-responsive"/>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="{:leuu('portal/list/index',array('id'=>2))}">
         <img src="__TMPL__Public/assets/images/main4.png" alt="" class="img-responsive"/>
       </a>
     </li>
@@ -48,73 +57,32 @@
 <div class="home-news">
   <h2>东西资讯</h2>
   <div class="swiper-box">
+  <php>
+$posts=sp_sql_posts('cid:1;field:object_id,term_id,post_title,post_excerpt,post_content,post_modified,smeta;order:listorder asc,post_modified desc;limit:10',array('recommended'=>'1'));
+</php>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-          <div class="swiper-slide">
+      <foreach name="posts" item="vo">
+      <php>$smeta=json_decode($vo['smeta'],true);</php>
+    	<div class="swiper-slide">
             <div class="mainbox">
               <div class="newsbox">
-                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
+              <if condition="empty($smeta['thumb'])"> 
+                   <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url(__TMPL__Public/assets/images/default_tupian1.png)">
+                <else /> 
+                    <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url({:sp_get_asset_upload_path($smeta['thumb'])})">
+                </if>
+                
                   <div class="title">
-                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
-                    <span>2017.12.12</span>
+                    <p class="text-ellipsis">{:msubstr($vo['post_excerpt'],0,32)}</p>
+                    <span>{$vo.post_modified}</span>
                   </div>
                 </a>
               </div>
-              <a href="#" class="h-title text-ellipsis">新闻标题</a>
+              <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" class="h-title text-ellipsis">{$vo.post_title}</a>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="mainbox">
-              <div class="newsbox">
-                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
-                  <div class="title">
-                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
-                    <span>2017.12.12</span>
-                  </div>
-                </a>
-              </div>
-              <a href="#" class="h-title text-ellipsis">新闻标题</a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="mainbox">
-              <div class="newsbox">
-                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
-                  <div class="title">
-                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
-                    <span>2017.12.12</span>
-                  </div>
-                </a>
-              </div>
-              <a href="#" class="h-title text-ellipsis">新闻标题</a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="mainbox">
-              <div class="newsbox">
-                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
-                  <div class="title">
-                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
-                    <span>2017.12.12</span>
-                  </div>
-                </a>
-              </div>
-              <a href="#" class="h-title text-ellipsis">新闻标题</a>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="mainbox">
-              <div class="newsbox">
-                <a href="#" style="background-image:url(__TMPL__Public/assets/images/newimg.png)">
-                  <div class="title">
-                    <p class="text-ellipsis">新闻摘要新闻摘要新闻摘要新闻摘要</p>
-                    <span>2017.12.12</span>
-                  </div>
-                </a>
-              </div>
-              <a href="#" class="h-title text-ellipsis">新闻标题</a>
-            </div>
-          </div>
+		</foreach>
       </div>
     </div>
   </div>
@@ -122,7 +90,7 @@
 
 <!-- 东西服务 -->
 <div class="home-service">
-  <a href="#">
+  <a href="{:leuu('portal/page/index',array('id'=>4))}">
     <img src="__TMPL__Public/assets/images/server.png" alt="" class="img-responsive"/>
   </a>
 </div>

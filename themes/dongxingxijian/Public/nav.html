@@ -6,7 +6,7 @@
       <img src="{:sp_get_image_url($site_logo)}" alt="{$site_name}" class="img-responsive"/>
     </a>
   </div>
-  <div class="title">首页</div>
+  <div class="title">{$site_name}</div>
   <div class="search-wrap">
     <form method="post" action="{:U('portal/search/index')}">
        <input type="text" class="inputcss" placeholder="" name="keyword" value="{:I('get.keyword')}"/>

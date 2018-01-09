@@ -11,7 +11,7 @@
 
 <section class="wrapper">
   <div class="form-container">
-  <form action="" method="post">
+  <form class="js-ajax-form" role="form" method="post" action="{:U('api/guestbook/addmsg')}">
     <div class="form-group">
       <div class="w6">
         <input type="text" placeholder="合作单位（个人）" name="" class="inputcss"/>
@@ -47,6 +47,10 @@
       <div class="w12">
         <textarea name="" id="" cols="30" rows="10" class="textareacss"></textarea>
       </div>
+    </div>
+    
+    <div class="btn-group">
+    	<button type="submit" class="btn btn-primary js-ajax-submit">发送留言</button>
     </div>
   </form>
   </div>

@@ -2,11 +2,24 @@
 <!-- 底部 -->
 <footer id="footer">
   <div class="f-container">
-    <nav>
+    <!--<nav>
       <ul>
         <li><a href="#">订阅资讯</a></li>
         <li><a href="#">联系东西</a></li>
       </ul>
+    </nav>-->
+    <php>
+    $menu_root_ul_id="foot_nav";
+    $filetpl="<a href='\$href' target='\$target'>\$label</a>";
+    $foldertpl="<a class='dropdown-toggle' href='\$href' target='\$target'>\$label</a>";
+    $ul_class="dropdown-menu";
+    $li_class="" ;
+    $menu_root_ul_class="";
+    $showlevel=1;
+    $dropdown='dropdown';
+	</php>
+	<nav>
+	{:sp_get_menu(2,$menu_root_ul_id,$filetpl,$foldertpl,$ul_class,$li_class,$menu_root_ul_class,$showlevel,$dropdown)}
     </nav>
     <div class="contact">
       <p>关注我们</p>
@@ -21,8 +34,8 @@
     </div>
   </div>
   <div class="copyright">
-    <p>版权信息</p>
-    <p>版权信息</p>
+    <p>{$site_icp}</p>
+    <p>{$site_copyright}</p>
   </div>
 </footer>
 {$site_tongji}
