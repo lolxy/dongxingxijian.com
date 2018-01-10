@@ -30,7 +30,7 @@ $posts=sp_sql_posts($tag);
         </if>
         </a>
         <div class="content">
-          <a href="#" class="text-ellipsis">
+          <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" class="text-ellipsis">
             {$vo.post_title}
           </a>
           <p>{$vo.post_excerpt}</p>

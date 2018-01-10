@@ -33,7 +33,7 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .mainbox .h-title{height: 1rem;line-height: 0.8rem;text-align: center;color:#1d1e22;font-size: 12px;text-decoration: none;}
 .swiper-slide-next .mainbox .h-title{font-weight: bold;font-size: 15px;line-height: 1rem;}
 /* 东西服务 */
-.home-service{margin-bottom: 0.4rem;}
+.home-service{margin-bottom: 0.25rem;}
 /* 侧边菜单 */
 #slide-menu{transition:all ease-in-out .5s;width: 45%; background-color: #1d1e22; position: fixed; top: 0; right: -45%; height: 100%; z-index: 1000; }
 #slide-menu a{display: block;text-decoration: none;line-height: 1.1112rem;height: 1.1112rem;padding-left: 0.26rem;border-bottom: 1px solid #393f4d;font-size: 0.4rem;color:#ffffff;font-weight: bold;}
@@ -89,13 +89,23 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .detail-container .detail-heading{position:relative;}
 .detail-container .detail-heading h2{font-size: 0.4533rem;color:#1d1e22;font-weight: 500;line-height: 0.6rem;margin-bottom: 5px;}
 .detail-container .detail-heading span{display: block;font-size: 0.267rem;color:#666666;line-height: 0.5rem;margin-bottom: 10px;}
-.detail-container .detail-body{font-size: 0.2667rem;color:#1d1e22;line-height: 0.6rem;text-indent: 2em;}
-.detail-container .detail-body p{margin-bottom: 0.5rem;margin-top: 0.3rem;word-wrap: break-word;}
+.detail-container .detail-body{font-size: 0.35rem;color:#1d1e22;line-height: 0.7rem;}
+.detail-container .detail-body p{margin-bottom: 0.4rem;margin-top: 0.3rem;word-wrap: break-word;text-indent:0px;}
+.detail-container .detail-body p:last-child{margin-bottom: 0.1rem;}
+.detail-container .detail-body img{max-width:100%;width:100%;}
 .detail-container .zanbox{position:absolute;bottom:0;right:0;height:0.4rem;}
 .detail-container .zanbox span{display:inline-block;margin-right: 0.5rem;height: 0.4rem;line-height: 0.4rem;}
 .detail-container .zanbox span:before{content:"";width: 0.4rem;height: 0.4rem;background-size:contain;margin-right: 0.2rem;display:inline-block;vertical-align: top;}
 .detail-container .zanbox .view:before{background-image: url(../images/view_icon.png);}
 .detail-container .zanbox .zan:before{background-image: url(../images/good_icon.png);}
+
+/*相册*/
+.images-container{background:#ffffff;margin-top:10px;padding:5px;margin-bottom:10px;}
+.images-container figcaption{line-height: 30px;text-align: center;overflow: hidden;white-space:nowrap; word-wrap:break-word; word-break:break-all;text-overflow:ellipsis;}
+.images-container h3{font-size:16px;line-height:40px;padding-left:10px;}
+.images-container figure{padding:5px;}
+.images-container figure .case_con{height:0px;width:100%;display:block;padding-bottom:100%;background-color:#f8f8f9;overflow:hidden;}
+.images-container .row{margin:0px;}
 /* 单页样式 */
 .page-wrapper{padding: 0.267rem;background-color: #fff;margin-bottom: 10px;}
 /*搜索页*/
