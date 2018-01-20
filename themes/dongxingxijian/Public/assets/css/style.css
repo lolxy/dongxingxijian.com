@@ -80,8 +80,8 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .workslist-container li>.content>a{font-size: 0.4rem;color:#1d1e22;line-height: 1rem;font-weight: 500;text-decoration: none;}
 .workslist-container li>.content>p{color:#666666;font-size: 0.32rem;line-height: 0.5rem;}
 .workslist-container li .op-box{margin-top: 10px;overflow: hidden;font-size: 0.2667rem;color:#999999;}
-.workslist-container li .op-box span{margin-right: 0.5rem;height: 0.4rem;line-height: 0.4rem;}
-.workslist-container li .op-box span:before{content:"";width: 0.4rem;height: 0.4rem;background-size:contain;margin-right: 0.2rem;display:inline-block;vertical-align: top;}
+.workslist-container li .op-box span{display:inline-block;margin-right: 0.5rem;height: 0.4rem;line-height: 0.4rem;position:relative;padding-left:0.5rem;}
+.workslist-container li .op-box span:before{content:"";width: 0.36rem;height: 0.36rem;background-size:contain;margin-right: 0.2rem;display:block;position:absolute;top:0.02rem;left:0.02rem;}
 .workslist-container li .op-box span.view:before{background-image: url(../images/view_icon.png);}
 .workslist-container li .op-box span.zan:before{background-image: url(../images/good_icon.png);}
 /* 新闻详情 */
@@ -94,8 +94,8 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .detail-container .detail-body p:last-child{margin-bottom: 0.1rem;}
 .detail-container .detail-body img{max-width:100%;width:100%;}
 .detail-container .zanbox{position:absolute;bottom:0;right:0;height:0.4rem;}
-.detail-container .zanbox span{display:inline-block;margin-right: 0.5rem;height: 0.4rem;line-height: 0.4rem;}
-.detail-container .zanbox span:before{content:"";width: 0.4rem;height: 0.4rem;background-size:contain;margin-right: 0.2rem;display:inline-block;vertical-align: top;}
+.detail-container .zanbox span{display:inline-block;margin-right: 0.5rem;height: 0.4rem;line-height: 0.4rem;position:relative;padding-left:0.5rem;}
+.detail-container .zanbox span:before{content:"";width: 0.36rem;height: 0.36rem;background-size:contain;margin-right: 0.2rem;display:block;position:absolute;top:0.02rem;left:0.02rem;}
 .detail-container .zanbox .view:before{background-image: url(../images/view_icon.png);}
 .detail-container .zanbox .zan:before{background-image: url(../images/good_icon.png);}
 
