@@ -108,6 +108,7 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .images-container .row{margin:0px;}
 /* 单页样式 */
 .page-wrapper{padding: 0.267rem;background-color: #fff;margin-bottom: 10px;}
+.page-wrapper img{width:100%;vertical-align: bottom;}
 /*搜索页*/
 .search-wrapper{margin-bottom: 10px;padding:0px;}
 .search-wrapper .news-list{background:none;padding:0px;}
