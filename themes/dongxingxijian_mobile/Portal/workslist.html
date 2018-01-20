@@ -11,11 +11,12 @@
 
 <?php
 $tag='cid:2;order:listorder asc,post_modified desc;';
-$posts=sp_sql_posts($tag); 
+$posts=sp_sql_posts($tag);
 ?>
 
 <section class="wrapper">
   <div class="workslist-container">
+		<notempty name="posts">
     <ul>
     <foreach name="posts" item="vo">
     <php>
@@ -23,9 +24,9 @@ $posts=sp_sql_posts($tag);
     </php>
       <li>
         <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">
-        <if condition="empty($smeta['thumb'])"> 
+        <if condition="empty($smeta['thumb'])">
             <img src="__TMPL__Public/assets/images/default_tupian1.png" alt="" class="img-responsive"/>
-        <else /> 
+        <else />
             <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="" class="img-responsive"/>
         </if>
         </a>
@@ -42,6 +43,9 @@ $posts=sp_sql_posts($tag);
       </li>
    </foreach>
     </ul>
+		<else/>
+			<div class="nomore">-- 没有更多数据 --</div>
+		</notempty>
   </div>
 </section>
 
