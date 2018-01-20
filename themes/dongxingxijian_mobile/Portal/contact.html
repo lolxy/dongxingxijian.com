@@ -4,12 +4,49 @@
 		<title>{$site_seo_title} {$site_name}</title>
 		<meta name="keywords" content="{$site_seo_keywords}" />
 		<meta name="description" content="{$site_seo_description}">
+		<link rel="stylesheet" href="__TMPL__Public/assets/css/swiper.min.css">
 		<tc_include file="Public:head" />
 	</head>
 <body>
 <tc_include file="Public:nav" />
 
 <section class="wrapper">
+	<div class="about-container">
+		<div class="main-img-box">
+			<img src="images/erweima.png"/>
+		</div>
+		<p>{$aboutus}</p>
+	</div>
+
+	<div class="honor-container">
+		<h2><a href="{:leuu('Portal/list/index',array('id'=>3))}">东西荣誉</a></h2>
+		<php>
+	$posts=sp_sql_posts('cid:3;field:object_id,term_id,post_title,post_excerpt,post_content,post_modified,smeta;order:listorder asc,post_modified desc;limit:10',array('recommended'=>'1'));
+	</php>
+		<div class="swiper-box">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<foreach name="posts" item="vo">
+		      <php>$smeta=json_decode($vo['smeta'],true);</php>
+					<div class="swiper-slide">
+	            <div class="mainbox">
+	              <div class="newsbox">
+	              <if condition="empty($smeta['thumb'])">
+	                   <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url(__TMPL__Public/assets/images/default_tupian1.png)">
+	                <else />
+	                    <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url({:sp_get_asset_upload_path($smeta['thumb'])})">
+	                </if>
+	                </a>
+	              </div>
+	              <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" class="h-title text-ellipsis2">{$vo.post_title}</a>
+	            </div>
+	          </div>
+				</foreach>
+				</div>
+			</div>
+		</div>
+	</div>
+
   <div class="contact-container">
     <dl>
       <dt>公司地址：</dt>
@@ -33,6 +70,15 @@
 
 <tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>
+<script src="__TMPL__Public/assets/js/swiper.jquery.min.js"></script>
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    loop: true,
+    slidesPerView: 3,
+    paginationClickable: true,
+    spaceBetween: 10
+  })
+</script>
 {:hook('footer_end')}
 </body>
 </html>
