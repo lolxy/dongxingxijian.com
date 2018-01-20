@@ -11,5 +11,5 @@ input,textarea,select{*font-size:100%;}
 a{text-decoration: none !important;}
 a:hover{opacity: 0.9;}
 html{height: 100%;}
-html > body{min-height: 100%;padding-top: 1.1112rem; background-color: #d4d4dc;padding-bottom: 4.2rem;position:relative;}
+html > body{min-height: 100%;padding-top: 1.1112rem; background-color: #d4d4dc;padding-bottom: 4.55rem;position:relative;}
 img{ vertical-align: top; width: 100%; max-width: 100%; height: auto; }

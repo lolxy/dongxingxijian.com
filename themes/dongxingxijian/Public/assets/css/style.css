@@ -127,7 +127,7 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .error-container{padding: 0.267rem;}
 .error-container p{display: block;text-align: center;font-size: 40px;line-height: 50vh;font-weight: bold;color:#1d1e22;}
 /*底部*/
-#footer{height: 4.2rem;background-color: #1d1e22;color:#fefefe;font-size: 0.32rem;overflow: hidden;position: absolute;bottom: 0;width: 100%;}
+#footer{height: 4.55rem;background-color: #1d1e22;color:#fefefe;font-size: 0.32rem;overflow: hidden;position: absolute;bottom: 0;width: 100%;}
 #footer .f-container{width: 40%;margin: 0 auto;}
 #footer .f-container nav{height: 1rem;overflow: hidden;}
 #footer .f-container nav li{width: 50%;float: left;text-align: center;line-height: 1.12rem;height: 1rem;overflow: hidden;}
@@ -137,5 +137,5 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 #footer .contact p{line-height: 0.8rem;text-align: center;}
 #footer .contact .c-box{height: 1rem;overflow: hidden;width: 2.4rem;margin: 0 auto;}
 #footer .contact .c-box a{display:block;float: left;padding: 0.1rem;height: 1rem;width: 1rem;margin: 0 0.1rem;}
-#footer .copyright{text-align: center;height: 1.4rem;margin-top: 5px;}
+#footer .copyright{text-align: center;height: 1.75rem;margin-top: 5px;}
 #footer .copyright p{line-height: 0.5rem;color:#ffdada;font-size: 0.28rem;}
