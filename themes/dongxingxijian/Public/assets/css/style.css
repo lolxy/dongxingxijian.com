@@ -46,7 +46,7 @@ header .menubox .menu{ background: url(../images/menu_icon.png) center center no
 .form-container .textareacss{resize:none;padding: 10px;}
 /* 联系我们 */
 .about-container{background-color: #fff;padding: 10px;overflow: hidden;}
-.about-container .main-img-box{width: 100%;overflow: hidden;}
+.about-container .main-img-box{width: 100%;overflow: hidden;margin-bottom: 10px;}
 .about-container .main-img-box img{width: 100%;}
 .about-container p{font-size: 13px;color:#1d1e22;line-height: 24px;font-weight: 500;text-indent: 2em;}
 .honor-container{background-color: #fff;margin-top: 10px;overflow: hidden;}
