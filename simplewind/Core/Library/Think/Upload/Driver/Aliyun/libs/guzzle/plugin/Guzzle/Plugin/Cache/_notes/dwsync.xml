@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="DefaultCacheStorage.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368440000000" remote="131599368440000000" Dst="0" />
+<file name="CanCacheStrategyInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368430000000" remote="131599368430000000" Dst="0" />
+<file name="CacheKeyProviderInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368430000000" remote="131599368430000000" Dst="0" />
+<file name="CacheStorageInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368430000000" remote="131599368430000000" Dst="0" />
+<file name="RevalidationInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368440000000" remote="131599368440000000" Dst="0" />
+<file name="CachePlugin.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368430000000" remote="131599368430000000" Dst="0" />
+<file name="DenyRevalidation.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368440000000" remote="131599368440000000" Dst="0" />
+<file name="SkipRevalidation.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368450000000" remote="131599368450000000" Dst="0" />
+<file name="DefaultRevalidation.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368440000000" remote="131599368440000000" Dst="0" />
+<file name="CallbackCanCacheStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368430000000" remote="131599368430000000" Dst="0" />
+<file name="DefaultCacheKeyProvider.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368440000000" remote="131599368440000000" Dst="0" />
+<file name="DefaultCanCacheStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368440000000" remote="131599368440000000" Dst="0" />
+</dwsync>

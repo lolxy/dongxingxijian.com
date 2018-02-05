@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="SXListMultipartUploadsParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369370000000" remote="131599369370000000" Dst="0" />
+<file name="SXGetObjectParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369370000000" remote="131599369370000000" Dst="0" />
+<file name="SXCompleteMultipartUploadParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369360000000" remote="131599369360000000" Dst="0" />
+<file name="SXCopyObjectParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369360000000" remote="131599369360000000" Dst="0" />
+<file name="SXPutObjectParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369380000000" remote="131599369380000000" Dst="0" />
+<file name="SXCreateBucketParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369360000000" remote="131599369360000000" Dst="0" />
+<file name="SXListObjectsParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369380000000" remote="131599369380000000" Dst="0" />
+<file name="SXParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369380000000" remote="131599369380000000" Dst="0" />
+<file name="SXOSSErrorParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369380000000" remote="131599369380000000" Dst="0" />
+<file name="SXListPartsParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369380000000" remote="131599369380000000" Dst="0" />
+<file name="SXInitiateMultipartUploadParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369370000000" remote="131599369370000000" Dst="0" />
+<file name="SXUploadPartParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369390000000" remote="131599369390000000" Dst="0" />
+<file name="SXGetBucketAclParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369370000000" remote="131599369370000000" Dst="0" />
+<file name="SXListBucketsParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369370000000" remote="131599369370000000" Dst="0" />
+<file name="SXEmptyParser.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369370000000" remote="131599369370000000" Dst="0" />
+</dwsync>

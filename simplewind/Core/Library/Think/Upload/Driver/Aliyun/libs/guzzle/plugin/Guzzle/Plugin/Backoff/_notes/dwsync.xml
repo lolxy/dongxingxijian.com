@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="ConstantBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368410000000" remote="131599368410000000" Dst="0" />
+<file name="AbstractErrorCodeBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368400000000" remote="131599368400000000" Dst="0" />
+<file name="ReasonPhraseBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368420000000" remote="131599368420000000" Dst="0" />
+<file name="LinearBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368420000000" remote="131599368420000000" Dst="0" />
+<file name="CurlBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368410000000" remote="131599368410000000" Dst="0" />
+<file name="BackoffLogger.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368400000000" remote="131599368400000000" Dst="0" />
+<file name="CallbackBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368410000000" remote="131599368410000000" Dst="0" />
+<file name="ExponentialBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368410000000" remote="131599368410000000" Dst="0" />
+<file name="BackoffStrategyInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368410000000" remote="131599368410000000" Dst="0" />
+<file name="BackoffPlugin.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368400000000" remote="131599368400000000" Dst="0" />
+<file name="HttpBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368420000000" remote="131599368420000000" Dst="0" />
+<file name="TruncatedBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368420000000" remote="131599368420000000" Dst="0" />
+<file name="AbstractBackoffStrategy.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368400000000" remote="131599368400000000" Dst="0" />
+</dwsync>

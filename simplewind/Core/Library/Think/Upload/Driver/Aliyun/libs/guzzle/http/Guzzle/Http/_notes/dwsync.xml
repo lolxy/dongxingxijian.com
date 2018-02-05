@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AbstractEntityBodyDecorator.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368290000000" remote="131599368290000000" Dst="0" />
+<file name="ReadLimitEntityBody.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368310000000" remote="131599368310000000" Dst="0" />
+<file name="Mimetypes.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368300000000" remote="131599368300000000" Dst="0" />
+<file name="EntityBody.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368300000000" remote="131599368300000000" Dst="0" />
+<file name="Url.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368310000000" remote="131599368310000000" Dst="0" />
+<file name="EntityBodyInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368300000000" remote="131599368300000000" Dst="0" />
+<file name="CachingEntityBody.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368300000000" remote="131599368300000000" Dst="0" />
+<file name="QueryString.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368310000000" remote="131599368310000000" Dst="0" />
+<file name="Client.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368300000000" remote="131599368300000000" Dst="0" />
+<file name="RedirectPlugin.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368310000000" remote="131599368310000000" Dst="0" />
+<file name="StaticClient.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368310000000" remote="131599368310000000" Dst="0" />
+<file name="ClientInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368300000000" remote="131599368300000000" Dst="0" />
+<file name="IoEmittingEntityBody.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599368300000000" remote="131599368300000000" Dst="0" />
+</dwsync>

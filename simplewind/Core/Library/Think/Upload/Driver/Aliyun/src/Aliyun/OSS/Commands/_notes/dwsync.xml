@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="UploadPartCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369310000000" remote="131599369310000000" Dst="0" />
+<file name="CopyObjectCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369280000000" remote="131599369280000000" Dst="0" />
+<file name="GetBucketAclCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369290000000" remote="131599369290000000" Dst="0" />
+<file name="AbortMultipartUploadCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369280000000" remote="131599369280000000" Dst="0" />
+<file name="PutObjectCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369300000000" remote="131599369300000000" Dst="0" />
+<file name="CompleteMultipartUploadCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369280000000" remote="131599369280000000" Dst="0" />
+<file name="ListPartsCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369300000000" remote="131599369300000000" Dst="0" />
+<file name="GeneratePresignedUrlCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369290000000" remote="131599369290000000" Dst="0" />
+<file name="ListMultipartUploadsCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369300000000" remote="131599369300000000" Dst="0" />
+<file name="DeleteBucketCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369290000000" remote="131599369290000000" Dst="0" />
+<file name="OSSCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369300000000" remote="131599369300000000" Dst="0" />
+<file name="CreateBucketCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369280000000" remote="131599369280000000" Dst="0" />
+<file name="GetObjectCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369290000000" remote="131599369290000000" Dst="0" />
+<file name="SetBucketAclCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369310000000" remote="131599369310000000" Dst="0" />
+<file name="ListBucketsCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369300000000" remote="131599369300000000" Dst="0" />
+<file name="DeleteObjectCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369290000000" remote="131599369290000000" Dst="0" />
+<file name="ListObjectsCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369300000000" remote="131599369300000000" Dst="0" />
+<file name="InitiateMultipartUploadCommand.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369300000000" remote="131599369300000000" Dst="0" />
+</dwsync>

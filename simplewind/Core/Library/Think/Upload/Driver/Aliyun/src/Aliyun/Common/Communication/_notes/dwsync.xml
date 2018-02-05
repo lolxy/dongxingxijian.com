@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="HttpRequest.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369210000000" remote="131599369210000000" Dst="0" />
+<file name="HttpResponse.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369210000000" remote="131599369210000000" Dst="0" />
+<file name="ExecutionContext.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369200000000" remote="131599369200000000" Dst="0" />
+<file name="HttpMessage.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369210000000" remote="131599369210000000" Dst="0" />
+<file name="ServiceClientFactory.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369220000000" remote="131599369220000000" Dst="0" />
+<file name="ResponseHandlerInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369210000000" remote="131599369210000000" Dst="0" />
+<file name="ServiceClientInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369220000000" remote="131599369220000000" Dst="0" />
+<file name="OpenServiceClient.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369210000000" remote="131599369210000000" Dst="0" />
+<file name="RetryableServiceClient.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369220000000" remote="131599369220000000" Dst="0" />
+<file name="HttpServiceClient.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369210000000" remote="131599369210000000" Dst="0" />
+<file name="Command.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369200000000" remote="131599369200000000" Dst="0" />
+<file name="ResponseParserInterface.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599369220000000" remote="131599369220000000" Dst="0" />
+</dwsync>
