@@ -4,6 +4,10 @@
 <file name="IndexController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599372680000000" remote="131599372680000000" Dst="0" />
 <file name="SearchController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599372690000000" remote="131599372690000000" Dst="0" />
 <file name="EmptyController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599372680000000" remote="131599372680000000" Dst="0" />
-<file name="AdminTermController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599525670000000" remote="131599525670000000" Dst="0" />
+<file name="AdminTermController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131623190956188123" remote="131623190910000000" Dst="0" />
 <file name="ListController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599372680000000" remote="131599372680000000" Dst="0" />
+<file name="PageController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599525660000000" remote="131599525660000000" Dst="0" />
+<file name="AdminPostController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599537050000000" remote="131599537050000000" Dst="0" />
+<file name="AdminPageController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599525660000000" remote="131599525660000000" Dst="0" />
+<file name="AdminWorksController.class.php" server="120.79.9.162//home/wwwroot/dongxisheji/" local="131599537050000000" remote="131599537050000000" Dst="0" />
 </dwsync>

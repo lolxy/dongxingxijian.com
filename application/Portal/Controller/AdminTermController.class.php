@@ -13,7 +13,7 @@ use Common\Controller\AdminbaseController;
 class AdminTermController extends AdminbaseController {
 
 	protected $terms_model;
-	protected $taxonomys=array("article"=>"资讯","works"=>"作品");
+	protected $taxonomys=array("article"=>"资讯","works"=>"案例");
 
 	function _initialize() {
 		parent::_initialize();

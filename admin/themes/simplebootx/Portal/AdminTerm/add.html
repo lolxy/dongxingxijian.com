@@ -78,7 +78,7 @@
 										unset($list_tpls['newslist']);
 									</php>
 	              		<select  name="list_tpl">
-	              			<option value="list">newslist{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+	              			<option value="newslist">newslist{:C("TMPL_TEMPLATE_SUFFIX")}</option>
 	              			<foreach name="list_tpls" item="vo">
 	              				<option value="{$vo}">{$vo}{:C("TMPL_TEMPLATE_SUFFIX")}</option>
 	              			</foreach>
@@ -93,7 +93,7 @@
 										unset($article_tpls['detail']);
 									</php>
 	              		<select  name="one_tpl">
-	              			<option value="article">detail{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+	              			<option value="detail">detail{:C("TMPL_TEMPLATE_SUFFIX")}</option>
 	              			<foreach name="article_tpls" item="vo">
 	              				<option value="{$vo}">{$vo}{:C("TMPL_TEMPLATE_SUFFIX")}</option>
 	              			</foreach>

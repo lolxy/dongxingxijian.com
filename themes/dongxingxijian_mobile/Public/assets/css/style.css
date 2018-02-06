@@ -1,3 +1,9 @@
+ /*引入外部字体文件*/
+@font-face{
+   font-family: myFirstFont;
+   /*ttf格式兼容非IE*/
+   src:url(../fonts/FZLTHFW.TTF);
+}
 /*******标题栏************/
 header{ background-color: #000000; height: 1.1112rem; position: fixed; top: 0; right: 0;width: 100%; z-index: 100; transition:right ease-in-out .5s; }
 header .logo{ width: 2.2224rem; position: absolute; top: 0; left: 0; }
