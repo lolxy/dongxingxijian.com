@@ -5,115 +5,31 @@
 		<meta name="keywords" content="{$site_seo_keywords}" />
 		<meta name="description" content="{$site_seo_description}">
 		<tc_include file="Public:head" />
-        <style>
-			/*==========以下部分是Validform必须的===========*/
-			.Validform_checktip{
-				margin-left:8px;
-				line-height:20px;
-				height:20px;
-				overflow:hidden;
-				color:#999;
-				font-size:12px;
-			}
-			.Validform_right{
-				color:#1d1e22;
-				padding-left:20px;
-			}
-			.Validform_wrong{
-				color:red;
-				padding-left:20px;
-				white-space:nowrap;
-			}
-			.Validform_loading{
-				padding-left:20px;
-			}
-			.Validform_error{
-				background-color:#ffe7e7;
-			}
-			#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');}
-			#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
-			#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#1d1e22;}
-			#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
-			#Validform_msg a.Validform_close:hover{color:#cc0;}
-			#Validform_msg .Validform_info{padding:8px;border:1px solid #1d1e22; border-top:none; text-align:left;}
-			
-			
-			</style>
 	</head>
 <body>
 <tc_include file="Public:nav" />
 
 <section class="wrapper">
-  <div class="form-container">
-  <form class="js-ajax-form" role="form" method="post" action="{:U('api/guestbook/addmsg')}">
-    <div class="form-group">
-      <div class="w6">
-        <input type="text" placeholder="合作单位（个人）" name="company" class="inputcss" datatype="*" nullmsg="合作单位（个人）不能为空"/>
-      </div>
-      <div class="w6">
-        <input type="text" placeholder="联系人姓名" name="full_name" class="inputcss" datatype="*" nullmsg="联系人姓名不能为空"/>
-      </div>
+	<div class="service-wrap">
+    	<img src="__TMPL__Public/assets/images/service1.png" alt="">
+        <img src="__TMPL__Public/assets/images/service2.png" alt="">
+        <img src="__TMPL__Public/assets/images/service3.png" alt="">
+        <img src="__TMPL__Public/assets/images/service4.png" alt="">
+        <img src="__TMPL__Public/assets/images/service5.png" alt="">
+        <img src="__TMPL__Public/assets/images/service6.png" alt="">
+        <img src="__TMPL__Public/assets/images/service7.png" alt="">
+        <img src="__TMPL__Public/assets/images/service8.png" alt="">
+        <img src="__TMPL__Public/assets/images/service9.png" alt="">
+        <img src="__TMPL__Public/assets/images/service10.png" alt="">
+        <img src="__TMPL__Public/assets/images/service11.png" alt="">
+        <img src="__TMPL__Public/assets/images/service12.png" alt="">
+        <img src="__TMPL__Public/assets/images/service13.png" alt="">
+        <img src="__TMPL__Public/assets/images/service14.png" alt="">
+        <img src="__TMPL__Public/assets/images/service15.png" alt="">
     </div>
-    <div class="form-group">
-      <div class="w6">
-        <input type="tel" placeholder="联系电话" name="phone" class="inputcss" datatype="*" nullmsg="联系电话不能为空"/>
-      </div>
-      <div class="w6">
-        <input type="email" placeholder="邮箱地址" name="email" class="inputcss" datatype="e" nullmsg="邮箱不能为空" errormsg="邮箱格式输入有误"/>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="w12">
-        <input type="text" placeholder="通信地址" name="address" class="inputcss"/>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="w12">
-        <select name="type" class="inputcss" datatype="*" nullmsg="请选择合作项目">
-          <option value="">--请选择合作项目--</option>
-          <option value="1" selected>酒店空间（公共区域/套房）</option>
-          <option value="2">住宅、会所、餐饮</option>
-          <option value="3">办公空间、店面</option>
-          <option value="4">户外景观</option>
-          <option value="5">外观（立面、门头）</option>
-          <option value="6">电梯厅、电梯大堂、地下室、门廊、走廊</option>
-          <option value="7">室外</option>
-          <option value="8">草图大师</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="w12">
-        <textarea name="msg" cols="30" rows="10" class="textareacss" datatype="*" nullmsg="留言内容不能为空"></textarea>
-      </div>
-    </div>
-    
-    <div class="btn-group" style="width:100%;margin-bottom:10px;padding:0px 5px;">
-    	<button type="submit" class="btn btn-default js-ajax-submit" data-wait="1500" style="border:1px solid #1d1e22;display:block;width:100%;">发送留言</button>
-    </div>
-  </form>
-  </div>
 </section>
 
-<tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>
-<script type="text/javascript" src="__TMPL__Public/assets/js/Validform_v5.3.2_min.js"></script>
-<script>
-$(".js-ajax-form").Validform({
-		ajaxPost:true,
-		callback:function(data){
-			if(data.status=="1"){
-				setTimeout(function(){
-					$.Hidemsg(); //公用方法关闭信息提示框;显示方法是$.Showmsg("message goes here.");
-					window.location.reload();
-				},2000);
-			}
-		}
-	});
-</script>
 {:hook('footer_end')}
 </body>
 </html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_seo_title} {$site_name}</title>
+		<meta name="keywords" content="{$site_seo_keywords}" />
+		<meta name="description" content="{$site_seo_description}">
+		<tc_include file="Public:head" />
+	</head>
+<body>
+<tc_include file="Public:nav" />
+
+<section class="wrapper">
+  <div class="newslist-container">
+
+		<?php
+		    $cid = $cat_id;
+		    $tag = "order:listorder asc,post_modified desc;";
+		    $pagesize = '5';
+		    $content=sp_sql_posts_paged_bycatid($cid,$tag,$pagesize);
+		    $lists = $content['posts'];
+		    $pager=$content['page'];
+		?>
+
+		<notempty name="lists">
+    <div class="news-list">
+      <ul id="newsullist">
+      <volist name="lists" id="vos">
+			<php>
+				$smeta=json_decode($vos['smeta'], true);
+			</php>
+        <li>
+          <a href="{:leuu('Portal/article/index',array('id'=>$vos['object_id'],'cid'=>$vos['term_id']))}">
+          	<if condition="empty($smeta['thumb'])">
+               <img src="__TMPL__Public/assets/images/default_tupian1.png" alt="">
+            <else />
+                <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="">
+           	</if>
+            <div class="content">
+            	<h2 class="text-ellipsis">{$vos.post_title}</h2>
+           		<p class="text-ellipsis3">{$vos.post_excerpt}</p>
+            </div>
+          </a>
+        </li>
+        </volist>
+      </ul>
+      <div class="more">更多资讯</div>
+    </div>
+		<else/>
+			<div class="nomore">-- 没有更多数据 --</div>
+		</notempty>
+  </div>
+  <div class="nomore" style="display:none;">-- 没有更多数据 --</div>
+</section>
+
+<tc_include file="Public:scripts"/>
+<script>
+$(function () {
+	page = '1';
+$(".more").click(function(){
+	page++;
+			var id = "{$cat_id}";
+			var pages = "{$content.total_pages}";//获取页面总页数
+			if ( page <= pages){
+				var url ='index.php?m=list&a=index&id='+id+'&p='+page;
+				$.get(url,function (msg) {
+					$("#newsullist").append(
+						$(msg).find("#newsullist")
+				);
+			})//get结束
+		}else{
+			$(".nomore").show();
+			$(".more").hide();
+		}
+	});
+})
+</script>
+{:hook('footer_end')}
+</body>
+</html>

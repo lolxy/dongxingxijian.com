@@ -75,10 +75,10 @@
 								<div class="controls">
 									<php>
 										$list_tpls=$tpl_list;
-										unset($list_tpls['newslist']);
+										unset($list_tpls['list']);
 									</php>
 	              		<select  name="list_tpl">
-	              			<option value="newslist">newslist{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+	              			<option value="list">list{:C("TMPL_TEMPLATE_SUFFIX")}</option>
 	              			<foreach name="list_tpls" item="vo">
 	              				<option value="{$vo}">{$vo}{:C("TMPL_TEMPLATE_SUFFIX")}</option>
 	              			</foreach>

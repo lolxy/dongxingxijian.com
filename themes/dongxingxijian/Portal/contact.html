@@ -6,79 +6,56 @@
 		<meta name="description" content="{$site_seo_description}">
 		<link rel="stylesheet" href="__TMPL__Public/assets/css/swiper.min.css">
 		<tc_include file="Public:head" />
+        <script src="http://api.map.baidu.com/api?v=1.3"></script>
+        <style>
+img {
+	max-width: none;
+}
+</style>
 	</head>
 <body>
 <tc_include file="Public:nav" />
 
 <section class="wrapper">
-	<php>
-	$contact_slides=sp_getslide("contact_ads");
-	</php>
-
-	<div class="about-container">
-		<notempty name="contact_slides">
-			<foreach name="contact_slides" item="vo" key="k">
-				<if condition="$k==0">
-					<div class="main-img-box">
-						<img src="{:sp_get_asset_upload_path($vo['slide_pic'])}"/>
-					</div>
-				</if>
-			</foreach>
-		</notempty>
-		<p>{$aboutus}</p>
-	</div>
-
-	<div class="honor-container">
-		<h2><a href="{:leuu('Portal/list/index',array('id'=>3))}">东西荣誉</a></h2>
-		<php>
-	$posts=sp_sql_posts('cid:3;field:object_id,term_id,post_title,post_excerpt,post_content,post_modified,smeta;order:listorder asc,post_modified desc;limit:10',array('recommended'=>'1'));
-	</php>
-		<div class="swiper-box">
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					<foreach name="posts" item="vo">
-		      <php>$smeta=json_decode($vo['smeta'],true);</php>
-					<div class="swiper-slide">
-	            <div class="mainbox">
-	              <div class="newsbox">
-	              <if condition="empty($smeta['thumb'])">
-	                   <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url(__TMPL__Public/assets/images/default_tupian1.png)">
-	                <else />
-	                    <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url({:sp_get_asset_upload_path($smeta['thumb'])})">
-	                </if>
-	                </a>
-	              </div>
-	              <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" class="h-title text-ellipsis2">{$vo.post_title}</a>
-	            </div>
-	          </div>
-				</foreach>
-				</div>
-			</div>
-		</div>
-	</div>
-
-  <div class="contact-container">
-    <dl>
-      <dt>公司地址：</dt>
-      <dd>{$address}</dd>
-    </dl>
-    <dl>
-      <dt>联系电话：</dt>
-      <dd><span>{$tell}</span><span>{$contactName}</span></dd>
-    </dl>
-    <dl>
-      <dt>关注我们：</dt>
-      <dd>
-        <div class="ewmbox">
-          <img src="{:sp_get_image_url($site_erweima)}" alt="" class="img-responsive"/>
+	<div class="contact-wrap">
+    	<img src="__TMPL__Public/assets/images/contact1.png" alt="">
+        <php>
+        $contact_slides=sp_getslide("contact_ads");
+        </php>
+    
+        <div class="contact-ads">
+            <notempty name="contact_slides">
+                <foreach name="contact_slides" item="vo" key="k">
+                    <if condition="$k==0">
+                        <div class="main-img-box">
+                            <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}"/>
+                        </div>
+                    </if>
+                </foreach>
+            </notempty>
         </div>
-        <p>{$site_host}</p>
-      </dd>
-    </dl>
-  </div>
+        <img src="__TMPL__Public/assets/images/contact2.png" alt="">
+        <div class="map-wrapper">
+        	<div id="mapCanvas" class="map-canvas no-margin" style="height: 300px;">
+			<script type="text/javascript">
+				var map = new BMap.Map("mapCanvas"); // 创建Map实例
+				var point = new BMap.Point("119.268368", "26.062732"); // 创建点坐标
+				map.centerAndZoom(point, 15); // 初始化地图,设置中心点坐标和地图级别。
+				map.enableScrollWheelZoom(); //启用滚轮放大缩小
+				//添加缩放控件
+//				map.addControl(new BMap.NavigationControl());
+//				map.addControl(new BMap.ScaleControl());
+//				map.addControl(new BMap.OverviewMapControl());
+
+				var marker = new BMap.Marker(point); // 创建标注 
+				map.addOverlay(marker); // 将标注添加到地图中
+			</script>
+			</div>
+        </div>
+        <img src="__TMPL__Public/assets/images/contact3.png" alt="">
+    </div>
 </section>
 
-<tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>
 <script src="__TMPL__Public/assets/js/swiper.jquery.min.js"></script>
 <script>

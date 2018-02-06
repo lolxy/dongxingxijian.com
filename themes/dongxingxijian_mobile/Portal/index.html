@@ -7,107 +7,66 @@
 		<link rel="stylesheet" href="__TMPL__Public/assets/css/swiper.min.css">
 		<tc_include file="Public:head" />
 		<style>
-			body{transition:all ease-in-out .5s;}
+			body{transition:all ease-in-out 5s;}
 			.body-hide{opacity:0;}
 			.wrapper{position: relative;z-index: 2;background-color:#d4d4dc;}
+			.swiper-slide img{width:100%;}
+			.swiper-pagination-bullet{background: #ffffff;}
+			.swiper-pagination-bullet-active{background: #0b090a;}
 		</style>
 	</head>
 <body class="body-hide">
 <tc_include file="Public:nav" />
 
+<div class="instruction-contain"></div>
 <php>
 $home_slides=sp_getslide("index_ads");
 </php>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <foreach name="home_slides" item="vo" key="k">
+            <div class="swiper-slide">
+                <a href="{$vo['slide_url']}"><img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="{$vo['slide_name']}"/></a>
+            </div>
+        </foreach>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
 
-<foreach name="home_slides" item="vo" key="k">
-	<if condition="$k==0">
-		<div class="index-welcome-container" style="background-image:url({:sp_get_asset_upload_path($vo['slide_pic'])})">
-		    <div class="black-mask"></div>
-		</div>
-		<div class="scroll-mask-index"></div>
-	</if>
-</foreach>
-
+<php>
+$case_slides=sp_getslide("index_category_list");
+</php>
 <section class="wrapper">
 <!-- 其他主图 -->
 <div class="workslist">
   <ul>
+  <foreach name="case_slides" item="vo" key="k">
     <li>
-      <a href="{:leuu('portal/page/index',array('id'=>1))}">
-        <img src="__TMPL__Public/assets/images/main1.png" alt="" class="img-responsive"/>
+      <a href="{$vo['slide_url']}">
+        <img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt="{$vo['slide_name']}" class="img-responsive"/>
       </a>
     </li>
-    <li>
-      <a href="{:leuu('portal/page/index',array('id'=>2))}">
-        <img src="__TMPL__Public/assets/images/main2.png" alt="" class="img-responsive"/>
-      </a>
-    </li>
-    <li>
-      <a href="{:leuu('portal/page/index',array('id'=>3))}">
-        <img src="__TMPL__Public/assets/images/main3.png" alt="" class="img-responsive"/>
-      </a>
-    </li>
-    <li>
-      <a href="{:leuu('portal/list/index',array('id'=>2))}">
-        <img src="__TMPL__Public/assets/images/main4.png" alt="" class="img-responsive"/>
-      </a>
-    </li>
+    </foreach>
   </ul>
 </div>
 
-<!-- 东西资讯 -->
-<div class="home-news">
-  <h2>东西资讯</h2>
-  <div class="swiper-box">
-  <php>
-$posts=sp_sql_posts('cid:1;field:object_id,term_id,post_title,post_excerpt,post_content,post_modified,smeta;order:listorder asc,post_modified desc;limit:10',array('recommended'=>'1'));
-</php>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-      <foreach name="posts" item="vo">
-      <php>$smeta=json_decode($vo['smeta'],true);</php>
-    	<div class="swiper-slide">
-            <div class="mainbox">
-              <div class="newsbox">
-              <if condition="empty($smeta['thumb'])"> 
-                   <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url(__TMPL__Public/assets/images/default_tupian1.png)">
-                <else /> 
-                    <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" style="background-image:url({:sp_get_asset_upload_path($smeta['thumb'])})">
-                </if>
-                
-                  <div class="title">
-                    <p class="text-ellipsis">{:msubstr($vo['post_excerpt'],0,32)}</p>
-                    <span>{$vo.post_modified}</span>
-                  </div>
-                </a>
-              </div>
-              <a href="{:leuu('Portal/article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" class="h-title text-ellipsis">{$vo.post_title}</a>
-            </div>
-          </div>
-		</foreach>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 东西服务 -->
-<div class="home-service">
-  <a href="{:leuu('portal/page/index',array('id'=>4))}">
-    <img src="__TMPL__Public/assets/images/server.png" alt="" class="img-responsive"/>
-  </a>
-</div>
 </section>
-
-<tc_include file="Public:footer"/>
 <tc_include file="Public:scripts"/>
-<script src="__TMPL__Public/assets/js/swiper.jquery.min.js"></script>
 <script>
   var mySwiper = new Swiper ('.swiper-container', {
-    loop: true,
-    slidesPerView: 3,
-    paginationClickable: true,
-    spaceBetween: 10
-  })
+		loop: true,
+		 // 如果需要分页器
+    	pagination: '.swiper-pagination',
+		paginationClickable: true,
+		autoHeight:true
+  	})
+  
+	$(".instruction-contain").addClass("get-in");
+	$("body").removeClass("body-hide");
+	setTimeout(function() {
+		$(".instruction-contain").addClass("end-hide");
+	},4000);
   </script>
 {:hook('footer_end')}
 </body>

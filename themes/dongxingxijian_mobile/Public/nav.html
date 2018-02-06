@@ -1,36 +1,22 @@
 {:hook('body_start')}
 <!-- 头部公共部分 -->
 <header id="header">
-  <div class="logo">
-    <a href="__ROOT__/">
-      <img src="{:sp_get_image_url($site_logo)}" alt="{$site_name}" class="img-responsive"/>
-    </a>
-  </div>
-  <div class="title">{$site_name}</div>
-  <div class="search-wrap">
-    <form method="post" action="{:U('portal/search/index')}">
-       <input type="text" class="inputcss" placeholder="" name="keyword" value="{:I('get.keyword')}"/>
-       <button type="submit" class="btn-search"></button>
-    </form>
-    <span class="qvxiao">取消</span>
-  </div>
-  <div class="searchbox">
-    <a href="javascript:void(0);" class="search"></a>
-  </div>
-  <div class="menubox">
-    <a href="javascript:void(0);" class="menu"></a>
-  </div>
+	<div class="h-head">
+    	<p><a href="/">EASY TO WEST DESIGN</a></p>
+        <p>東形西見</p>
+    </div>
+	<div class="menubox">
+    	<a href="javascript:void(0);" class="menus"></a>
+  	</div>
+    <nav class="navlist">
+    	<ul>
+        	<li><a href="{:leuu('Portal/page/index',array('id'=>23))}">ABOUT /关于</a></li>
+            <li><a href="{:leuu('Portal/list/index',array('id'=>2))}">PROJECT /案例</a></li>
+            <li><a href="{:leuu('Portal/page/index',array('id'=>4))}">SERVICE /服务</a></li>
+            <li><a href="{:leuu('Portal/list/index',array('id'=>1))}">NEWS /动态</a></li>
+            <li><a href="{:leuu('Portal/page/index',array('id'=>5))}">CONTACT /联络</a></li>
+            <li><a href="/">EASY TO WEST DESIGN /東形西見</a></li>
+        </ul>
+        <div class="close">&times;</div>
+    </nav>
 </header>
-
-<php>
-    $menu_root_ul_id="slide-menu";
-    $filetpl="<a href='\$href' target='\$target'>\$label</a>";
-    $foldertpl="<a class='dropdown-toggle' href='\$href' target='\$target'>\$label</a>";
-    $ul_class="dropdown-menu";
-    $li_class="" ;
-    $menu_root_ul_class="";
-    $showlevel=1;
-    $dropdown='dropdown';
-</php>
-
-{:sp_get_menu("main",$menu_root_ul_id,$filetpl,$foldertpl,$ul_class,$li_class,$menu_root_ul_class,$showlevel,$dropdown)}
