@@ -16,7 +16,7 @@ header .h-head p a{color:#ffffff;}
 header .h-head p:first-child{font-weight:bold;}
 header .logo{ width: 2.2224rem; position: absolute; top: 0; left: 0; }
 header .title{ margin-left: 2.2224rem; margin-right: 2.2224rem; text-align: center; line-height: 1.1112rem; color:#ffffff; font-size: 0.4167rem; font-weight: bold; letter-spacing: 2px; }
-header .searchbox,header .menubox{ width: 1.6rem; height: 1.73333rem;}
+header .searchbox,header .menubox{ width: 1.2rem; height: 1.3rem;}
 header .searchbox{right: 1.1112rem;}
 header .search-wrap{ position: absolute; top: 0.1556rem; left: 100%; transition: all ease-in-out .5s; z-index: 4; }
 header .search-wrap form{ position: relative; margin-right: 1rem; margin-left: 0; overflow: hidden; height: 0.8rem; }
@@ -26,7 +26,7 @@ header .search-wrap .inputcss{ height: 0.8rem; border: 1px solid #ffffff; border
 header .search-wrap .btn-search{ background: url(../images/search_black_icon.png) center center no-repeat; background-size:contain; width: 0.8rem; height: 0.8rem; border: none; position: absolute; right: 0;top: 0; display: block; z-index: 3; }
 header .searchbox .search,header .menubox .menus{height: 100%; display: block; }
 header .searchbox .search{ background: url(../images/search_icon.png) center center no-repeat; background-size: cover; }
-header .menubox{ right: 0.8rem; z-index: 5;bottom:-0.8667rem;position: absolute;background: #898989;text-align: center;transition:all ease-in-out 0.6s;}
+header .menubox{ right: 0.8rem; z-index: 5;bottom:-0.68rem;position: absolute;background: #898989;text-align: center;transition:all ease-in-out 0.6s;}
 header .menubox:hover{background: #999999;}
 header .menubox .menus{ background: url(../images/menu_icon.png) center center no-repeat; background-size: cover; }
 
@@ -106,7 +106,7 @@ header .menubox .menus{ background: url(../images/menu_icon.png) center center n
 .newslist-container,.wrapper{overflow: hidden;}
 .newslist-container .news-list li a{display:block;width: 100%;height: 100%;overflow: hidden;position:relative;font-family: myFirstFont;color:#ffffff;}
 .newslist-container .news-list li a .content{position:absolute;width: 100%;height: 100%;text-align: center;display:flex;top: 0;left: 0; flex-direction:column;align-items:center; justify-content:center;padding: 20px;}
-.newslist-container .news-list li a .content h2{font-size:18px;margin-bottom: 20px;width: 100%;}
+.newslist-container .news-list li a .content h2{font-size:0.42rem;width: 100%;}
 .newslist-container .news-list li a .content p{font-size: 14px;color:rgba(255,255,255,.8);line-height: 28px;}
 .newslist-container .more{display: block;width: 2.4rem;height: 0.8rem;text-align: center;line-height: 0.8rem;color:#393f4d;font-size: 0.32rem;font-weight: bold;border: 1px solid #1d1e22;margin: 0.5rem auto;}
 .wrapper .nomore{height:35px;line-height:35px;text-align:center;margin-top: 10px;margin-bottom: 10px;}
@@ -181,3 +181,24 @@ header .menubox .menus{ background: url(../images/menu_icon.png) center center n
 #footer .contact .c-box a{display:block;float: left;padding: 0.1rem;height: 1rem;width: 1rem;margin: 0 0.1rem;}
 #footer .copyright{text-align: center;height: 1.75rem;margin-top: 5px;}
 #footer .copyright p{line-height: 0.5rem;color:#ffdada;font-size: 0.28rem;}
+
+/*关于我们*/
+.main-box,.about-jieshao{padding:0 1rem;}
+.main-box p,.about-jieshao p{font-family: myFirstFont;font-size:0.18rem;line-height: 0.6rem;color:#666666;font-weight: 500;}
+.main-box p{text-align: center;}
+.about-photo img{vertical-align: top;width:100%}
+.about-photo b{padding: 0.33rem;text-align: center;font-weight: bold;font-size:0.18rem;display:block;}
+.mt40{margin-top: 0.6rem;}
+.main-box .box,.about-jieshao{margin-top: 1rem;}
+.main-box .box h2{width: 80%;background-color: #000;color:#ffffff;line-height: 0.6rem;font-size: 0.2rem;margin: 0 auto;text-align: center;margin-bottom: 20px;}
+.about-jieshao .a-photo{padding-top: 15px;}
+
+.about-jieshao .js-box{display:flex;height: 4.5rem;}
+.about-jieshao .js-box .a-header{flex:1;display:flex;height: 100%; flex-direction:column; justify-content:space-between}
+.about-jieshao .js-box .a-header .a-top{flex:1;display:flex;flex-direction:column; justify-content:space-between}
+.about-jieshao .js-box .a-header .a-top p{font-size: 0.32rem;}
+.about-jieshao .js-box .a-header .a-top h2{font-size: 0.45rem;margin-bottom: 0.4rem;color:#919191;font-weight: bold;}
+.about-jieshao .js-box .a-header .a-top h3{font-size: 0.3rem;color:#919191;font-weight: bold;}
+.about-jieshao .js-box .a-header .a-bottom{margin-top: 0.65rem;}
+.about-jieshao .js-box .a-photo{width: 3rem;margin-left: 10px;}
+.js-content .p1,.js-content .p2,.about-jieshao .js-box{margin-bottom: 0.65rem;}
