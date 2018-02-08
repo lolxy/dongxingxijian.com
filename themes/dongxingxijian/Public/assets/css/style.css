@@ -26,11 +26,11 @@ header .search-wrap .inputcss{ height: 0.8rem; border: 1px solid #ffffff; border
 header .search-wrap .btn-search{ background: url(../images/search_black_icon.png) center center no-repeat; background-size:contain; width: 0.8rem; height: 0.8rem; border: none; position: absolute; right: 0;top: 0; display: block; z-index: 3; }
 header .searchbox .search,header .menubox .menus{height: 100%; display: block; }
 header .searchbox .search{ background: url(../images/search_icon.png) center center no-repeat; background-size: cover; }
-header .menubox{ right: 0.8rem; z-index: 5;bottom:-0.68rem;position: absolute;background: #898989;text-align: center;transition:all ease-in-out 0.6s;}
+header .menubox{ right: 0.8rem; z-index: 5;top: 2.5rem;position: fixed;background: #898989;text-align: center;transition:all ease-in-out 0.6s;}
 header .menubox:hover{background: #999999;}
 header .menubox .menus{ background: url(../images/menu_icon.png) center center no-repeat; background-size: cover; }
 
-.navlist{position:absolute;left:50%;width: 90%;top: 2.6rem;z-index:-1;margin-left: -45%;background-color: #727071;padding: 10px 20px;box-sizing:border-box;overflow: hidden;transition:all ease-in-out 0.8s;opacity:0; transform:translate(0,-100%);}
+.navlist{position:fixed;left:50%;width: 90%;top: 2.6rem;z-index:-1;margin-left: -45%;background-color: #727071;padding: 10px 20px;box-sizing:border-box;overflow: hidden;transition:all ease-in-out 0.8s;opacity:0; transform:translate(0,-100%);}
 .navlist.showNav{z-index:5;opacity:1;transform:translate(0,0);}
 .navlist li{margin-bottom: 18px;line-height: 30px;}
 .navlist li a{display:block;width: 100%;height: 30px;line-height: 30px;color:#ffffff;border-bottom: 1px solid #ffffff;font-weight:500;font-size: 14px;font-family: myFirstFont;}
@@ -184,21 +184,22 @@ header .menubox .menus{ background: url(../images/menu_icon.png) center center n
 
 /*关于我们*/
 .main-box,.about-jieshao{padding:0 1rem;}
-.main-box p,.about-jieshao p{font-family: myFirstFont;font-size:0.18rem;line-height: 0.6rem;color:#666666;font-weight: 500;}
+.main-box p,.about-jieshao p{font-family: myFirstFont;font-size:14px;line-height: 30px;color:#666666;font-weight: 500;}
 .main-box p{text-align: center;}
 .about-photo img{vertical-align: top;width:100%}
-.about-photo b{padding: 0.33rem;text-align: center;font-weight: bold;font-size:0.18rem;display:block;}
+.about-photo b{padding: 0.33rem;text-align: center;font-weight: bold;font-size:14px;display:block;}
 .mt40{margin-top: 0.6rem;}
 .main-box .box,.about-jieshao{margin-top: 1rem;}
-.main-box .box h2{width: 80%;background-color: #000;color:#ffffff;line-height: 0.6rem;font-size: 0.2rem;margin: 0 auto;text-align: center;margin-bottom: 20px;}
+.main-box .box h2{width: 80%;background-color: #000;color:#ffffff;line-height: 0.6rem;font-size: 15px;margin: 0 auto;text-align: center;margin-bottom: 20px;}
 .about-jieshao .a-photo{padding-top: 15px;}
 
-.about-jieshao .js-box{display:flex;height: 4.5rem;}
+.about-jieshao .js-box{display:flex;height: 5rem;}
 .about-jieshao .js-box .a-header{flex:1;display:flex;height: 100%; flex-direction:column; justify-content:space-between}
 .about-jieshao .js-box .a-header .a-top{flex:1;display:flex;flex-direction:column; justify-content:space-between}
-.about-jieshao .js-box .a-header .a-top p{font-size: 0.32rem;}
-.about-jieshao .js-box .a-header .a-top h2{font-size: 0.45rem;margin-bottom: 0.4rem;color:#919191;font-weight: bold;}
-.about-jieshao .js-box .a-header .a-top h3{font-size: 0.3rem;color:#919191;font-weight: bold;}
+.about-jieshao .js-box .a-header .a-top p{font-size: 18px;}
+.about-jieshao .js-box .a-header .a-top h2{font-size: 24px;margin-bottom: 0.4rem;color:#919191;font-weight: bold;}
+.about-jieshao .js-box .a-header .a-top h3{font-size: 14px;color:#919191;font-weight: bold;}
 .about-jieshao .js-box .a-header .a-bottom{margin-top: 0.65rem;}
+.about-jieshao .js-box .a-header .a-bottom p{font-size: 12px;line-height: 20px;}
 .about-jieshao .js-box .a-photo{width: 3rem;margin-left: 10px;}
 .js-content .p1,.js-content .p2,.about-jieshao .js-box{margin-bottom: 0.65rem;}

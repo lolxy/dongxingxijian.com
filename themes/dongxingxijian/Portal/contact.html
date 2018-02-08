@@ -11,6 +11,12 @@
 img {
 	max-width: none;
 }
+		.main-box{padding: 0 1rem;}
+        .contact-wrap{padding: 1rem 0;background-color: #fff;}
+		.s-header{display:flex; flex-direction:column;text-align: center;margin-bottom: 20px;}
+		.s-header .h{display:block;width: 1.5rem;height: 1.5rem;text-align: center;line-height: 1.5rem;font-size: 20px;font-weight: bold;background-color: #000;border-radius:1.5rem;margin: 10px auto;color:#ffffff;}
+		.s-header span{line-height: 30px;font-size: 16px;font-weight: bold;}
+		.main-box h1{font-size: 20px;text-align: center;line-height: 50px;font-weight: bold; letter-spacing:5px;}
 </style>
 	</head>
 <body>
@@ -18,7 +24,12 @@ img {
 
 <section class="wrapper">
 	<div class="contact-wrap">
-    	<img src="__TMPL__Public/assets/images/contact1.png" alt="">
+    	<div class="s-header">
+        	<span class="h">联</span>
+            <span>CONNECTION</span>
+            <span>&times;</span>
+        </div>
+        
         <php>
         $contact_slides=sp_getslide("contact_ads");
         </php>
@@ -34,25 +45,32 @@ img {
                 </foreach>
             </notempty>
         </div>
-        <img src="__TMPL__Public/assets/images/contact2.png" alt="">
+        
+         <div class="main-box">
+        	<div class="box">
+            	<h2>登门垂询敬请提前预约</h2>
+                <p>0591 - 86396800</p>
+            </div>
+            
+            <div class="box">
+            	<h2>东形西见机构地址</h2>
+                <p>福州市仓山区金达路大榕树创意园2号楼1008-1010</p>
+            </div>
+            
+            <div style="margin-top:20px"></div>
+         </div>
         <div class="map-wrapper">
-        	<div id="mapCanvas" class="map-canvas no-margin" style="height: 300px;">
-			<script type="text/javascript">
-				var map = new BMap.Map("mapCanvas"); // 创建Map实例
-				var point = new BMap.Point("119.268368", "26.062732"); // 创建点坐标
-				map.centerAndZoom(point, 15); // 初始化地图,设置中心点坐标和地图级别。
-				map.enableScrollWheelZoom(); //启用滚轮放大缩小
-				//添加缩放控件
-//				map.addControl(new BMap.NavigationControl());
-//				map.addControl(new BMap.ScaleControl());
-//				map.addControl(new BMap.OverviewMapControl());
-
-				var marker = new BMap.Marker(point); // 创建标注 
-				map.addOverlay(marker); // 将标注添加到地图中
-			</script>
-			</div>
+			<a href="{:leuu('Portal/page/index',array('id'=>24))}">
+            	<img src="__TMPL__Public/assets/images/daohang.png" alt="">
+            </a>
         </div>
-        <img src="__TMPL__Public/assets/images/contact3.png" alt="">
+        
+        <div class="main-box">
+        	<div class="box">
+            	<h2>扫描二维码更多关于东形西见</h2>
+                <p style="width:220px;text-align:center;margin:0 auto;"><img src="__TMPL__Public/assets/images/erweima.png" alt=""></p>
+            </div>
+         </div>
     </div>
 </section>
 
