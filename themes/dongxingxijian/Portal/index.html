@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="__TMPL__Public/assets/css/swiper.min.css">
 		<tc_include file="Public:head" />
 		<style>
-			body{transition:all ease-in-out 5s;}
+			body{transition:all ease-in-out 3.5s;}
 			.body-hide{opacity:0;}
 			.wrapper{position: relative;z-index: 2;background-color:#d4d4dc;}
 			.swiper-slide img{width:100%;}
@@ -63,10 +63,10 @@ $case_slides=sp_getslide("index_category_list");
   	})
   
 	$(".instruction-contain").addClass("get-in");
-	$("body").removeClass("body-hide");
 	setTimeout(function() {
 		$(".instruction-contain").addClass("end-hide");
-	},4000);
+	},3500);
+	$("body").removeClass("body-hide");
   </script>
 {:hook('footer_end')}
 </body>
