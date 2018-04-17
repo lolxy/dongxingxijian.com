@@ -30,15 +30,15 @@
 			</php>
         <li>
           <a href="{:leuu('Portal/article/index',array('id'=>$vos['object_id'],'cid'=>$vos['term_id']))}">
+          	<div class="content">
+            	<h2 class="text-ellipsis">{$vos.post_title}</h2>
+           		<p class="text-ellipsis3">{$vos.post_excerpt}</p>
+            </div>
           	<if condition="empty($smeta['thumb'])">
                <img src="__TMPL__Public/assets/images/default_tupian1.png" alt="">
             <else />
                 <img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="">
            	</if>
-            <div class="content">
-            	<h2 class="text-ellipsis">{$vos.post_title}</h2>
-           		<!--<p class="text-ellipsis3">{$vos.post_excerpt}</p>-->
-            </div>
           </a>
         </li>
         </volist>
